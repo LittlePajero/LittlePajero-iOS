@@ -21,14 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVx-uH-JVW">
-                                <rect key="frame" x="154" y="576" width="67" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="6qG-0y-E2Q"/>
-                                    <constraint firstAttribute="width" constant="67" id="cOy-s8-Hrq"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="symbol"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-9x-dHs">
                                 <rect key="frame" x="27" y="576" width="28" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -40,6 +32,37 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Bt"/>
+                            </button>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="搜索附近游玩地点" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-fq-tzh">
+                                <rect key="frame" x="16" y="28" width="343" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="u2L-fj-GaB"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKf-2d-QNL">
+                                <rect key="frame" x="93" y="476" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="BT1"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVx-uH-JVW">
+                                <rect key="frame" x="154" y="576" width="67" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="6qG-0y-E2Q"/>
+                                    <constraint firstAttribute="width" constant="67" id="cOy-s8-Hrq"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="symbol"/>
+                                <connections>
+                                    <action selector="mainButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RT8-Ja-G55"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44t-Lf-hFf">
+                                <rect key="frame" x="228" y="476" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="BT2"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,9 +78,12 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="BT1" destination="OKf-2d-QNL" id="69f-hf-a19"/>
+                        <outlet property="BT2" destination="44t-Lf-hFf" id="PoW-Wp-aBR"/>
                         <outlet property="mainButton" destination="IVx-uH-JVW" id="LMe-KE-eHx"/>
                         <outlet property="mapView" destination="8bC-Xf-vdC" id="JWj-yD-ChQ"/>
-                        <outlet property="searchDisplayController" destination="2Cj-2P-dw5" id="6Q4-fL-PH9"/>
+                        <outlet property="searchBox" destination="xfU-fq-tzh" id="7cs-OS-jue"/>
+                        <outlet property="searchDisplayController" destination="oFT-tZ-1BS" id="CCS-yo-Lbp"/>
                         <outlet property="subButtonOne" destination="FiL-9x-dHs" id="jvl-rG-PB8"/>
                         <outlet property="subButtonTwo" destination="x0d-uJ-Txa" id="UVB-pE-zy5"/>
                     </connections>
@@ -69,6 +95,15 @@
                         <outlet property="searchContentsController" destination="BYZ-38-t0r" id="ct1-Ch-2dP"/>
                         <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="4nI-pE-PUe"/>
                         <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="3rn-NI-hBV"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="oFT-tZ-1BS">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="Pgd-R3-ED5"/>
+                        <outlet property="searchBar" destination="xfU-fq-tzh" id="fsw-RQ-aRr"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="a8f-qV-2DR"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="O3T-8D-AUk"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="cEV-yG-Zx4"/>
                     </connections>
                 </searchDisplayController>
             </objects>
