@@ -33,9 +33,10 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Bt"/>
                             </button>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="搜索附近游玩地点" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-fq-tzh">
-                                <rect key="frame" x="16" y="28" width="343" height="44"/>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="搜索附近游玩地点" backgroundImage="bg_white" translatesAutoresizingMaskIntoConstraints="NO" id="xfU-fq-tzh">
+                                <rect key="frame" x="63" y="28" width="296" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="u2L-fj-GaB"/>
@@ -47,6 +48,21 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="BT1"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44t-Lf-hFf">
+                                <rect key="frame" x="228" y="476" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="BT2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2HO-gC-7OJ">
+                                <rect key="frame" x="16" y="28" width="47" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="iconLeft"/>
+                                <connections>
+                                    <action selector="openMenuWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V8C-mX-9dq"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVx-uH-JVW">
                                 <rect key="frame" x="154" y="576" width="67" height="67"/>
                                 <constraints>
@@ -57,12 +73,6 @@
                                 <connections>
                                     <action selector="mainButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RT8-Ja-G55"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44t-Lf-hFf">
-                                <rect key="frame" x="228" y="476" width="67" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="BT2"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,6 +96,7 @@
                         <outlet property="searchDisplayController" destination="oFT-tZ-1BS" id="CCS-yo-Lbp"/>
                         <outlet property="subButtonOne" destination="FiL-9x-dHs" id="jvl-rG-PB8"/>
                         <outlet property="subButtonTwo" destination="x0d-uJ-Txa" id="UVB-pE-zy5"/>
+                        <segue destination="94j-op-TJb" kind="presentation" identifier="openMenu" id="QrJ-dT-fF6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -109,8 +120,38 @@
             </objects>
             <point key="canvasLocation" x="141.59999999999999" y="138.98050974512745"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="hXT-Qr-Mc1">
+            <objects>
+                <viewController id="94j-op-TJb" customClass="MenuViewController" customModule="LittlePajero" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vjB-dm-Tl7"/>
+                        <viewControllerLayoutGuide type="bottom" id="JPd-8N-XBn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Pa-F4-fij">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7x-QB-eQe">
+                                <rect key="frame" x="253" y="56" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="closeMenuWithSender:" destination="94j-op-TJb" eventType="touchUpInside" id="zLy-tm-bDq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5F-GZ-f00" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="960.79999999999995" y="138.98050974512745"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="bg_white" width="148" height="22"/>
+        <image name="iconLeft" width="20" height="16"/>
         <image name="symbol" width="67" height="67"/>
     </resources>
 </document>

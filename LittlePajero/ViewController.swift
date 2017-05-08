@@ -9,6 +9,12 @@
 import UIKit
 import Mapbox      // 引入超级好用的地图
 
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentMenuAnimator() as UIViewControllerAnimatedTransitioning
+    }
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet var mapView: MGLMapView!
@@ -24,6 +30,16 @@ class ViewController: UIViewController {
     // 设置两个弹出按钮的初始位置
     var BT1Center: CGPoint!
     var BT2Center: CGPoint!
+    
+    @IBAction func openMenu(sender: AnyObject) {
+        performSegue(withIdentifier: "openMenu", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? MenuViewController {
+            destinationViewController.transitioningDelegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
