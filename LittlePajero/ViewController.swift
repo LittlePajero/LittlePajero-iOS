@@ -7,13 +7,8 @@
 //
 
 import UIKit
-import Mapbox      // 引入超级好用的地图
-
-extension ViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PresentMenuAnimator() as UIViewControllerAnimatedTransitioning
-    }
-}
+import Mapbox                          // 引入超级好用的地图
+import SideMenu
 
 class ViewController: UIViewController {
 
@@ -31,17 +26,8 @@ class ViewController: UIViewController {
     var BT1Center: CGPoint!
     var BT2Center: CGPoint!
     
-    @IBAction func openMenu(sender: AnyObject) {
-        performSegue(withIdentifier: "openMenu", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? MenuViewController {
-            destinationViewController.transitioningDelegate = self
-        }
-    }
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
@@ -64,13 +50,23 @@ class ViewController: UIViewController {
         // 让两个按钮放在 mainButton 的后面
         BT1.center = mainButton.center
         BT2.center = mainButton.center
+        
+        setSideMenuStyle()
+    }
+    
+    func setSideMenuStyle() {
+        SideMenuManager.menuAnimationTransformScaleFactor = CGFloat(1)
+        SideMenuManager.menuFadeStatusBar = false
+        SideMenuManager.menuPresentMode = .menuSlideIn
+        SideMenuManager.menuWidth = view.frame.width * CGFloat(0.78)
     }
 
+    // 这个没用
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // 设置 MainButton 的 style
     func setMainButtonStyle() {
         mainButton.layer.cornerRadius = mainButton.bounds.size.height / 2

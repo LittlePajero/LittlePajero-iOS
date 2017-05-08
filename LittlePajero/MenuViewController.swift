@@ -2,19 +2,16 @@
 //  MenuViewController.swift
 //  LittlePajero
 //
-//  Created by ivyxuan on 2017/5/7.
+//  Created by ivyxuan on 2017/5/8.
 //  Copyright © 2017年 ivyxuan. All rights reserved.
 //
 
 import UIKit
+import SideMenu
 
 class MenuViewController: UIViewController {
 
-    @IBAction func closeMenu(sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
-    }
     
-
     /*
     // MARK: - Navigation
 

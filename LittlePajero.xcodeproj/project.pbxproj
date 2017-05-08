@@ -12,10 +12,7 @@
 		137094F81EBC5DED003C12F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137094F61EBC5DED003C12F5 /* Main.storyboard */; };
 		137094FA1EBC5DED003C12F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137094F91EBC5DED003C12F5 /* Assets.xcassets */; };
 		137094FD1EBC5DED003C12F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137094FB1EBC5DED003C12F5 /* LaunchScreen.storyboard */; };
-		13BDFC7C1EC0718800230EF5 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BDFC7B1EC0718800230EF5 /* Interactor.swift */; };
-		13BDFC7E1EC0721B00230EF5 /* MenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BDFC7D1EC0721B00230EF5 /* MenuHelper.swift */; };
-		13BDFC811EC07D5900230EF5 /* PresentMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BDFC801EC07D5900230EF5 /* PresentMenuAnimator.swift */; };
-		13F116F11EBF01C000F5B601 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F116F01EBF01C000F5B601 /* MenuViewController.swift */; };
+		13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */; };
 		1AB47492529F81A5B123A435 /* Pods_LittlePajero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,10 +24,7 @@
 		137094F91EBC5DED003C12F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		137094FC1EBC5DED003C12F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		137094FE1EBC5DED003C12F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13BDFC7B1EC0718800230EF5 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
-		13BDFC7D1EC0721B00230EF5 /* MenuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHelper.swift; sourceTree = "<group>"; };
-		13BDFC801EC07D5900230EF5 /* PresentMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMenuAnimator.swift; sourceTree = "<group>"; };
-		13F116F01EBF01C000F5B601 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittlePajero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C394BD4B6D43EC5DE0393244 /* Pods-LittlePajero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePajero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittlePajero/Pods-LittlePajero.debug.xcconfig"; sourceTree = "<group>"; };
 		D8189ACBEC59476F485E9EF8 /* Pods-LittlePajero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePajero.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittlePajero/Pods-LittlePajero.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,26 +63,15 @@
 		137094F11EBC5DED003C12F5 /* LittlePajero */ = {
 			isa = PBXGroup;
 			children = (
-				13BDFC7F1EC0722800230EF5 /* SlideMenu */,
 				137094F21EBC5DED003C12F5 /* AppDelegate.swift */,
 				137094F41EBC5DED003C12F5 /* ViewController.swift */,
 				137094F61EBC5DED003C12F5 /* Main.storyboard */,
+				13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */,
 				137094F91EBC5DED003C12F5 /* Assets.xcassets */,
 				137094FB1EBC5DED003C12F5 /* LaunchScreen.storyboard */,
 				137094FE1EBC5DED003C12F5 /* Info.plist */,
 			);
 			path = LittlePajero;
-			sourceTree = "<group>";
-		};
-		13BDFC7F1EC0722800230EF5 /* SlideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				13BDFC7B1EC0718800230EF5 /* Interactor.swift */,
-				13BDFC7D1EC0721B00230EF5 /* MenuHelper.swift */,
-				13F116F01EBF01C000F5B601 /* MenuViewController.swift */,
-				13BDFC801EC07D5900230EF5 /* PresentMenuAnimator.swift */,
-			);
-			name = SlideMenu;
 			sourceTree = "<group>";
 		};
 		19319F8A6AF2D5726587AA10 /* Pods */ = {
@@ -233,10 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				137094F51EBC5DED003C12F5 /* ViewController.swift in Sources */,
-				13F116F11EBF01C000F5B601 /* MenuViewController.swift in Sources */,
-				13BDFC7C1EC0718800230EF5 /* Interactor.swift in Sources */,
-				13BDFC811EC07D5900230EF5 /* PresentMenuAnimator.swift in Sources */,
-				13BDFC7E1EC0721B00230EF5 /* MenuHelper.swift in Sources */,
+				13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */,
 				137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

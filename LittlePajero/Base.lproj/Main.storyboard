@@ -60,7 +60,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="iconLeft"/>
                                 <connections>
-                                    <action selector="openMenuWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V8C-mX-9dq"/>
+                                    <segue destination="lyd-OR-DRs" kind="presentation" id="gK2-wj-eaj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVx-uH-JVW">
@@ -96,7 +96,6 @@
                         <outlet property="searchDisplayController" destination="oFT-tZ-1BS" id="CCS-yo-Lbp"/>
                         <outlet property="subButtonOne" destination="FiL-9x-dHs" id="jvl-rG-PB8"/>
                         <outlet property="subButtonTwo" destination="x0d-uJ-Txa" id="UVB-pE-zy5"/>
-                        <segue destination="94j-op-TJb" kind="presentation" identifier="openMenu" id="QrJ-dT-fF6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,33 +119,45 @@
             </objects>
             <point key="canvasLocation" x="141.59999999999999" y="138.98050974512745"/>
         </scene>
-        <!--Menu View Controller-->
-        <scene sceneID="hXT-Qr-Mc1">
+        <!--View Controller-->
+        <scene sceneID="cee-Bi-FjP">
             <objects>
-                <viewController id="94j-op-TJb" customClass="MenuViewController" customModule="LittlePajero" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cOL-XE-jgU" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vjB-dm-Tl7"/>
-                        <viewControllerLayoutGuide type="bottom" id="JPd-8N-XBn"/>
+                        <viewControllerLayoutGuide type="top" id="Tld-hD-pMK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sdb-6o-JNL"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7Pa-F4-fij">
+                    <view key="view" contentMode="scaleToFill" id="ZAB-9A-4qN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7x-QB-eQe">
-                                <rect key="frame" x="253" y="56" width="68" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="closeMenuWithSender:" destination="94j-op-TJb" eventType="touchUpInside" id="zLy-tm-bDq"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cGT-9k-Bdd"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R5F-GZ-f00" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N4Q-fQ-3mn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="960.79999999999995" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1780" y="139"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="7oj-RA-5xD">
+            <objects>
+                <navigationController storyboardIdentifier="LeftMenuNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="lyd-OR-DRs" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hx-L0-qzl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="cOL-XE-jgU" kind="relationship" relationship="rootViewController" id="hpS-ew-TdX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gaK-ij-1pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983" y="139"/>
         </scene>
     </scenes>
     <resources>
