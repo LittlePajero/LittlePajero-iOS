@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */; };
+		134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B2D311EC34BD50017F6EE /* TransitionManager.swift */; };
 		137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137094F21EBC5DED003C12F5 /* AppDelegate.swift */; };
 		137094F51EBC5DED003C12F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137094F41EBC5DED003C12F5 /* ViewController.swift */; };
 		137094F81EBC5DED003C12F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137094F61EBC5DED003C12F5 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		134B2D311EC34BD50017F6EE /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		137094EF1EBC5DED003C12F5 /* LittlePajero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittlePajero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		137094F21EBC5DED003C12F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		137094F41EBC5DED003C12F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,9 +71,11 @@
 				137094F41EBC5DED003C12F5 /* ViewController.swift */,
 				137094F61EBC5DED003C12F5 /* Main.storyboard */,
 				13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */,
+				134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */,
 				137094F91EBC5DED003C12F5 /* Assets.xcassets */,
 				137094FB1EBC5DED003C12F5 /* LaunchScreen.storyboard */,
 				137094FE1EBC5DED003C12F5 /* Info.plist */,
+				134B2D311EC34BD50017F6EE /* TransitionManager.swift */,
 			);
 			path = LittlePajero;
 			sourceTree = "<group>";
@@ -216,7 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				137094F51EBC5DED003C12F5 /* ViewController.swift in Sources */,
+				134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */,
 				13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */,
+				134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */,
 				137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
