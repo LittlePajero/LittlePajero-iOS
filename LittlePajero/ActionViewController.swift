@@ -10,6 +10,8 @@ import UIKit
 
 class ActionViewController: UIViewController {
     
+    var mainVC : MainViewController?
+    
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
@@ -41,6 +43,13 @@ class ActionViewController: UIViewController {
     @IBAction func close() {
         self.dismiss(animated: false, completion: nil)
     }
+    
+    @IBAction func startRecordPath(_ sender: UIButton) {
+        //self.delegate?.sendMode(mode: "RecordPath")
+        self.mainVC?.mode = .recording
+        self.dismiss(animated: false, completion: nil)
+    }
+    
     
     // 设置按钮的样式
     func setButtonToCircle(_ button: UIButton) {
