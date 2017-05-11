@@ -26,6 +26,12 @@
 	<string>要同意哦，因为小野猫需要在后台运行时也可以记录你的行驶路线</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>要同意哦，小野猫需要知道你的位置</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
