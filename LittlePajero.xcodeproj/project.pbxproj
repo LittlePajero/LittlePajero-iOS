@@ -16,6 +16,9 @@
 		137094FD1EBC5DED003C12F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137094FB1EBC5DED003C12F5 /* LaunchScreen.storyboard */; };
 		13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */; };
 		13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */; };
+		13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2131EC4B1020015CC72 /* ListTransform.swift */; };
+		13E64B3B1EC5A94500BEA67B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E64B3A1EC5A94500BEA67B /* Location.swift */; };
+		13E64B3D1EC5A98400BEA67B /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E64B3C1EC5A98400BEA67B /* Path.swift */; };
 		1AB47492529F81A5B123A435 /* Pods_LittlePajero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,9 @@
 		137094FE1EBC5DED003C12F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APScheduledLocationManager.swift; sourceTree = "<group>"; };
+		13E4E2131EC4B1020015CC72 /* ListTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTransform.swift; sourceTree = "<group>"; };
+		13E64B3A1EC5A94500BEA67B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		13E64B3C1EC5A98400BEA67B /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittlePajero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C394BD4B6D43EC5DE0393244 /* Pods-LittlePajero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePajero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittlePajero/Pods-LittlePajero.debug.xcconfig"; sourceTree = "<group>"; };
 		D8189ACBEC59476F485E9EF8 /* Pods-LittlePajero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePajero.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittlePajero/Pods-LittlePajero.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,18 +75,45 @@
 		137094F11EBC5DED003C12F5 /* LittlePajero */ = {
 			isa = PBXGroup;
 			children = (
+				13E64B3E1EC5A9B700BEA67B /* Lib */,
+				13E64B391EC5A92A00BEA67B /* Models */,
+				13E64B381EC5A91400BEA67B /* Views */,
 				137094F21EBC5DED003C12F5 /* AppDelegate.swift */,
-				137094F41EBC5DED003C12F5 /* MainViewController.swift */,
 				137094F61EBC5DED003C12F5 /* Main.storyboard */,
-				13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */,
-				134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */,
 				137094F91EBC5DED003C12F5 /* Assets.xcassets */,
 				137094FB1EBC5DED003C12F5 /* LaunchScreen.storyboard */,
 				137094FE1EBC5DED003C12F5 /* Info.plist */,
-				134B2D311EC34BD50017F6EE /* TransitionManager.swift */,
-				13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */,
 			);
 			path = LittlePajero;
+			sourceTree = "<group>";
+		};
+		13E64B381EC5A91400BEA67B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */,
+				134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */,
+				137094F41EBC5DED003C12F5 /* MainViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		13E64B391EC5A92A00BEA67B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13E64B3A1EC5A94500BEA67B /* Location.swift */,
+				13E64B3C1EC5A98400BEA67B /* Path.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		13E64B3E1EC5A9B700BEA67B /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				134B2D311EC34BD50017F6EE /* TransitionManager.swift */,
+				13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */,
+				13E4E2131EC4B1020015CC72 /* ListTransform.swift */,
+			);
+			name = Lib;
 			sourceTree = "<group>";
 		};
 		19319F8A6AF2D5726587AA10 /* Pods */ = {
@@ -231,9 +264,12 @@
 			files = (
 				137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */,
 				134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */,
+				13E64B3B1EC5A94500BEA67B /* Location.swift in Sources */,
 				13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */,
+				13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */,
 				13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */,
 				134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */,
+				13E64B3D1EC5A98400BEA67B /* Path.swift in Sources */,
 				137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

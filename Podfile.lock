@@ -162,6 +162,9 @@ PODS:
     - MaterialComponents/private/Application
   - MDFTextAccessibility (1.2.0)
   - ObjectMapper (2.2.6)
+  - ObjectMapper+Realm (0.3):
+    - ObjectMapper
+    - RealmSwift
   - Realm (2.7.0):
     - Realm/Headers (= 2.7.0)
   - Realm/Headers (2.7.0)
@@ -173,6 +176,7 @@ DEPENDENCIES:
   - Mapbox-iOS-SDK (~> 3.5)
   - MaterialComponents
   - ObjectMapper (~> 2.2)
+  - ObjectMapper+Realm
   - RealmSwift
   - SideMenu
 
@@ -181,10 +185,11 @@ SPEC CHECKSUMS:
   MaterialComponents: 7979134f28cca6654f9d3786e96a8d1bff26dfc6
   MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
   ObjectMapper: 042708195cc46c20871cbcbec0453826398273fd
+  ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
   Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
   RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
 
-PODFILE CHECKSUM: 7fe5f9130ad40ea1c8adaeeb35fda52ccb15e277
+PODFILE CHECKSUM: e20621d0abe7041f52991d8fbecc632112c92af3
 
 COCOAPODS: 1.1.1

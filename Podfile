@@ -11,4 +11,5 @@ target 'LittlePajero' do
   pod 'RealmSwift'
   pod 'ObjectMapper', '~> 2.2'
   pod 'MaterialComponents'
+  pod "ObjectMapper+Realm"
 end

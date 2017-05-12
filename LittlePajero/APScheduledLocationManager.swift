@@ -1,14 +1,14 @@
 //
-//  APScheduledLocationManager.swift
-//  LittlePajero
+//  Created by Aleksandrs Proskurins
 //
-//  Created by ivyxuan on 2017/5/11.
-//  Copyright © 2017年 ivyxuan. All rights reserved.
+//  License
+//  Copyright © 2016 Aleksandrs Proskurins
+//  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import UIKit
 import Foundation
 import CoreLocation
+import UIKit
 
 
 public protocol APScheduledLocationManagerDelegate {
@@ -117,6 +117,7 @@ public class APScheduledLocationManager: NSObject, CLLocationManagerDelegate {
         
         isManagerRunning = false
         manager.stopUpdatingLocation()
+        print("LocationManager is now: \(manager.activityType.rawValue)")
     }
     
     @objc func applicationDidEnterBackground() {
@@ -153,14 +154,14 @@ public class APScheduledLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     private func startCheckLocationTimer() {
-        
+        debugPrint("start cl timer")
         stopCheckLocationTimer()
         
         checkLocationTimer = Timer.scheduledTimer(timeInterval: checkLocationInterval, target: self, selector: #selector(checkLocationTimerEvent), userInfo: nil, repeats: false)
     }
     
     private func stopCheckLocationTimer() {
-        
+        debugPrint("stop cl timer")
         if let timer = checkLocationTimer {
             
             timer.invalidate()
@@ -179,6 +180,7 @@ public class APScheduledLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     private func startWaitTimer() {
+        debugPrint("start w timer")
         stopWaitTimer()
         
         waitTimer = Timer.scheduledTimer(timeInterval: WaitForLocationsTime, target: self, selector: #selector(waitTimerEvent), userInfo: nil, repeats: false)
@@ -191,6 +193,7 @@ public class APScheduledLocationManager: NSObject, CLLocationManagerDelegate {
             timer.invalidate()
             waitTimer=nil
         }
+        debugPrint("stop w timer")
     }
     
     func waitTimerEvent() {
