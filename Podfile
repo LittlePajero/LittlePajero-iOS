@@ -8,5 +8,7 @@ target 'LittlePajero' do
   # Pods for LittlePajero
   pod 'Mapbox-iOS-SDK', '~> 3.5'
   pod 'SideMenu'
-
+  pod 'RealmSwift'
+  pod 'ObjectMapper', '~> 2.2'
+  pod 'MaterialComponents'
 end
