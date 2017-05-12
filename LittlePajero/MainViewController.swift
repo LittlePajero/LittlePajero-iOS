@@ -11,6 +11,8 @@ import Mapbox                          // 引入超级好用的地图
 import SideMenu
 import RealmSwift
 import CoreLocation                    // 用APS，获取地理位置信息的库（自带）
+import ObjectMapper
+import ObjectMapper_Realm
 
 enum PresentWorkingMode : String {
     case idle
@@ -18,27 +20,19 @@ enum PresentWorkingMode : String {
     case pauseRecord
 }
 
-class Location: Object {
-    dynamic var latitude: Float = 0.00
-    dynamic var longtitude: Float = 0.00
-}
-
-class Path: Object {
-    let locations = List<Location>()
-}
-
 class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocationManagerDelegate {
 
     @IBOutlet var mapView: MGLMapView!
-    @IBOutlet weak var mainButton: UIButton!           // 中间大按钮
-    @IBOutlet weak var infoButton: UIButton!           // 侧边 更多信息 按钮
-    @IBOutlet weak var locationButton: UIButton!       // 侧边 回到当前位置 按钮
-    @IBOutlet weak var searchBox: UISearchBar!         // 搜索框
-    @IBOutlet weak var userLocationLabel: UILabel!     // 用户位置
-    @IBOutlet weak var pinDropButton: UIButton!        // 打点按钮
-    @IBOutlet weak var pauseButton: UIButton!          // 暂停记录位置按钮
+    @IBOutlet weak var mainButton: UIButton!             // 中间大按钮
+    @IBOutlet weak var infoButton: UIButton!             // 侧边 更多信息 按钮
+    @IBOutlet weak var locationButton: UIButton!         // 侧边 回到当前位置 按钮
+    @IBOutlet weak var userLocationLabel: UILabel!       // 用户位置
+    @IBOutlet weak var pinOrStopButton: UIButton!        // 打点或者停止记录轨迹按钮
+    @IBOutlet weak var pauseOrContinueButton: UIButton!  // 暂停或者继续 记录位置按钮
+    @IBOutlet weak var sideMenuButton: UIButton!
     
-    private var manager: APScheduledLocationManager!   // 后台记录用户位置的 manager
+    private var manager: APScheduledLocationManager!     // 后台记录用户位置的 manager
+    
     fileprivate let realm = try! Realm()
     
     override func viewDidLoad() {
@@ -53,7 +47,10 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         manager = APScheduledLocationManager(delegate: self)
 
         // 设置地图中心为用户坐标
-        mapView.userTrackingMode = .follow
+        // mapView.userTrackingMode = .follow
+        // 设置：地图中心
+        mapView.setCenter(CLLocationCoordinate2D(latitude: 45.52214, longitude: -122.63748), zoomLevel: 13, animated: false)
+
         
         // 设置几个大按钮的样式
         setMainButtonStyle()
@@ -64,16 +61,12 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         // 设置用户位置标签字体颜色
         userLocationLabel.textColor = UIColor.white
         
-        // 设置搜索框的背景
-        searchBox.barTintColor = UIColor.white
-        
         // 设置侧边栏出场的样子
         setSideMenuStyle()
         
         // 打印出数据库地址
         print(realm.configuration.fileURL!)
         
-        manager.startUpdatingLocation(interval: 2, acceptableLocationAccuracy: 100)
     }
 
     // 这个没用
@@ -83,17 +76,18 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     }
     
     // 判断当前模式，以更换界面
+    private var _mode : PresentWorkingMode = .idle
     var mode : PresentWorkingMode {
         set {
-            //self.mode = newValue
+            self._mode = newValue
             switch newValue {
             case .idle : self.setIdleInterface()
             case .recording : self.recordingStart()
-            case .pauseRecord : break
+            case .pauseRecord : self.pauseRecord()
             }
         }
         get {
-            return self.mode
+            return self._mode
         }
     }
     
@@ -106,23 +100,54 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     
     // 什么模式都没有
     func setIdleInterface() {
-        pinDropButton.isHidden = true
-        pauseButton.isHidden = true
-        userLocationLabel.isHidden = true
+        pinOrStopButton.isHidden          = true
+        pauseOrContinueButton.isHidden    = true
+        userLocationLabel.isHidden        = true
     }
     
     // 开始记录路径的模式
     func recordingStart() {
-        pinDropButton.isHidden = false
-        pauseButton.isHidden = false
-        userLocationLabel.isHidden = false
-        mainButton.isHidden = true
+        // 改变样式
+        pinOrStopButton.isHidden          = false
+        pauseOrContinueButton.isHidden    = false
+        userLocationLabel.isHidden        = false
+        mainButton.isHidden               = true
+        // 记录轨迹
+        manager.startUpdatingLocation(interval: 2, acceptableLocationAccuracy: 10)
     }
     
-    // 停止记录路径的模式
+    // 暂停记录路径的模式
     func pauseRecord() {
-        
+        debugPrint("----- Pause clicked")
+        //if self.manager.isRunning {
+        //    self.manager.stoptUpdatingLocation()
+        //}
+        self.pauseOrContinueRecord()
     }
+    
+    @IBAction func pause(_ sender: UIButton) {
+        self.mode = .pauseRecord
+    }
+    
+    
+
+    func pauseOrContinueRecord() {
+        // self.mode = .pauseRecord
+        if manager.isRunning {
+            //pauseOrContinueButton.setImage(#imageLiteral(resourceName: "playArrowMaterial"), for: .normal)
+            //pinOrStopButton.setImage(#imageLiteral(resourceName: "rectangle5"), for: .normal)
+            manager.stoptUpdatingLocation()
+        }else{
+            if CLLocationManager.authorizationStatus() == .authorizedAlways {
+                //pauseOrContinueButton.setImage(#imageLiteral(resourceName: "pauseMaterial"), for: .normal)
+                //pinOrStopButton.setImage(#imageLiteral(resourceName: "pinDropMaterial"), for: .normal)
+                manager.startUpdatingLocation(interval: 2, acceptableLocationAccuracy: 100)
+            }else{
+                manager.requestAlwaysAuthorization()
+            }
+        }
+    }
+
     
     //-------------------- 后台记录位置的 delegate 方法 --------------------------//
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -131,18 +156,25 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         formatter.timeStyle = .medium
         
         let userLocation = locations.first!
-        // print("\(formatter.string(from: Date())) loc: \(userLocation.coordinate.latitude), \(userLocation.coordinate.longitude)")
+        print("当前模式：\(self.mode)")
+        print("\(formatter.string(from: Date())) loc: \(userLocation.coordinate.latitude), \(userLocation.coordinate.longitude)")
         
-        let currentUserLocation = Location()
-        currentUserLocation.latitude = Float(userLocation.coordinate.latitude)
-        currentUserLocation.longtitude = Float(userLocation.coordinate.longitude)
-        let path = Path()
-        path.locations.append(currentUserLocation)
-        print("\(path)")
-        try! realm.write {
-            realm.add(currentUserLocation)
-            realm.add(path)
-        }
+        //let currentUserLocation = Location()
+        //currentUserLocation.latitude = Float(userLocation.coordinate.latitude)
+        //currentUserLocation.longitude = Float(userLocation.coordinate.longitude)
+        //let path = Path()
+        //path.locations.append(currentUserLocation)
+        // print("\(path)")
+        //try! realm.write {
+        //    realm.add(currentUserLocation)
+        //    realm.add(path)
+            //let JSONString = Mapper().toJSON(path)
+            // print("\(JSONString)")
+        //}
+        
+        //let JSONString = Mapper().toJSON(currentUserLocation)
+
+        
     }
     
     func scheduledLocationManager(_ manager: APScheduledLocationManager, didFailWithError error: Error) {
@@ -163,11 +195,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     // 设置大型按钮的样式
     func setMainButtonStyle() {
         setCircleButtonStyle(mainButton, UIColor.clear)
-        setCircleButtonStyle(pinDropButton, UIColor.white)
-        setCircleButtonStyle(pauseButton, UIColor.white)
+        setCircleButtonStyle(pinOrStopButton, UIColor.white)
+        setCircleButtonStyle(pauseOrContinueButton, UIColor.white)
         addShadow(mainButton)
-        addShadow(pinDropButton)
-        addShadow(pauseButton)
+        addShadow(pinOrStopButton)
+        addShadow(pauseOrContinueButton)
     }
     
     // 添加阴影

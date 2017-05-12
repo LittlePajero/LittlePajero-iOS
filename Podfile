@@ -10,5 +10,6 @@ target 'LittlePajero' do
   pod 'SideMenu'
   pod 'RealmSwift'
   pod 'ObjectMapper', '~> 2.2'
+  pod "ObjectMapper+Realm"
 
 end
