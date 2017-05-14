@@ -13,6 +13,7 @@ import RealmSwift
 import CoreLocation                    // 用APS，获取地理位置信息的库（自带）
 import ObjectMapper
 import ObjectMapper_Realm
+import MaterialComponents.MaterialButtons
 
 enum PresentWorkingMode : String {
     case idle
@@ -47,9 +48,9 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         manager = APScheduledLocationManager(delegate: self)
 
         // 设置地图中心为用户坐标
-        // mapView.userTrackingMode = .follow
+        mapView.userTrackingMode = .follow
         // 设置：地图中心
-        mapView.setCenter(CLLocationCoordinate2D(latitude: 45.52214, longitude: -122.63748), zoomLevel: 13, animated: false)
+        //mapView.setCenter(CLLocationCoordinate2D(latitude: 45.52214, longitude: -122.63748), zoomLevel: 13, animated: false)
 
         
         // 设置几个大按钮的样式
@@ -195,11 +196,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     // 设置大型按钮的样式
     func setMainButtonStyle() {
         setCircleButtonStyle(mainButton, UIColor.clear)
-        setCircleButtonStyle(pinOrStopButton, UIColor.white)
-        setCircleButtonStyle(pauseOrContinueButton, UIColor.white)
-        addShadow(mainButton)
-        addShadow(pinOrStopButton)
-        addShadow(pauseOrContinueButton)
+        setCircleButtonStyle(pinOrStopButton, UIColor.lpBackgroundWhite)
+        setCircleButtonStyle(pauseOrContinueButton, UIColor.lpBackgroundWhite)
+        //addShadow(mainButton)
+        //addShadow(pinOrStopButton)
+        //addShadow(pauseOrContinueButton)
     }
     
     // 添加阴影

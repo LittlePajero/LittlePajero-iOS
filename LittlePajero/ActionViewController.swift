@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialButtons
 
 class ActionViewController: UIViewController {
     
@@ -25,9 +26,9 @@ class ActionViewController: UIViewController {
         setBackgroundBlur()
         
         // 将这个页面上 3 个按钮的样式设置好
-        setButtonToCircle(closeButton)
-        setButtonToCircle(recordButton)
-        setButtonToCircle(cameraButton)
+        //setButtonToCircle(closeButton)
+        //setButtonToCircle(recordButton)
+        //setButtonToCircle(cameraButton)
         
         // 设置按钮文字样式
         setLabelStyle()
@@ -53,7 +54,7 @@ class ActionViewController: UIViewController {
     
     // 设置按钮的样式
     func setButtonToCircle(_ button: UIButton) {
-        button.layer.backgroundColor = UIColor.white.cgColor
+        button.layer.backgroundColor = UIColor.lpBackgroundWhite.cgColor
         button.layer.cornerRadius = button.bounds.size.height / 2
     }
     
