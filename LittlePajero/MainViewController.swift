@@ -55,8 +55,6 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         // 设置：地图中心
         // mapView.setCenter(CLLocationCoordinate2D(latitude: 45.52214, longitude: -122.63748), zoomLevel: 13, animated: false)
 
-        // 设置几个大按钮的样式
-        setMainButtonStyle()
         
         // 设置 SubButtons 的样式(locationButton 和 infoButton)
         setSubButtonStyle()
@@ -239,28 +237,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         SideMenuManager.menuWidth = view.frame.width * CGFloat(0.78)
     }
     
-    // 设置大型按钮的样式
-    func setMainButtonStyle() {
-        setCircleButtonStyle(mainButton, UIColor.clear)
-        setCircleButtonStyle(pinOrStopButton, UIColor.lpBackgroundWhite)
-        setCircleButtonStyle(pauseOrContinueButton, UIColor.lpBackgroundWhite)
-    }
     
-    // 添加阴影
-    func addShadow(_ sender: UIButton) {
-        sender.layer.shadowColor = UIColor.darkGray.cgColor
-        sender.layer.shadowOffset = CGSize.init(width: 1, height: 3)
-        sender.layer.shadowOpacity = 0.7
-        sender.layer.shadowRadius = 0
-        sender.layer.masksToBounds = false
-        sender.layer.shadowRadius = 1
-    }
-    
-    // 设置按钮样式
-    func setCircleButtonStyle(_ button: UIButton, _ bgColor: UIColor) {
-        button.layer.backgroundColor = bgColor.cgColor
-        button.layer.cornerRadius = button.bounds.height / 2
-    }
     
     // 设置 SubButton 的样式
     func setSubButtonStyle() {

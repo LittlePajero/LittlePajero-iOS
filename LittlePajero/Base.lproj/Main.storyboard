@@ -34,7 +34,7 @@
                                     <segue destination="lyd-OR-DRs" kind="presentation" id="gK2-wj-eaj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVx-uH-JVW" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVx-uH-JVW" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="155" y="578" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="6qG-0y-E2Q"/>
@@ -46,7 +46,7 @@
                                     <segue destination="IBH-Ns-fyD" kind="presentation" identifier="mainToAction" animates="NO" modalPresentationStyle="overFullScreen" id="9CI-WH-dgI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-9x-dHs" customClass="MDCRaisedButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-9x-dHs">
                                 <rect key="frame" x="16" y="578" width="30" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -74,15 +74,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-Zq-TIV">
-                                <rect key="frame" x="110" y="578" width="65" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="eHS-LN-qoo"/>
-                                    <constraint firstAttribute="height" constant="65" id="tJe-em-abH"/>
-                                </constraints>
-                                <state key="normal" image="pinDropMaterial"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0d-uJ-Txa" customClass="MDCRaisedButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0d-uJ-Txa">
                                 <rect key="frame" x="16" y="614" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="51k-NL-puV"/>
@@ -94,7 +86,7 @@
                                     <action selector="returnUserLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FQY-YO-nxv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S67-Qo-KHF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S67-Qo-KHF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="199" y="578" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="MAf-CP-spW"/>
@@ -105,7 +97,7 @@
                                     <action selector="continueRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L6B-xu-Sfz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-wG-5yF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-wG-5yF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="110" y="578" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="Crc-za-3Hf"/>
@@ -113,7 +105,7 @@
                                 </constraints>
                                 <state key="normal" image="rectangle5"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-Zq-TIV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-Zq-TIV" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="110" y="578" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="eHS-LN-qoo"/>
@@ -124,7 +116,7 @@
                                     <action selector="pinDrop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WP0-Yy-g5T"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWy-rn-mmH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWy-rn-mmH" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="199" y="578" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="VWJ-kR-yth"/>
@@ -165,7 +157,6 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="continueRecordButton" destination="S67-Qo-KHF" id="SXy-wv-eec"/>
                         <outlet property="infoButton" destination="FiL-9x-dHs" id="9FF-zg-vp0"/>
@@ -212,23 +203,6 @@
                     <view key="view" contentMode="scaleToFill" id="ZAB-9A-4qN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UIi-sN-9Fx">
-                                <rect key="frame" x="16" y="227" width="343" height="338"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Kxp-J6-GeK">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kxp-J6-GeK" id="VFy-qY-2eh">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cGT-9k-Bdd"/>
@@ -272,7 +246,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alO-KT-ugx" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="155" y="578" width="65" height="65"/>
-                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="jQd-yl-jqn"/>
                                 </constraints>
@@ -283,7 +256,6 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFa-EN-gb7" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="80" y="455" width="65" height="65"/>
-                                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="RXx-BD-mSO"/>
                                     <constraint firstAttribute="width" constant="65" id="e8f-Te-24U"/>
@@ -301,7 +273,6 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7y-IM-tBd" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="230" y="455" width="65" height="65"/>
-                                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="DAi-LG-JRb"/>
                                     <constraint firstAttribute="width" constant="65" id="K7i-a4-esb"/>
@@ -375,12 +346,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59A-z7-Lul">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59A-z7-Lul" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="200" y="565" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="checkMaterial"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTS-My-EKe">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTS-My-EKe" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="108" y="565" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="chevronLeftMaterial"/>
