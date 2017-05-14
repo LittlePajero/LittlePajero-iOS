@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */; };
 		134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B2D311EC34BD50017F6EE /* TransitionManager.swift */; };
+		13577A881EC738BA00C5B16C /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13577A871EC738BA00C5B16C /* Point.swift */; };
+		13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13577A8C1EC8344600C5B16C /* PinDropViewController.swift */; };
 		137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137094F21EBC5DED003C12F5 /* AppDelegate.swift */; };
 		137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137094F41EBC5DED003C12F5 /* MainViewController.swift */; };
 		137094F81EBC5DED003C12F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137094F61EBC5DED003C12F5 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		134B2D311EC34BD50017F6EE /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		13577A871EC738BA00C5B16C /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		13577A8C1EC8344600C5B16C /* PinDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinDropViewController.swift; sourceTree = "<group>"; };
 		137094EF1EBC5DED003C12F5 /* LittlePajero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittlePajero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		137094F21EBC5DED003C12F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		137094F41EBC5DED003C12F5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */,
 				134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */,
 				137094F41EBC5DED003C12F5 /* MainViewController.swift */,
+				13577A8C1EC8344600C5B16C /* PinDropViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			children = (
 				13E64B3A1EC5A94500BEA67B /* Location.swift */,
 				13E64B3C1EC5A98400BEA67B /* Path.swift */,
+				13577A871EC738BA00C5B16C /* Point.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -285,9 +291,11 @@
 				134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */,
 				13E64B3B1EC5A94500BEA67B /* Location.swift in Sources */,
 				13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */,
+				13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */,
 				13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */,
 				13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */,
 				CC3D4D101EC834A800CFBCD1 /* FloatingButton.swift in Sources */,
+				13577A881EC738BA00C5B16C /* Point.swift in Sources */,
 				134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */,
 				13E64B3D1EC5A98400BEA67B /* Path.swift in Sources */,
 				137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */,
