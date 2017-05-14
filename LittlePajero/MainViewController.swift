@@ -27,15 +27,18 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     @IBOutlet weak var infoButton: UIButton!             // 侧边 更多信息 按钮
     @IBOutlet weak var locationButton: UIButton!         // 侧边 回到当前位置 按钮
     @IBOutlet weak var userLocationLabel: UILabel!       // 用户位置
-    @IBOutlet weak var pinOrStopButton: UIButton!        // 打点或者停止记录轨迹按钮
-    @IBOutlet weak var pauseOrContinueButton: UIButton!  // 暂停或者继续 记录位置按钮
-    @IBOutlet weak var sideMenuButton: UIButton!
+    @IBOutlet weak var pinDropButton: UIButton!          // 打点按钮
+    @IBOutlet weak var pauseRecordButton: UIButton!      // 暂停记录轨迹按钮
+    @IBOutlet weak var stopRecordButton: UIButton!       // 停止记录轨迹按钮
+    @IBOutlet weak var continueRecordButton: UIButton!   // 继续记录轨迹按钮
+    @IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
     
     private var manager: APScheduledLocationManager!     // 后台记录用户位置的 manager
-    
     fileprivate let realm = try! Realm()
     
     override func viewDidLoad() {
+        
+        definesPresentationContext = true
         
         self.mode = .idle
         
@@ -47,11 +50,10 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         manager = APScheduledLocationManager(delegate: self)
 
         // 设置地图中心为用户坐标
-        // mapView.userTrackingMode = .follow
+         mapView.userTrackingMode = .follow
         // 设置：地图中心
-        mapView.setCenter(CLLocationCoordinate2D(latitude: 45.52214, longitude: -122.63748), zoomLevel: 13, animated: false)
+        // mapView.setCenter(CLLocationCoordinate2D(latitude: 45.52214, longitude: -122.63748), zoomLevel: 13, animated: false)
 
-        
         // 设置几个大按钮的样式
         setMainButtonStyle()
         
@@ -68,7 +70,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         print(realm.configuration.fileURL!)
         
     }
-
+    
     // 这个没用
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -91,46 +93,88 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "mainToAction" {
-            let secondController = segue.destination as! ActionViewController
-            secondController.mainVC = self
-        }
-    }
-    
     // 什么模式都没有
     func setIdleInterface() {
-        pinOrStopButton.isHidden          = true
-        pauseOrContinueButton.isHidden    = true
-        userLocationLabel.isHidden        = true
+        // 改变样式
+        pinDropButton.isHidden        = true
+        pauseRecordButton.isHidden    = true
+        stopRecordButton.isHidden     = true
+        continueRecordButton.isHidden = true
+        userLocationLabel.isHidden    = true
     }
     
     // 开始记录路径的模式
     func recordingStart() {
+        print("----- Start Recording")
         // 改变样式
-        pinOrStopButton.isHidden          = false
-        pauseOrContinueButton.isHidden    = false
-        userLocationLabel.isHidden        = false
-        mainButton.isHidden               = true
+        pinDropButton.isHidden        = false
+        pauseRecordButton.isHidden    = false
+        userLocationLabel.isHidden    = false
+        mainButton.isHidden           = true
         // 记录轨迹
-        manager.startUpdatingLocation(interval: 2, acceptableLocationAccuracy: 10)
+        // manager.startUpdatingLocation(interval: 2, acceptableLocationAccuracy: 10)
     }
     
     // 暂停记录路径的模式
     func pauseRecord() {
+        // 改变样式
+        pinDropButton.isHidden        = true
+        pauseRecordButton.isHidden    = true
+        stopRecordButton.isHidden     = false
+        continueRecordButton.isHidden = false
         debugPrint("----- Pause clicked")
         //if self.manager.isRunning {
         //    self.manager.stoptUpdatingLocation()
         //}
-        self.pauseOrContinueRecord()
+        // self.pauseOrContinueRecord()
     }
     
-    @IBAction func pause(_ sender: UIButton) {
+    @IBAction func pauseRecord(_ sender: UIButton) {
         self.mode = .pauseRecord
     }
     
     
+    @IBAction func continueRecord(_ sender: UIButton) {
+        self.mode = .recording
+    }
+    
+    // 打点并且跳到添加打点内容的页面
+    @IBAction func pinDrop(_ sender: UIButton) {
+        let userCurrentLocation = mapView.userLocation!
+        let point = MGLPointAnnotation()
+        point.coordinate = CLLocationCoordinate2D(latitude: userCurrentLocation.coordinate.latitude, longitude: userCurrentLocation.coordinate.longitude)
+        mapView.addAnnotation(point)
+        
+        let currentPoint = Point()
+        currentPoint.latitude = Float(point.coordinate.latitude)
+        currentPoint.longitude = Float(point.coordinate.longitude)
+        currentPoint.id = currentPoint.incrementID()
+        
+        try! realm.write {
+            realm.add(currentPoint)
+        }
+        
+        let location = String(format: "%0.5f°, %0.5f°", userCurrentLocation.coordinate.latitude, userCurrentLocation.coordinate.longitude)
+        performSegue(withIdentifier: "mainToPinDrop", sender: location)
+        print("Sender: \(sender)")
+    }
+    
+    // 将 mode 值从 actionViewController 传回来
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mainToAction" {
+            let actionVC = segue.destination as! ActionViewController
+            actionVC.mainVC = self
+        }
+        
+        if segue.identifier == "mainToPinDrop" {
+            let pinDropVC = segue.destination as! PinDropViewController
+            pinDropVC.location = sender as? String
+            print("Sender Value:\(pinDropVC.location)")
+        }
+    }
 
+
+    /*
     func pauseOrContinueRecord() {
         // self.mode = .pauseRecord
         if manager.isRunning {
@@ -147,6 +191,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
             }
         }
     }
+    */
 
     
     //-------------------- 后台记录位置的 delegate 方法 --------------------------//
@@ -166,10 +211,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         //path.locations.append(currentUserLocation)
         // print("\(path)")
         //try! realm.write {
+        //    realm.deleteAll()
         //    realm.add(currentUserLocation)
         //    realm.add(path)
-            //let JSONString = Mapper().toJSON(path)
-            // print("\(JSONString)")
+        //    let JSONString = Mapper().toJSON(path)
+        //    print("\(JSONString)")
         //}
         
         //let JSONString = Mapper().toJSON(currentUserLocation)
@@ -195,11 +241,16 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     // 设置大型按钮的样式
     func setMainButtonStyle() {
         setCircleButtonStyle(mainButton, UIColor.clear)
-        setCircleButtonStyle(pinOrStopButton, UIColor.white)
-        setCircleButtonStyle(pauseOrContinueButton, UIColor.white)
+        setCircleButtonStyle(pinDropButton, UIColor.white)
+        setCircleButtonStyle(pauseRecordButton, UIColor.white)
+        setCircleButtonStyle(stopRecordButton, UIColor.white)
+        setCircleButtonStyle(continueRecordButton, UIColor.white)
         addShadow(mainButton)
-        addShadow(pinOrStopButton)
-        addShadow(pauseOrContinueButton)
+        addShadow(pinDropButton)
+        addShadow(pauseRecordButton)
+        addShadow(stopRecordButton)
+        addShadow(continueRecordButton)
+        
     }
     
     // 添加阴影

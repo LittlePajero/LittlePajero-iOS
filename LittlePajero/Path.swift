@@ -13,6 +13,7 @@ import ObjectMapper_Realm
 
 class Path: Object, Mappable {
     var locations = List<Location>()
+    let points = List<Point>()
     
     required convenience init?(map: Map) {
         self.init()
