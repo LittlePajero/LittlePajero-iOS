@@ -12,21 +12,23 @@ class PinDropViewController: UIViewController {
     
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var locationKindTextFeild: UITextField!
     
-    var location: String!
+    var location: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 将背景设置为模糊
         setBackgroundBlur()
-
-        desLabel.textColor = UIColor.white
-        locationLabel.textColor = UIColor.white
+        
+        locationLabel.textColor = UIColor.lpBackgroundWhite
+        desLabel.textColor = UIColor.lpBackgroundWhite
         
         // 从 MainViewController 传 location 到这个页面
         locationLabel.text = "\(location)"
-        print("传过来的location：\(location)")
+        
+        locationKindTextFeild.placeHolderColor = UIColor.lpGrey
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,5 +50,16 @@ class PinDropViewController: UIViewController {
     
     @IBAction func close() {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UITextField{
+    @IBInspectable var placeHolderColor: UIColor? {
+        get {
+            return self.placeHolderColor
+        }
+        set {
+            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSForegroundColorAttributeName: newValue!])
+        }
     }
 }

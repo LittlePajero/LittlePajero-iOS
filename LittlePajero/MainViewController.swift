@@ -76,6 +76,20 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         // Dispose of any resources that can be recreated.
     }
     
+    // 将 mode 值从 actionViewController 传回来
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mainToAction" {
+            let actionVC = segue.destination as! ActionViewController
+            actionVC.mainVC = self
+        }
+        
+        if segue.identifier == "mainToPinDrop" {
+            let pinDropVC = segue.destination as! PinDropViewController
+            pinDropVC.location = (sender as? String)!
+            print("Sender Value:\(pinDropVC.location)")
+        }
+    }
+    
     // 判断当前模式，以更换界面
     private var _mode : PresentWorkingMode = .idle
     var mode : PresentWorkingMode {
@@ -111,7 +125,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         userLocationLabel.isHidden    = false
         mainButton.isHidden           = true
         // 记录轨迹
-        // manager.startUpdatingLocation(interval: 2, acceptableLocationAccuracy: 10)
+        manager.startUpdatingLocation(interval: 10, acceptableLocationAccuracy: 10)
     }
     
     // 暂停记录路径的模式
@@ -123,7 +137,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         continueRecordButton.isHidden = false
         debugPrint("----- Pause clicked")
         //if self.manager.isRunning {
-        //    self.manager.stoptUpdatingLocation()
+        self.manager.stoptUpdatingLocation()
         //}
         // self.pauseOrContinueRecord()
     }
@@ -155,23 +169,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         
         let location = String(format: "%0.5f°, %0.5f°", userCurrentLocation.coordinate.latitude, userCurrentLocation.coordinate.longitude)
         performSegue(withIdentifier: "mainToPinDrop", sender: location)
-        print("Sender: \(sender)")
+        print("Location: \(location)")
     }
-    
-    // 将 mode 值从 actionViewController 传回来
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "mainToAction" {
-            let actionVC = segue.destination as! ActionViewController
-            actionVC.mainVC = self
-        }
-        
-        if segue.identifier == "mainToPinDrop" {
-            let pinDropVC = segue.destination as! PinDropViewController
-            pinDropVC.location = sender as? String
-            print("Sender Value:\(pinDropVC.location)")
-        }
-    }
-
 
     /*
     func pauseOrContinueRecord() {
@@ -236,8 +235,6 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         SideMenuManager.menuPresentMode = .menuSlideIn
         SideMenuManager.menuWidth = view.frame.width * CGFloat(0.78)
     }
-    
-    
     
     // 设置 SubButton 的样式
     func setSubButtonStyle() {
