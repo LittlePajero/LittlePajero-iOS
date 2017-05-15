@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
-import MaterialComponents.MaterialButtons
+import Material
 
-class FloatingMiniButton : MDCRaisedButton {
+
+class FloatingMiniButton : RaisedButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.customStyle()
@@ -19,7 +20,7 @@ class FloatingMiniButton : MDCRaisedButton {
     private func customStyle() {
         self.backgroundColor = UIColor.lpBackgroundWhite
         self.tintColor = UIColor.lpGrey
-        self.inkColor = UIColor.lpInkOnWhite
+        //self.inkColor = UIColor.lpInkOnWhite
         self.layer.cornerRadius = 2
         
         

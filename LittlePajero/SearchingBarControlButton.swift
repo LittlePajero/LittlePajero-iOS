@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialButtons
+import Material
 
-class SearchingBarControlButton: MDCFlatButton {
+class SearchingBarControlButton:  FlatButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.customStyle()

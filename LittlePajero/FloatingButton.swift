@@ -8,18 +8,19 @@
 
 import Foundation
 import UIKit
-import MaterialComponents.MaterialButtons
+import Material
 
-class FloatingButton : MDCFloatingButton {
-    override init(frame: CGRect, shape: MDCFloatingButtonShape) {
-        super.init(frame: frame, shape: shape)
+
+class FloatingButton : FABButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.customStyle()
     }
     
     private func customStyle() {
         self.backgroundColor = UIColor.lpBackgroundWhite
         self.tintColor = UIColor.lpGrey
-        self.inkColor = UIColor.lpInkOnWhite
+        //self.inkColor = UIColor.lpInkOnWhite
         
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = CGSize.init(width: 1, height: 1)

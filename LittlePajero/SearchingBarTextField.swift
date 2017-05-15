@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MaterialComponents.MDCInkView
 
 class SearchingBarTextField: UITextField {
     override init(frame: CGRect) {
