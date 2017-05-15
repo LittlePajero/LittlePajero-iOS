@@ -46,7 +46,7 @@
                                     <segue destination="IBH-Ns-fyD" kind="presentation" identifier="mainToAction" animates="NO" modalPresentationStyle="overFullScreen" id="9CI-WH-dgI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-9x-dHs">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-9x-dHs" customClass="FloatingMiniButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="16" y="578" width="30" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -74,7 +74,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0d-uJ-Txa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0d-uJ-Txa" customClass="FloatingMiniButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="16" y="614" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="51k-NL-puV"/>
