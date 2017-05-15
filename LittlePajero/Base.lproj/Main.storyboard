@@ -113,6 +113,9 @@
                                             <constraint firstAttribute="width" constant="48" id="Fd8-A4-chh"/>
                                         </constraints>
                                         <state key="normal" image="menu"/>
+                                        <connections>
+                                            <segue destination="lyd-OR-DRs" kind="presentation" id="z2b-5e-FEI"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" restorationIdentifier="SearchingBarInputField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜索周边玩乐" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l9z-5Z-Z07" customClass="SearchingBarTextField" customModule="LittlePajero" customModuleProvider="target">
                                         <rect key="frame" x="48" y="0.0" width="293" height="44"/>
