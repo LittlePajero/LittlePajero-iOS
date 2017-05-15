@@ -38,12 +38,14 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     fileprivate let realm = try! Realm()
     
     override func viewDidLoad() {
-        
         definesPresentationContext = true
         
         self.mode = .idle
         
         super.viewDidLoad()
+        
+        // 设置 Status Bar 为浅色
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
         // 设置 delegate 对象
         mapView.delegate = self
