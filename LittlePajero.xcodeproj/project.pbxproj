@@ -88,6 +88,7 @@
 				CC3D4D0C1EC5F81600CFBCD1 /* Styles */,
 				13E64B3E1EC5A9B700BEA67B /* Lib */,
 				13E64B391EC5A92A00BEA67B /* Models */,
+				CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */,
 				13E64B381EC5A91400BEA67B /* Views */,
 				137094F21EBC5DED003C12F5 /* AppDelegate.swift */,
 				137094F61EBC5DED003C12F5 /* Main.storyboard */,
@@ -149,7 +150,6 @@
 		CC3D4D0C1EC5F81600CFBCD1 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */,
 				CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */,
 				CC3D4D111EC8BBA200CFBCD1 /* FloatingMiniButton.swift */,
 			);

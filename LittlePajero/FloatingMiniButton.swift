@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import MaterialComponents.MaterialButtons
 
-class FloatingMiniButton : MDCFloatingButton {
-    override init(frame: CGRect, shape: MDCFloatingButtonShape) {
-        super.init(frame: frame, shape: shape)
+class FloatingMiniButton : MDCRaisedButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.customStyle()
     }
     
@@ -20,14 +20,22 @@ class FloatingMiniButton : MDCFloatingButton {
         self.backgroundColor = UIColor.lpBackgroundWhite
         self.tintColor = UIColor.lpGrey
         self.inkColor = UIColor.lpInkOnWhite
+        self.layer.cornerRadius = 2
+        
+        
         
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = CGSize.init(width: 1, height: 1)
         self.layer.shadowOpacity = 0.7
-        self.layer.shadowRadius = 0
+        self.layer.shadowRadius = 2
         self.layer.masksToBounds = false
         self.layer.shadowRadius = 1
         
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.imageView?.frame = CGRect(x: 6, y: 6, width: 18, height: 18)
     }
     
     required init?(coder aDecoder: NSCoder) {

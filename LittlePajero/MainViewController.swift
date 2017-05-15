@@ -241,11 +241,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     
     // 设置 SubButton 的样式
     func setSubButtonStyle() {
-        infoButton.layer.backgroundColor = UIColor.white.cgColor
-        infoButton.layer.cornerRadius = 2
+        //infoButton.layer.backgroundColor = UIColor.white.cgColor
+        //infoButton.layer.cornerRadius = 2
     
-        locationButton.layer.backgroundColor = UIColor.white.cgColor
-        locationButton.layer.cornerRadius = 2
+        //locationButton.layer.backgroundColor = UIColor.white.cgColor
+        //locationButton.layer.cornerRadius = 2
     }
     
     // 返回用户当前位置
