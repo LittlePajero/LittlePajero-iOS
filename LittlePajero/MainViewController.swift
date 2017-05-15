@@ -32,7 +32,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     @IBOutlet weak var pauseRecordButton: UIButton!      // 暂停记录轨迹按钮
     @IBOutlet weak var stopRecordButton: UIButton!       // 停止记录轨迹按钮
     @IBOutlet weak var continueRecordButton: UIButton!   // 继续记录轨迹按钮
-    @IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
+    //@IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
     
     private var manager: APScheduledLocationManager!     // 后台记录用户位置的 manager
     fileprivate let realm = try! Realm()

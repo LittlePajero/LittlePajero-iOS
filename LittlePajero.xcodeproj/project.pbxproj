@@ -25,6 +25,9 @@
 		CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */; };
 		CC3D4D101EC834A800CFBCD1 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */; };
 		CC3D4D121EC8BBA200CFBCD1 /* FloatingMiniButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D4D111EC8BBA200CFBCD1 /* FloatingMiniButton.swift */; };
+		CC5DD8831EC9B3360034DC61 /* SearchingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD8821EC9B3360034DC61 /* SearchingBar.swift */; };
+		CC5DD8851EC9BAF30034DC61 /* SearchingBarControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD8841EC9BAF30034DC61 /* SearchingBarControlButton.swift */; };
+		CC5DD8871EC9BC380034DC61 /* SearchingBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD8861EC9BC380034DC61 /* SearchingBarTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		CC3D4D111EC8BBA200CFBCD1 /* FloatingMiniButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingMiniButton.swift; sourceTree = "<group>"; };
+		CC5DD8821EC9B3360034DC61 /* SearchingBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingBar.swift; sourceTree = "<group>"; };
+		CC5DD8841EC9BAF30034DC61 /* SearchingBarControlButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingBarControlButton.swift; sourceTree = "<group>"; };
+		CC5DD8861EC9BC380034DC61 /* SearchingBarTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingBarTextField.swift; sourceTree = "<group>"; };
 		D8189ACBEC59476F485E9EF8 /* Pods-LittlePajero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePajero.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittlePajero/Pods-LittlePajero.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +158,9 @@
 			children = (
 				CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */,
 				CC3D4D111EC8BBA200CFBCD1 /* FloatingMiniButton.swift */,
+				CC5DD8821EC9B3360034DC61 /* SearchingBar.swift */,
+				CC5DD8841EC9BAF30034DC61 /* SearchingBarControlButton.swift */,
+				CC5DD8861EC9BC380034DC61 /* SearchingBarTextField.swift */,
 			);
 			name = Styles;
 			sourceTree = "<group>";
@@ -285,11 +294,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5DD8851EC9BAF30034DC61 /* SearchingBarControlButton.swift in Sources */,
 				CC3D4D121EC8BBA200CFBCD1 /* FloatingMiniButton.swift in Sources */,
 				137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */,
 				CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */,
 				134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */,
 				13E64B3B1EC5A94500BEA67B /* Location.swift in Sources */,
+				CC5DD8831EC9B3360034DC61 /* SearchingBar.swift in Sources */,
+				CC5DD8871EC9BC380034DC61 /* SearchingBarTextField.swift in Sources */,
 				13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */,
 				13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */,
 				13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */,
