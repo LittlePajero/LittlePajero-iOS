@@ -127,6 +127,20 @@
                                     <action selector="pauseRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PQE-P8-htX"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gbw-hI-yGI">
+                                <rect key="frame" x="67" y="122" width="240" height="141"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6z5-L5-Hjd">
+                                <rect key="frame" x="67" y="286" width="240" height="141"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -168,6 +182,8 @@
                         <outlet property="searchDisplayController" destination="oFT-tZ-1BS" id="CCS-yo-Lbp"/>
                         <outlet property="sideMenuButton" destination="2HO-gC-7OJ" id="udV-Be-8ng"/>
                         <outlet property="stopRecordButton" destination="2c9-wG-5yF" id="MFu-Tp-rpI"/>
+                        <outlet property="textView" destination="gbw-hI-yGI" id="yzF-D5-dUN"/>
+                        <outlet property="textViewAll" destination="6z5-L5-Hjd" id="Gbl-lE-Ezn"/>
                         <outlet property="userLocationLabel" destination="R8e-bd-f9c" id="vn6-Gk-veF"/>
                         <segue destination="PDg-64-S7R" kind="presentation" identifier="mainToPinDrop" modalPresentationStyle="overFullScreen" id="ksP-7d-rwR"/>
                     </connections>
@@ -333,8 +349,8 @@
                                     <constraint firstAttribute="width" constant="84" id="wDg-hM-C8Z"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-Z4-1Xd">
-                                <rect key="frame" x="16" y="156" width="343" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-Z4-1Xd">
+                                <rect key="frame" x="163" y="156" width="49" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

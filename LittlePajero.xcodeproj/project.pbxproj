@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */; };
 		134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B2D311EC34BD50017F6EE /* TransitionManager.swift */; };
-		13577A881EC738BA00C5B16C /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13577A871EC738BA00C5B16C /* Point.swift */; };
+		13577A881EC738BA00C5B16C /* RealmPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13577A871EC738BA00C5B16C /* RealmPoint.swift */; };
 		13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13577A8C1EC8344600C5B16C /* PinDropViewController.swift */; };
 		137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137094F21EBC5DED003C12F5 /* AppDelegate.swift */; };
 		137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137094F41EBC5DED003C12F5 /* MainViewController.swift */; };
@@ -19,8 +19,8 @@
 		13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */; };
 		13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */; };
 		13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2131EC4B1020015CC72 /* ListTransform.swift */; };
-		13E64B3B1EC5A94500BEA67B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E64B3A1EC5A94500BEA67B /* Location.swift */; };
-		13E64B3D1EC5A98400BEA67B /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E64B3C1EC5A98400BEA67B /* Path.swift */; };
+		13E64B3B1EC5A94500BEA67B /* RealmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E64B3A1EC5A94500BEA67B /* RealmLocation.swift */; };
+		13E64B3D1EC5A98400BEA67B /* RealmPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E64B3C1EC5A98400BEA67B /* RealmPath.swift */; };
 		1AB47492529F81A5B123A435 /* Pods_LittlePajero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */; };
 		CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */; };
 		CC3D4D101EC834A800CFBCD1 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */; };
@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		134B2D311EC34BD50017F6EE /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
-		13577A871EC738BA00C5B16C /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		13577A871EC738BA00C5B16C /* RealmPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPoint.swift; sourceTree = "<group>"; };
 		13577A8C1EC8344600C5B16C /* PinDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinDropViewController.swift; sourceTree = "<group>"; };
 		137094EF1EBC5DED003C12F5 /* LittlePajero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittlePajero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		137094F21EBC5DED003C12F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,8 +42,8 @@
 		13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APScheduledLocationManager.swift; sourceTree = "<group>"; };
 		13E4E2131EC4B1020015CC72 /* ListTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTransform.swift; sourceTree = "<group>"; };
-		13E64B3A1EC5A94500BEA67B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		13E64B3C1EC5A98400BEA67B /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
+		13E64B3A1EC5A94500BEA67B /* RealmLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmLocation.swift; sourceTree = "<group>"; };
+		13E64B3C1EC5A98400BEA67B /* RealmPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPath.swift; sourceTree = "<group>"; };
 		6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittlePajero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C394BD4B6D43EC5DE0393244 /* Pods-LittlePajero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePajero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittlePajero/Pods-LittlePajero.debug.xcconfig"; sourceTree = "<group>"; };
 		CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -113,9 +113,9 @@
 		13E64B391EC5A92A00BEA67B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				13E64B3A1EC5A94500BEA67B /* Location.swift */,
-				13E64B3C1EC5A98400BEA67B /* Path.swift */,
-				13577A871EC738BA00C5B16C /* Point.swift */,
+				13E64B3A1EC5A94500BEA67B /* RealmLocation.swift */,
+				13E64B3C1EC5A98400BEA67B /* RealmPath.swift */,
+				13577A871EC738BA00C5B16C /* RealmPoint.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -289,15 +289,15 @@
 				137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */,
 				CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */,
 				134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */,
-				13E64B3B1EC5A94500BEA67B /* Location.swift in Sources */,
+				13E64B3B1EC5A94500BEA67B /* RealmLocation.swift in Sources */,
 				13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */,
 				13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */,
 				13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */,
 				13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */,
 				CC3D4D101EC834A800CFBCD1 /* FloatingButton.swift in Sources */,
-				13577A881EC738BA00C5B16C /* Point.swift in Sources */,
+				13577A881EC738BA00C5B16C /* RealmPoint.swift in Sources */,
 				134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */,
-				13E64B3D1EC5A98400BEA67B /* Path.swift in Sources */,
+				13E64B3D1EC5A98400BEA67B /* RealmPath.swift in Sources */,
 				137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

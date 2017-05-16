@@ -12,4 +12,5 @@ target 'LittlePajero' do
   pod 'ObjectMapper', '~> 2.2'
   pod 'MaterialComponents'
   pod "ObjectMapper+Realm"
+  pod 'SwiftLocation'
 end

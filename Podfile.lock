@@ -171,6 +171,7 @@ PODS:
   - RealmSwift (2.7.0):
     - Realm (= 2.7.0)
   - SideMenu (2.3.2)
+  - SwiftLocation (2.0.7)
 
 DEPENDENCIES:
   - Mapbox-iOS-SDK (~> 3.5)
@@ -179,6 +180,7 @@ DEPENDENCIES:
   - ObjectMapper+Realm
   - RealmSwift
   - SideMenu
+  - SwiftLocation
 
 SPEC CHECKSUMS:
   Mapbox-iOS-SDK: 81197829dcf4c4ed9a593b7a95462881b5f1309a
@@ -189,7 +191,8 @@ SPEC CHECKSUMS:
   Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
   RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
+  SwiftLocation: 1fe2e15a5812e961496e82eeaca71d03e829e47a
 
-PODFILE CHECKSUM: e20621d0abe7041f52991d8fbecc632112c92af3
+PODFILE CHECKSUM: 252fbd26828cbe1996d2ab24cdd5ed095da441ae
 
 COCOAPODS: 1.2.0

@@ -11,8 +11,8 @@ import RealmSwift
 import ObjectMapper
 import ObjectMapper_Realm
 
-class Point: Object {
-    dynamic var id: Int = 0
+class RealmPoint: Object {
+    dynamic var id: Int = 1
     dynamic var latitude: Float = 0.0
     dynamic var longitude: Float = 0.0
     
@@ -29,8 +29,8 @@ class Point: Object {
     }
     
     //Incrementa ID
-    func incrementID() -> Int {
+    class func incrementID() -> Int {
         let realm = try! Realm()
-        return (realm.objects(Point.self).max(ofProperty: "id") as Int? ?? 0) + 1
+        return (realm.objects(RealmPoint.self).max(ofProperty: "id") as Int? ?? 0) + 1
     }
 }

@@ -13,12 +13,32 @@ import RealmSwift
 import CoreLocation                    // 用APS，获取地理位置信息的库（自带）
 import ObjectMapper
 import ObjectMapper_Realm
+import SwiftLocation                   // 固定时间间隔记录用户位置
 import MaterialComponents.MaterialButtons
 
+// 记录轨迹的状态
 enum PresentWorkingMode : String {
     case idle
     case recording
     case pauseRecord
+}
+
+public extension UITextView {
+    public func scrollBottom() {
+        guard self.text.characters.count > 0 else {
+            return
+        }
+        let stringLength:Int = self.text.characters.count
+        self.scrollRangeToVisible(NSMakeRange(stringLength-1, 0))
+    }
+}
+
+public extension CLLocation {
+    
+    public var shortDesc: String {
+        return "- lat,lng=\(self.coordinate.latitude),\(self.coordinate.longitude), h-acc=\(self.horizontalAccuracy) mts\n"
+    }
+    
 }
 
 class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocationManagerDelegate {
@@ -34,11 +54,21 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
     @IBOutlet weak var continueRecordButton: UIButton!   // 继续记录轨迹按钮
     @IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
     
+    @IBOutlet weak var textView: UITextView?
+    @IBOutlet weak var textViewAll: UITextView?
+    
+    private var currentRecordingPathId : Int? = nil
+    
     private var manager: APScheduledLocationManager!     // 后台记录用户位置的 manager
+    
     fileprivate let realm = try! Realm()
     
     override func viewDidLoad() {
+        
         definesPresentationContext = true
+        
+        self.textView?.layoutManager.allowsNonContiguousLayout = false
+        self.textViewAll?.layoutManager.allowsNonContiguousLayout = false
         
         self.mode = .idle
         
@@ -69,7 +99,67 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         
         // 打印出数据库地址
         print(realm.configuration.fileURL!)
+    }
+    
+    private func log(_ value: String) {
+        self.textView!.insertText(value)
+        self.textView!.scrollBottom()
+    }
+    
+    private func logAll(_ value: String) {
+        self.textViewAll!.insertText(value)
+        self.textViewAll!.scrollBottom()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        Location.onChangeTrackerSettings = { settings in
+            self.log(String(describing: settings))
+        }
+        
+        var counts = 0
+        let x = Location.getLocation(accuracy: .room, frequency: .continuous, timeout: 60*60*5, success: { (_, location) in
+            self.log(location.shortDesc)
+            
+        }) { (request, last, error) in
+            self.log("Location monitoring failed due to an error \(error)")
+            
+            request.cancel() // stop continous location monitoring on error
+        }
+        x.register(observer: LocObserver.onAuthDidChange(.main, { (request, oldAuth, newAuth) in
+            print("Authorization moved from '\(oldAuth)' to '\(newAuth)'")
+        }))
+        
+        let path = RealmPath()
+        path.id = RealmPath.incrementID()
+        try! self.realm.write {
+            self.realm.add(path, update: false)
+        }
+        self.currentRecordingPathId = path.id
+        print("create new path")
+        
+        Location.onReceiveNewLocation = { location in
+            self.logAll(location.shortDesc)
+            if counts < 8 {
+                counts += 1
+            } else {
+                let userCurrentLocation = RealmLocation()
+                userCurrentLocation.latitude = Float(location.coordinate.latitude)
+                userCurrentLocation.longitude = Float(location.coordinate.longitude)
+                userCurrentLocation.id = RealmLocation.incrementID()
+                let currentPath = self.realm.object(ofType: RealmPath.self, forPrimaryKey: self.currentRecordingPathId)
+                try! self.realm.write {
+                    self.realm.add(userCurrentLocation, update: false)
+                    // self.realm.add(path, update: true)
+                    currentPath?.locations.append(userCurrentLocation)
+                }
+                
+                print("succeed")
+                currentPath?.transformToJSON()
+                counts = 0
+            }
+        }
     }
     
     // 这个没用
@@ -127,7 +217,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         userLocationLabel.isHidden    = false
         mainButton.isHidden           = true
         // 记录轨迹
-        manager.startUpdatingLocation(interval: 10, acceptableLocationAccuracy: 10)
+        //manager.startUpdatingLocation(interval: 10, acceptableLocationAccuracy: 10)
     }
     
     // 暂停记录路径的模式
@@ -139,7 +229,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         continueRecordButton.isHidden = false
         debugPrint("----- Pause clicked")
         //if self.manager.isRunning {
-        self.manager.stoptUpdatingLocation()
+        //self.manager.stoptUpdatingLocation()
         //}
         // self.pauseOrContinueRecord()
     }
@@ -160,10 +250,10 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         point.coordinate = CLLocationCoordinate2D(latitude: userCurrentLocation.coordinate.latitude, longitude: userCurrentLocation.coordinate.longitude)
         mapView.addAnnotation(point)
         
-        let currentPoint = Point()
+        let currentPoint = RealmPoint()
         currentPoint.latitude = Float(point.coordinate.latitude)
         currentPoint.longitude = Float(point.coordinate.longitude)
-        currentPoint.id = currentPoint.incrementID()
+        currentPoint.id = RealmPoint.incrementID()
         
         try! realm.write {
             realm.add(currentPoint)
