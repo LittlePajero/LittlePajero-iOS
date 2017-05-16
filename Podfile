@@ -12,4 +12,5 @@ target 'LittlePajero' do
   pod 'ObjectMapper', '~> 2.2'
   pod "ObjectMapper+Realm"
   pod 'Material'
+  pod 'Hero'
 end

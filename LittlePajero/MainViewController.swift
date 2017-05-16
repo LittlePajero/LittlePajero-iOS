@@ -15,6 +15,7 @@ import ObjectMapper
 import ObjectMapper_Realm
 
 
+
 enum PresentWorkingMode : String {
     case idle
     case recording
@@ -47,6 +48,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate, APScheduledLocat
         // 设置 Status Bar 为浅色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
+        // 设置 Hero 动画
+        //mainButton.heroID = "actionMenu"
         // 设置 delegate 对象
         mapView.delegate = self
         // 后台记录用户位置的 manager

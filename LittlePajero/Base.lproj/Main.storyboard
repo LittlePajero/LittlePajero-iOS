@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +32,10 @@
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" backgroundImage="symbol"/>
                                 <connections>
-                                    <segue destination="IBH-Ns-fyD" kind="presentation" identifier="mainToAction" animates="NO" modalPresentationStyle="overFullScreen" id="9CI-WH-dgI"/>
+                                    <segue destination="IBH-Ns-fyD" kind="presentation" identifier="mainToAction" modalPresentationStyle="overFullScreen" id="9CI-WH-dgI">
+                                        <segue key="commit" inheritsFrom="parent" id="x3e-u8-m7h"/>
+                                        <segue key="preview" inheritsFrom="commit" id="nXC-jS-nkE"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-9x-dHs" customClass="FloatingMiniButton" customModule="LittlePajero" customModuleProvider="target">
@@ -223,7 +227,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LeftMenuNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="lyd-OR-DRs" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hx-L0-qzl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7hx-L0-qzl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -252,45 +256,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alO-KT-ugx" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="155" y="578" width="65" height="65"/>
+                                <rect key="frame" x="155" y="558" width="65" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="jQd-yl-jqn"/>
                                 </constraints>
                                 <state key="normal" image="closeMaterial"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="close" destination="IBH-Ns-fyD" eventType="touchUpInside" id="F1S-e7-HF3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFa-EN-gb7" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="80" y="455" width="65" height="65"/>
+                                <rect key="frame" x="80" y="435" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="RXx-BD-mSO"/>
                                     <constraint firstAttribute="width" constant="65" id="e8f-Te-24U"/>
                                 </constraints>
                                 <state key="normal" image="fiberManualRecordMaterial"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade scale(0.5)"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startRecordPath:" destination="IBH-Ns-fyD" eventType="touchUpInside" id="9t2-gC-en7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记录轨迹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wh3-9L-vDS">
-                                <rect key="frame" x="80" y="530" width="66" height="20"/>
+                                <rect key="frame" x="80" y="510" width="66" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade scale(0.5)"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7y-IM-tBd" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="230" y="455" width="65" height="65"/>
+                                <rect key="frame" x="230" y="435" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="DAi-LG-JRb"/>
                                     <constraint firstAttribute="width" constant="65" id="K7i-a4-esb"/>
                                 </constraints>
                                 <state key="normal" image="photoCameraMaterial"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="delay(0.2) fade scale(0.5)"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拍摄记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl1-XZ-Rer">
-                                <rect key="frame" x="227" y="530" width="70" height="21"/>
+                                <rect key="frame" x="227" y="510" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="delay(0.1) fade scale(0.5)"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -309,6 +328,10 @@
                             <constraint firstItem="Sl1-XZ-Rer" firstAttribute="top" secondItem="wh3-9L-vDS" secondAttribute="top" id="zeY-f8-9ea"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="cameraButton" destination="i7y-IM-tBd" id="iYf-Xk-uy5"/>
                         <outlet property="cameraLabel" destination="Sl1-XZ-Rer" id="gtS-fM-Toj"/>
@@ -415,4 +438,7 @@
         <image name="rectangle5" width="22" height="22"/>
         <image name="symbol" width="67" height="67"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9CI-WH-dgI"/>
+    </inferredMetricsTieBreakers>
 </document>
