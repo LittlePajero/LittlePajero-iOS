@@ -45,10 +45,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var stopRecordButton: UIButton!       // 停止记录轨迹按钮
     @IBOutlet weak var continueRecordButton: UIButton!   // 继续记录轨迹按钮
     //@IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
-    
-    @IBOutlet weak var textView: UITextView?
-    @IBOutlet weak var textViewAll: UITextView?
-    
+
     private var currentRecordingPathId : Int? = nil
     
     var timer: Timer?
@@ -61,9 +58,6 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     override func viewDidLoad() {
         
         definesPresentationContext = true
-        
-        self.textView?.layoutManager.allowsNonContiguousLayout = false
-        self.textViewAll?.layoutManager.allowsNonContiguousLayout = false
         
         self.mode = .idle
         
@@ -101,7 +95,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // 将 mode 值从 actionViewController 传回来
+    // 传值的时候找到对应 ControllerView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mainToAction" {
             let actionVC = segue.destination as! ActionViewController
@@ -143,8 +137,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         userLocationLabel.isHidden    = true
     }
     
+    // 把 RequestPool 拎到外面，以便后面更改打点模式
     var locationRequest: LocationRequest? = nil
-    //var pathLocations: [(Float, Float)]? = nil
     
     // 开始记录路径的模式
     func recordingStart() {
@@ -160,6 +154,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
             print(String(describing: settings))
         }
         
+        // 持续打点
         self.locationRequest = Location.getLocation(accuracy: .room, frequency: .continuous, timeout: 60*60*5, success: { (_, location) in
             print(location.shortDesc)
             
@@ -203,11 +198,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
                 let pathCoordinates = currentPath?.coordinates()
                 print(pathCoordinates!)
                 self.updatePolylineWithCoordinates(coordinates: pathCoordinates!)
-                //drawPolyline(json: currentPath?.coordinates())
-                //print("\(String(describing: self.pathLocations))")
             }
         }
     }
+    
+    // 页面加载出来之后执行的方法们
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
         addLayer(to: style)
         // updatePolylineWithCoordinates(coordinates: allCoordinates!)
@@ -215,6 +210,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         print("应该是打印出来了")
     }
     
+    // 这里写了画线的样式
     func addLayer(to style: MGLStyle) {
         // Add an empty MGLShapeSource, we’ll keep a reference to this and add points to this later.
         let source = MGLShapeSource(identifier: "polyline", shape: nil, options: nil)
@@ -225,7 +221,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         let layer = MGLLineStyleLayer(identifier: "polyline", source: source)
         layer.lineJoin = MGLStyleValue(rawValue: NSValue(mglLineJoin: .round))
         layer.lineCap = MGLStyleValue(rawValue: NSValue(mglLineCap: .round))
-        layer.lineColor = MGLStyleValue(rawValue: UIColor.red)
+        layer.lineColor = MGLStyleValue(rawValue: UIColor.lpBlueLine)
         layer.lineWidth = MGLStyleFunction(interpolationMode: .exponential,
                                            cameraStops: [14: MGLConstantStyleValue<NSNumber>(rawValue: 5),
                                                          18: MGLConstantStyleValue<NSNumber>(rawValue: 20)],
@@ -239,6 +235,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         return text
     }
     */
+    
+    // 更新路线
     func updatePolylineWithCoordinates(coordinates: [CLLocationCoordinate2D]) {
         var mutableCoordinates = coordinates
         
@@ -248,16 +246,6 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         
         print("update polyline ============")
         //debugPrint(polylineSource)
-    }
-    
-    func drawPolyline(json: Data) {
-        guard let style = self.mapView.style else {return}
-        
-        let shapeFromJSON = try! MGLShape(data: json, encoding: String.Encoding.utf8.rawValue)
-        
-        let source = MGLShapeSource(identifier: "polyline", shape: shapeFromJSON, options: nil)
-        
-        style.addSource(source)
     }
     
     // 暂停记录路径的模式
@@ -290,12 +278,12 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     
     func stopRecord() {
         // 改变样式
-        stopRecordButton.isHidden     = false
-        continueRecordButton.isHidden = false
-        mainButton.isHidden           = true
+        stopRecordButton.isHidden     = true
+        continueRecordButton.isHidden = true
+        mainButton.isHidden           = false
         
         // 停止记录轨迹
-        
+        self.locationRequest?.cancel()
     }
     
     @IBAction func pauseRecord(_ sender: UIButton) {
@@ -308,6 +296,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     
     @IBAction func stopRecord(_ sender: UIButton) {
         self.mode = .stopRecord
+        
+        
     }
     
     // 打点并且跳到添加打点内容的页面

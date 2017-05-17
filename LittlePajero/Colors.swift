@@ -40,4 +40,8 @@ extension UIColor {
     class var lpInkOnWhite: UIColor {
         return UIColor(white: 192.0 / 255.0, alpha: 0.5)
     }
+    
+    class var lpBlueLine: UIColor {
+        return UIColor(red: 0.0 / 255.0, green: 204.0 / 255.0, blue: 255 / 255.0, alpha: 1.0)
+    }
 }

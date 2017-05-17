@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F71b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -78,14 +78,6 @@
                                     <action selector="continueRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L6B-xu-Sfz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-wG-5yF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="110" y="578" width="65" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="Crc-za-3Hf"/>
-                                    <constraint firstAttribute="height" constant="65" id="Fqq-Lm-6PL"/>
-                                </constraints>
-                                <state key="normal" image="rectangle5"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-Zq-TIV" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="110" y="578" width="65" height="65"/>
                                 <constraints>
@@ -106,6 +98,18 @@
                                 <state key="normal" image="pauseMaterial"/>
                                 <connections>
                                     <action selector="pauseRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PQE-P8-htX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-wG-5yF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="110" y="578" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="Crc-za-3Hf"/>
+                                    <constraint firstAttribute="height" constant="65" id="Fqq-Lm-6PL"/>
+                                </constraints>
+                                <state key="normal" image="rectangle5"/>
+                                <connections>
+                                    <action selector="stopRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bRf-OZ-3YE"/>
+                                    <segue destination="Yw1-5M-3Ja" kind="presentation" modalPresentationStyle="overFullScreen" id="Qqc-Ie-Poq"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cY-Oj-TJ5" customClass="SearchingBar" customModule="LittlePajero" customModuleProvider="target">
@@ -519,6 +523,62 @@
             </objects>
             <point key="canvasLocation" x="142" y="915"/>
         </scene>
+        <!--Stop View Controller-->
+        <scene sceneID="XyT-FH-NlI">
+            <objects>
+                <viewController id="Yw1-5M-3Ja" customClass="StopViewController" customModule="LittlePajero" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jvn-lb-YUo"/>
+                        <viewControllerLayoutGuide type="bottom" id="qrg-9f-EVo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SWA-3S-80f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmarkIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hNi-7Q-zFR">
+                                <rect key="frame" x="145" y="62" width="84" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="ME2-8h-Skn"/>
+                                    <constraint firstAttribute="width" constant="84" id="xC4-JM-UfQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="轨迹记录完成，现在补全轨迹信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUg-KG-aGR">
+                                <rect key="frame" x="16" y="166" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77b-gY-CBu" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="155" y="557" width="65" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="checkMaterial"/>
+                                <connections>
+                                    <action selector="backToMainVC" destination="Yw1-5M-3Ja" eventType="touchUpInside" id="yGQ-dg-cMs"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   坐标类型" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pod-hA-pzE">
+                                <rect key="frame" x="45" y="225" width="285" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hNi-7Q-zFR" firstAttribute="centerX" secondItem="SWA-3S-80f" secondAttribute="centerX" id="f8H-tv-5T5"/>
+                            <constraint firstItem="hNi-7Q-zFR" firstAttribute="top" secondItem="Jvn-lb-YUo" secondAttribute="bottom" constant="42" id="tFA-vO-1LK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="desLabel" destination="eUg-KG-aGR" id="L1J-4m-rsh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8d9-CL-kEo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1508" y="912.5937031484259"/>
+        </scene>
         <!--Pin Drop View Controller-->
         <scene sceneID="yFx-ul-zCD">
             <objects>
@@ -538,8 +598,8 @@
                                     <constraint firstAttribute="width" constant="84" id="wDg-hM-C8Z"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-Z4-1Xd">
-                                <rect key="frame" x="16" y="156" width="343" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-Z4-1Xd">
+                                <rect key="frame" x="163" y="156" width="49" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
