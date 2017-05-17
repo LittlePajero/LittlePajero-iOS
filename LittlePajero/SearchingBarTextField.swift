@@ -28,6 +28,8 @@ class SearchingBarTextField: UITextField {
         let clearButton = self.value(forKey: "clearButton") as! UIButton
         clearButton.setImage(#imageLiteral(resourceName: "clear"), for: UIControlState.normal)
         clearButton.setImage(#imageLiteral(resourceName: "clear"), for: UIControlState.highlighted)
+        
+        self.keyboardType = UIKeyboardType.webSearch
     }
 
     
@@ -39,4 +41,5 @@ class SearchingBarTextField: UITextField {
         super.init(coder: aDecoder)
         self.customStyle()
     }
+
 }

@@ -140,9 +140,52 @@
                                     <constraint firstAttribute="trailing" secondItem="l9z-5Z-Z07" secondAttribute="trailing" constant="2" id="zRe-hM-A85"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eaO-NV-M1X">
+                                <rect key="frame" x="16" y="102" width="343" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTh-w2-Ngx" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="UfD-rO-N6c"/>
+                                            <constraint firstAttribute="width" constant="65" id="bw6-MF-fJO"/>
+                                        </constraints>
+                                        <state key="normal" title="玩乐" image="landscapeMaterial">
+                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8Z-xb-CCi" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="92.5" y="0.0" width="65" height="65"/>
+                                        <state key="normal" title="轨迹" image="pathIcon">
+                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAP-cr-hEC" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="185.5" y="0.0" width="65" height="65"/>
+                                        <state key="normal" title="宿营地" image="hotelMaterial">
+                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anH-KM-IKA" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="278" y="0.0" width="65" height="65"/>
+                                        <state key="normal" title="汽车服务" image="localCarWashMaterial">
+                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eAP-cr-hEC" firstAttribute="height" secondItem="H8Z-xb-CCi" secondAttribute="height" id="4zy-FD-L7d"/>
+                                    <constraint firstItem="anH-KM-IKA" firstAttribute="height" secondItem="eAP-cr-hEC" secondAttribute="height" id="58b-jk-pSO"/>
+                                    <constraint firstItem="H8Z-xb-CCi" firstAttribute="width" secondItem="bTh-w2-Ngx" secondAttribute="width" id="9A4-PU-SD5"/>
+                                    <constraint firstItem="anH-KM-IKA" firstAttribute="width" secondItem="eAP-cr-hEC" secondAttribute="width" id="Ptm-Yp-3sO"/>
+                                    <constraint firstItem="H8Z-xb-CCi" firstAttribute="height" secondItem="bTh-w2-Ngx" secondAttribute="height" id="jAE-bC-tcG"/>
+                                    <constraint firstItem="eAP-cr-hEC" firstAttribute="width" secondItem="H8Z-xb-CCi" secondAttribute="width" id="tIF-tg-S95"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="eaO-NV-M1X" firstAttribute="trailing" secondItem="0cY-Oj-TJ5" secondAttribute="trailing" id="7wi-e3-efY"/>
+                            <constraint firstItem="eaO-NV-M1X" firstAttribute="leading" secondItem="0cY-Oj-TJ5" secondAttribute="leading" id="9L3-tr-KEU"/>
                             <constraint firstItem="FiL-9x-dHs" firstAttribute="top" secondItem="IVx-uH-JVW" secondAttribute="top" id="Azg-80-yBL"/>
                             <constraint firstItem="x0d-uJ-Txa" firstAttribute="top" secondItem="FiL-9x-dHs" secondAttribute="bottom" constant="6" id="Eci-yj-rP6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PWy-rn-mmH" secondAttribute="trailing" constant="95" id="JfO-4m-TOQ"/>
@@ -153,6 +196,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IVx-uH-JVW" secondAttribute="bottom" constant="24" id="T2i-LI-lXl"/>
                             <constraint firstItem="2c9-wG-5yF" firstAttribute="centerX" secondItem="bsg-Zq-TIV" secondAttribute="centerX" id="VzY-bF-uvs"/>
                             <constraint firstItem="PWy-rn-mmH" firstAttribute="leading" secondItem="bsg-Zq-TIV" secondAttribute="trailing" constant="24" id="Xhk-B9-RVm"/>
+                            <constraint firstItem="eaO-NV-M1X" firstAttribute="top" secondItem="l9z-5Z-Z07" secondAttribute="bottom" constant="28" id="din-3V-k1j"/>
                             <constraint firstItem="S67-Qo-KHF" firstAttribute="centerY" secondItem="PWy-rn-mmH" secondAttribute="centerY" id="fKE-t3-B59"/>
                             <constraint firstItem="IVx-uH-JVW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mzY-62-yrV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PWy-rn-mmH" secondAttribute="bottom" constant="24" id="nrb-5N-ndW"/>
@@ -560,7 +604,10 @@
         <image name="closeMaterial" width="28" height="28"/>
         <image name="defaultAvatar" width="40" height="40"/>
         <image name="fiberManualRecordMaterial" width="24" height="24"/>
+        <image name="hotelMaterial" width="28" height="20"/>
         <image name="infoOutlineMaterial" width="16" height="16"/>
+        <image name="landscapeMaterial" width="30" height="17"/>
+        <image name="localCarWashMaterial" width="23" height="28"/>
         <image name="locationIcon" width="12" height="16"/>
         <image name="menu" width="20" height="16"/>
         <image name="myLocationMaterial" width="18" height="18"/>

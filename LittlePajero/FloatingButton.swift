@@ -30,6 +30,23 @@ class FloatingButton : FABButton {
         self.layer.shadowRadius = 1
     }
     
+    private func subViewsLayout() {
+        let imageWidth : CGFloat = 28
+        let imagePosition = ((self.bounds.size.width - imageWidth)/2, (self.bounds.size.height - imageWidth)/2)
+        self.imageView?.frame = CGRect(x: imagePosition.0, y: imagePosition.1, width: imageWidth, height: imageWidth)
+        self.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        
+        self.titleLabel?.textColor = UIColor.lpBlack
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        self.titleLabel?.frame = CGRect(x: 0, y: self.bounds.size.height + 8, width: self.bounds.size.width, height: 22)
+        self.titleLabel?.textAlignment = NSTextAlignment.center
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.subViewsLayout()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)

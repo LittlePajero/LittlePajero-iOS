@@ -12,6 +12,7 @@ class SearchingBar: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.customStyle()
+        self.listenTextFieldTouched()
     }
     
     private func customStyle() {
@@ -31,10 +32,17 @@ class SearchingBar: UIView {
     }
     
     private func setMenuButtonStyle() {
-        debugPrint(self.subviews)
         let button = self.viewWithTag(1) as! UIButton
         button.imageView?.frame = CGRect(x: 14, y: 17, width: 18, height: 12)
-        print("This one fired")
+    }
+    
+    func touchEventHandler(_ textField: SearchingBarTextField) {
+        print("Touch Happened")
+    }
+    
+    private func listenTextFieldTouched() {
+        let textField = self.viewWithTag(2) as! SearchingBarTextField
+        textField.addTarget(self, action: #selector(SearchingBar.touchEventHandler(_:)), for: UIControlEvents.touchDown)
     }
     
     override func layoutSubviews() {
@@ -45,5 +53,6 @@ class SearchingBar: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.customStyle()
+        self.listenTextFieldTouched()
     }
 }
