@@ -7,3 +7,7 @@
 //
 
 import UIKit
+
+protocol SearchingTextDelegate : UITextFieldDelegate {
+    func searchingTextFieldActive()
+}
