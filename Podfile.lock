@@ -1,166 +1,9 @@
 PODS:
+  - Hero (0.3.6)
   - Mapbox-iOS-SDK (3.5.4)
-  - MaterialComponents (23.1.0):
-    - MaterialComponents/ActivityIndicator (= 23.1.0)
-    - MaterialComponents/AnimationTiming (= 23.1.0)
-    - MaterialComponents/AppBar (= 23.1.0)
-    - MaterialComponents/ButtonBar (= 23.1.0)
-    - MaterialComponents/Buttons (= 23.1.0)
-    - MaterialComponents/CollectionCells (= 23.1.0)
-    - MaterialComponents/CollectionLayoutAttributes (= 23.1.0)
-    - MaterialComponents/Collections (= 23.1.0)
-    - MaterialComponents/Dialogs (= 23.1.0)
-    - MaterialComponents/FeatureHighlight (= 23.1.0)
-    - MaterialComponents/FlexibleHeader (= 23.1.0)
-    - MaterialComponents/HeaderStackView (= 23.1.0)
-    - MaterialComponents/Ink (= 23.1.0)
-    - MaterialComponents/NavigationBar (= 23.1.0)
-    - MaterialComponents/OverlayWindow (= 23.1.0)
-    - MaterialComponents/PageControl (= 23.1.0)
-    - MaterialComponents/Palettes (= 23.1.0)
-    - MaterialComponents/private (= 23.1.0)
-    - MaterialComponents/ProgressView (= 23.1.0)
-    - MaterialComponents/ShadowElevations (= 23.1.0)
-    - MaterialComponents/ShadowLayer (= 23.1.0)
-    - MaterialComponents/Slider (= 23.1.0)
-    - MaterialComponents/Snackbar (= 23.1.0)
-    - MaterialComponents/Tabs (= 23.1.0)
-    - MaterialComponents/Typography (= 23.1.0)
-  - MaterialComponents/ActivityIndicator (23.1.0):
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/RTL
-  - MaterialComponents/AnimationTiming (23.1.0)
-  - MaterialComponents/AppBar (23.1.0):
-    - MaterialComponents/FlexibleHeader
-    - MaterialComponents/HeaderStackView
-    - MaterialComponents/NavigationBar
-    - MaterialComponents/private/Icons/ic_arrow_back
-    - MaterialComponents/private/RTL
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Typography
-  - MaterialComponents/ButtonBar (23.1.0):
-    - MaterialComponents/Buttons
-    - MaterialComponents/private/RTL
-  - MaterialComponents/Buttons (23.1.0):
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Typography
-    - MDFTextAccessibility
-  - MaterialComponents/CollectionCells (23.1.0):
-    - MaterialComponents/CollectionLayoutAttributes
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Icons/ic_check
-    - MaterialComponents/private/Icons/ic_check_circle
-    - MaterialComponents/private/Icons/ic_chevron_right
-    - MaterialComponents/private/Icons/ic_info
-    - MaterialComponents/private/Icons/ic_radio_button_unchecked
-    - MaterialComponents/private/Icons/ic_reorder
-    - MaterialComponents/private/Math
-    - MaterialComponents/private/RTL
-    - MaterialComponents/Typography
-  - MaterialComponents/CollectionLayoutAttributes (23.1.0)
-  - MaterialComponents/Collections (23.1.0):
-    - MaterialComponents/CollectionCells
-    - MaterialComponents/CollectionLayoutAttributes
-    - MaterialComponents/Ink
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Typography
-  - MaterialComponents/Dialogs (23.1.0):
-    - MaterialComponents/Buttons
-    - MaterialComponents/private/KeyboardWatcher
-    - MaterialComponents/private/RTL
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-  - MaterialComponents/FeatureHighlight (23.1.0):
-    - MaterialComponents/Typography
-    - MDFTextAccessibility
-  - MaterialComponents/FlexibleHeader (23.1.0):
-    - MaterialComponents/private/Application
-    - MDFTextAccessibility
-  - MaterialComponents/HeaderStackView (23.1.0)
-  - MaterialComponents/Ink (23.1.0)
-  - MaterialComponents/NavigationBar (23.1.0):
-    - MaterialComponents/ButtonBar
-    - MaterialComponents/private/Math
-    - MaterialComponents/private/RTL
-    - MaterialComponents/Typography
-    - MDFTextAccessibility
-  - MaterialComponents/OverlayWindow (23.1.0):
-    - MaterialComponents/private/Application
-  - MaterialComponents/PageControl (23.1.0)
-  - MaterialComponents/Palettes (23.1.0)
-  - MaterialComponents/private (23.1.0):
-    - MaterialComponents/private/Application (= 23.1.0)
-    - MaterialComponents/private/Icons (= 23.1.0)
-    - MaterialComponents/private/KeyboardWatcher (= 23.1.0)
-    - MaterialComponents/private/Math (= 23.1.0)
-    - MaterialComponents/private/Overlay (= 23.1.0)
-    - MaterialComponents/private/RTL (= 23.1.0)
-    - MaterialComponents/private/ThumbTrack (= 23.1.0)
-  - MaterialComponents/private/Application (23.1.0)
-  - MaterialComponents/private/Icons (23.1.0):
-    - MaterialComponents/private/Icons/Base (= 23.1.0)
-    - MaterialComponents/private/Icons/ic_arrow_back (= 23.1.0)
-    - MaterialComponents/private/Icons/ic_check (= 23.1.0)
-    - MaterialComponents/private/Icons/ic_check_circle (= 23.1.0)
-    - MaterialComponents/private/Icons/ic_chevron_right (= 23.1.0)
-    - MaterialComponents/private/Icons/ic_info (= 23.1.0)
-    - MaterialComponents/private/Icons/ic_radio_button_unchecked (= 23.1.0)
-    - MaterialComponents/private/Icons/ic_reorder (= 23.1.0)
-  - MaterialComponents/private/Icons/Base (23.1.0)
-  - MaterialComponents/private/Icons/ic_arrow_back (23.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_check (23.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_check_circle (23.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_chevron_right (23.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_info (23.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_radio_button_unchecked (23.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_reorder (23.1.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/KeyboardWatcher (23.1.0):
-    - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (23.1.0)
-  - MaterialComponents/private/Overlay (23.1.0)
-  - MaterialComponents/private/RTL (23.1.0)
-  - MaterialComponents/private/ThumbTrack (23.1.0):
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/private/RTL
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Typography
-  - MaterialComponents/ProgressView (23.1.0):
-    - MaterialComponents/private/Math
-    - MaterialComponents/private/RTL
-  - MaterialComponents/ShadowElevations (23.1.0)
-  - MaterialComponents/ShadowLayer (23.1.0)
-  - MaterialComponents/Slider (23.1.0):
-    - MaterialComponents/private/ThumbTrack
-  - MaterialComponents/Snackbar (23.1.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Buttons
-    - MaterialComponents/OverlayWindow
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/KeyboardWatcher
-    - MaterialComponents/private/Overlay
-    - MaterialComponents/Typography
-  - MaterialComponents/Tabs (23.1.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/Ink
-    - MaterialComponents/private/RTL
-    - MaterialComponents/Typography
-  - MaterialComponents/Typography (23.1.0):
-    - MaterialComponents/private/Application
-  - MDFTextAccessibility (1.2.0)
+  - Material (2.6.3):
+    - Material/Core (= 2.6.3)
+  - Material/Core (2.6.3)
   - ObjectMapper (2.2.6)
   - ObjectMapper+Realm (0.3):
     - ObjectMapper
@@ -174,8 +17,9 @@ PODS:
   - SwiftLocation (2.0.7)
 
 DEPENDENCIES:
+  - Hero
   - Mapbox-iOS-SDK (~> 3.5)
-  - MaterialComponents
+  - Material
   - ObjectMapper (~> 2.2)
   - ObjectMapper+Realm
   - RealmSwift
@@ -183,9 +27,9 @@ DEPENDENCIES:
   - SwiftLocation
 
 SPEC CHECKSUMS:
+  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   Mapbox-iOS-SDK: 81197829dcf4c4ed9a593b7a95462881b5f1309a
-  MaterialComponents: 7979134f28cca6654f9d3786e96a8d1bff26dfc6
-  MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
+  Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
   ObjectMapper: '042708195cc46c20871cbcbec0453826398273fd'
   ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
   Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
@@ -193,6 +37,6 @@ SPEC CHECKSUMS:
   SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
   SwiftLocation: 1fe2e15a5812e961496e82eeaca71d03e829e47a
 
-PODFILE CHECKSUM: 252fbd26828cbe1996d2ab24cdd5ed095da441ae
+PODFILE CHECKSUM: cfcb93377c94098fd10abb4c8bf4f31c22b28986
 
 COCOAPODS: 1.2.0

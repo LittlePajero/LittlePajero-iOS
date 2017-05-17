@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F71b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,18 +23,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2HO-gC-7OJ">
-                                <rect key="frame" x="16" y="28" width="47" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="47" id="2WP-9p-fQ4"/>
-                                    <constraint firstAttribute="height" constant="44" id="rl1-ea-Iab"/>
-                                </constraints>
-                                <state key="normal" image="iconLeft"/>
-                                <connections>
-                                    <segue destination="lyd-OR-DRs" kind="presentation" id="gK2-wj-eaj"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVx-uH-JVW" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="155" y="578" width="65" height="65"/>
                                 <constraints>
@@ -43,7 +32,10 @@
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" backgroundImage="symbol"/>
                                 <connections>
-                                    <segue destination="IBH-Ns-fyD" kind="presentation" identifier="mainToAction" animates="NO" modalPresentationStyle="overFullScreen" id="9CI-WH-dgI"/>
+                                    <segue destination="IBH-Ns-fyD" kind="presentation" identifier="mainToAction" modalPresentationStyle="overFullScreen" id="9CI-WH-dgI">
+                                        <segue key="commit" inheritsFrom="parent" id="x3e-u8-m7h"/>
+                                        <segue key="preview" inheritsFrom="commit" id="nXC-jS-nkE"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-9x-dHs" customClass="FloatingMiniButton" customModule="LittlePajero" customModuleProvider="target">
@@ -55,17 +47,6 @@
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="infoOutlineMaterial"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lkq-Nt-Oaa">
-                                <rect key="frame" x="63" y="28" width="296" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="FQE-Ai-8lB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="  搜索周边玩乐">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8e-bd-f9c">
                                 <rect key="frame" x="16" y="81" width="343" height="17"/>
@@ -85,6 +66,25 @@
                                 <connections>
                                     <action selector="returnUserLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FQY-YO-nxv"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S67-Qo-KHF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="199" y="578" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="MAf-CP-spW"/>
+                                    <constraint firstAttribute="height" constant="65" id="jcL-fh-for"/>
+                                </constraints>
+                                <state key="normal" image="playArrowMaterial"/>
+                                <connections>
+                                    <action selector="continueRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L6B-xu-Sfz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-wG-5yF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="110" y="578" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="Crc-za-3Hf"/>
+                                    <constraint firstAttribute="height" constant="65" id="Fqq-Lm-6PL"/>
+                                </constraints>
+                                <state key="normal" image="rectangle5"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-Zq-TIV" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="110" y="578" width="65" height="65"/>
@@ -108,64 +108,102 @@
                                     <action selector="pauseRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PQE-P8-htX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S67-Qo-KHF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="199" y="578" width="65" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="MAf-CP-spW"/>
-                                    <constraint firstAttribute="height" constant="65" id="jcL-fh-for"/>
-                                </constraints>
-                                <state key="normal" image="playArrowMaterial"/>
-                                <connections>
-                                    <action selector="continueRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FXB-37-3m6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-wG-5yF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="110" y="578" width="65" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="Crc-za-3Hf"/>
-                                    <constraint firstAttribute="height" constant="65" id="Fqq-Lm-6PL"/>
-                                </constraints>
-                                <state key="normal" image="rectangle5"/>
-                                <connections>
-                                    <action selector="stopRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aBM-ud-iTi"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gbw-hI-yGI">
-                                <rect key="frame" x="67" y="122" width="240" height="141"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cY-Oj-TJ5" customClass="SearchingBar" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="16" y="30" width="343" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="center" restorationIdentifier="SearchingBarControllButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZl-gd-J52" customClass="SearchingBarControlButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="Fd8-A4-chh"/>
+                                        </constraints>
+                                        <state key="normal" image="menu"/>
+                                        <connections>
+                                            <segue destination="lyd-OR-DRs" kind="presentation" id="z2b-5e-FEI"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" restorationIdentifier="SearchingBarInputField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="搜索周边玩乐" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l9z-5Z-Z07" customClass="SearchingBarTextField" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="48" y="0.0" width="293" height="44"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6z5-L5-Hjd">
-                                <rect key="frame" x="67" y="286" width="240" height="141"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <constraints>
+                                    <constraint firstItem="l9z-5Z-Z07" firstAttribute="leading" secondItem="OZl-gd-J52" secondAttribute="trailing" id="BRY-km-FjA"/>
+                                    <constraint firstAttribute="bottom" secondItem="l9z-5Z-Z07" secondAttribute="bottom" id="Ztl-IR-1MY"/>
+                                    <constraint firstAttribute="bottom" secondItem="OZl-gd-J52" secondAttribute="bottom" id="d9X-dI-DFC"/>
+                                    <constraint firstItem="l9z-5Z-Z07" firstAttribute="top" secondItem="0cY-Oj-TJ5" secondAttribute="top" id="dQI-eh-sQa"/>
+                                    <constraint firstAttribute="height" constant="44" id="lBX-AH-aEu"/>
+                                    <constraint firstItem="OZl-gd-J52" firstAttribute="top" secondItem="0cY-Oj-TJ5" secondAttribute="top" id="lPc-XK-Lm4"/>
+                                    <constraint firstItem="OZl-gd-J52" firstAttribute="leading" secondItem="0cY-Oj-TJ5" secondAttribute="leading" id="wLg-8O-0vD"/>
+                                    <constraint firstAttribute="trailing" secondItem="l9z-5Z-Z07" secondAttribute="trailing" constant="2" id="zRe-hM-A85"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eaO-NV-M1X">
+                                <rect key="frame" x="16" y="102" width="343" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTh-w2-Ngx" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="UfD-rO-N6c"/>
+                                            <constraint firstAttribute="width" constant="65" id="bw6-MF-fJO"/>
+                                        </constraints>
+                                        <state key="normal" title="玩乐" image="landscapeMaterial">
+                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8Z-xb-CCi" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="92.5" y="0.0" width="65" height="65"/>
+                                        <state key="normal" title="轨迹" image="pathIcon">
+                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAP-cr-hEC" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="185.5" y="0.0" width="65" height="65"/>
+                                        <state key="normal" title="宿营地" image="hotelMaterial">
+                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anH-KM-IKA" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                        <rect key="frame" x="278" y="0.0" width="65" height="65"/>
+                                        <state key="normal" title="汽车服务" image="localCarWashMaterial">
+                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eAP-cr-hEC" firstAttribute="height" secondItem="H8Z-xb-CCi" secondAttribute="height" id="4zy-FD-L7d"/>
+                                    <constraint firstItem="anH-KM-IKA" firstAttribute="height" secondItem="eAP-cr-hEC" secondAttribute="height" id="58b-jk-pSO"/>
+                                    <constraint firstItem="H8Z-xb-CCi" firstAttribute="width" secondItem="bTh-w2-Ngx" secondAttribute="width" id="9A4-PU-SD5"/>
+                                    <constraint firstItem="anH-KM-IKA" firstAttribute="width" secondItem="eAP-cr-hEC" secondAttribute="width" id="Ptm-Yp-3sO"/>
+                                    <constraint firstItem="H8Z-xb-CCi" firstAttribute="height" secondItem="bTh-w2-Ngx" secondAttribute="height" id="jAE-bC-tcG"/>
+                                    <constraint firstItem="eAP-cr-hEC" firstAttribute="width" secondItem="H8Z-xb-CCi" secondAttribute="width" id="tIF-tg-S95"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Lkq-Nt-Oaa" secondAttribute="trailing" id="1FB-tu-Q5j"/>
-                            <constraint firstItem="Lkq-Nt-Oaa" firstAttribute="leading" secondItem="2HO-gC-7OJ" secondAttribute="trailing" id="A6p-cw-C6s"/>
+                            <constraint firstItem="eaO-NV-M1X" firstAttribute="trailing" secondItem="0cY-Oj-TJ5" secondAttribute="trailing" id="7wi-e3-efY"/>
+                            <constraint firstItem="eaO-NV-M1X" firstAttribute="leading" secondItem="0cY-Oj-TJ5" secondAttribute="leading" id="9L3-tr-KEU"/>
                             <constraint firstItem="FiL-9x-dHs" firstAttribute="top" secondItem="IVx-uH-JVW" secondAttribute="top" id="Azg-80-yBL"/>
                             <constraint firstItem="x0d-uJ-Txa" firstAttribute="top" secondItem="FiL-9x-dHs" secondAttribute="bottom" constant="6" id="Eci-yj-rP6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PWy-rn-mmH" secondAttribute="trailing" constant="95" id="JfO-4m-TOQ"/>
                             <constraint firstItem="FiL-9x-dHs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KUC-NS-E0f"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bsg-Zq-TIV" secondAttribute="bottom" constant="24" id="MrS-mh-AS1"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="0cY-Oj-TJ5" secondAttribute="leading" id="O2G-ls-SHK"/>
                             <constraint firstItem="2c9-wG-5yF" firstAttribute="centerY" secondItem="bsg-Zq-TIV" secondAttribute="centerY" id="Obz-bO-fbA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IVx-uH-JVW" secondAttribute="bottom" constant="24" id="T2i-LI-lXl"/>
                             <constraint firstItem="2c9-wG-5yF" firstAttribute="centerX" secondItem="bsg-Zq-TIV" secondAttribute="centerX" id="VzY-bF-uvs"/>
                             <constraint firstItem="PWy-rn-mmH" firstAttribute="leading" secondItem="bsg-Zq-TIV" secondAttribute="trailing" constant="24" id="Xhk-B9-RVm"/>
+                            <constraint firstItem="eaO-NV-M1X" firstAttribute="top" secondItem="l9z-5Z-Z07" secondAttribute="bottom" constant="28" id="din-3V-k1j"/>
                             <constraint firstItem="S67-Qo-KHF" firstAttribute="centerY" secondItem="PWy-rn-mmH" secondAttribute="centerY" id="fKE-t3-B59"/>
-                            <constraint firstItem="Lkq-Nt-Oaa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="lT5-mu-I0A"/>
-                            <constraint firstItem="Lkq-Nt-Oaa" firstAttribute="top" secondItem="2HO-gC-7OJ" secondAttribute="top" id="mIZ-aQ-YvG"/>
                             <constraint firstItem="IVx-uH-JVW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mzY-62-yrV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PWy-rn-mmH" secondAttribute="bottom" constant="24" id="nrb-5N-ndW"/>
                             <constraint firstItem="S67-Qo-KHF" firstAttribute="centerX" secondItem="PWy-rn-mmH" secondAttribute="centerX" id="qJj-Tg-GSq"/>
                             <constraint firstItem="x0d-uJ-Txa" firstAttribute="centerX" secondItem="FiL-9x-dHs" secondAttribute="centerX" id="qMN-Ot-AC4"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="2HO-gC-7OJ" secondAttribute="leading" id="uFb-0M-ac6"/>
+                            <constraint firstItem="0cY-Oj-TJ5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="t1O-dT-Kiw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0cY-Oj-TJ5" secondAttribute="trailing" id="xaE-Fa-z5d"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/ivyxuan/cj0w8398p00ct2slfd2gk667m"/>
@@ -174,6 +212,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="continueRecordButton" destination="S67-Qo-KHF" id="SXy-wv-eec"/>
                         <outlet property="infoButton" destination="FiL-9x-dHs" id="9FF-zg-vp0"/>
@@ -183,10 +222,7 @@
                         <outlet property="pauseRecordButton" destination="PWy-rn-mmH" id="WMO-xu-ryr"/>
                         <outlet property="pinDropButton" destination="bsg-Zq-TIV" id="Ic0-CT-6Jc"/>
                         <outlet property="searchDisplayController" destination="oFT-tZ-1BS" id="CCS-yo-Lbp"/>
-                        <outlet property="sideMenuButton" destination="2HO-gC-7OJ" id="udV-Be-8ng"/>
                         <outlet property="stopRecordButton" destination="2c9-wG-5yF" id="MFu-Tp-rpI"/>
-                        <outlet property="textView" destination="gbw-hI-yGI" id="yzF-D5-dUN"/>
-                        <outlet property="textViewAll" destination="6z5-L5-Hjd" id="Gbl-lE-Ezn"/>
                         <outlet property="userLocationLabel" destination="R8e-bd-f9c" id="vn6-Gk-veF"/>
                         <segue destination="PDg-64-S7R" kind="presentation" identifier="mainToPinDrop" modalPresentationStyle="overFullScreen" id="ksP-7d-rwR"/>
                     </connections>
@@ -222,7 +258,138 @@
                     <view key="view" contentMode="scaleToFill" id="ZAB-9A-4qN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-tg-DOg" userLabel="UserData">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="ElB-pz-1wl" userLabel="avatar">
+                                        <rect key="frame" x="20" y="40" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="gLS-ib-2zz"/>
+                                            <constraint firstAttribute="height" constant="60" id="mBg-9b-k6d"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚未登录的小野猫" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-Wl-IFq" userLabel="userName">
+                                        <rect key="frame" x="20" y="112" width="335" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="95q-Ad-GRd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.44313725490196076" green="0.44313725490196076" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你可以继续浏览，但无法发布内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ac-Pa-deC" userLabel="userDes">
+                                        <rect key="frame" x="20" y="140" width="335" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="8Bf-B2-chX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="BAe-Ix-OyD"/>
+                                    <constraint firstItem="7Ac-Pa-deC" firstAttribute="leading" secondItem="ILg-tg-DOg" secondAttribute="leading" constant="20" id="FQ3-zV-dXx"/>
+                                    <constraint firstItem="7Ac-Pa-deC" firstAttribute="top" secondItem="ZKz-Wl-IFq" secondAttribute="bottom" id="Hcl-jW-weK"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Ac-Pa-deC" secondAttribute="trailing" constant="20" id="Xph-jO-Dos"/>
+                                    <constraint firstItem="ZKz-Wl-IFq" firstAttribute="top" secondItem="ElB-pz-1wl" secondAttribute="bottom" constant="12" id="Zqg-WG-r5B"/>
+                                    <constraint firstItem="ElB-pz-1wl" firstAttribute="leading" secondItem="ILg-tg-DOg" secondAttribute="leading" constant="20" id="fp0-QA-Y8n"/>
+                                    <constraint firstItem="ElB-pz-1wl" firstAttribute="top" secondItem="ILg-tg-DOg" secondAttribute="top" constant="40" id="l3E-V2-sAb"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZKz-Wl-IFq" secondAttribute="trailing" constant="20" id="tcS-gR-CmI"/>
+                                    <constraint firstItem="ZKz-Wl-IFq" firstAttribute="leading" secondItem="ILg-tg-DOg" secondAttribute="leading" constant="20" id="wvP-XC-b3s"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eo7-SY-4v3" customClass="SideMenuButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="190" width="375" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="CQU-nd-SDO"/>
+                                </constraints>
+                                <state key="normal" title="当前显示地点" image="locationIcon">
+                                    <color key="titleColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-NA-Iue" customClass="SideMenuButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="247" width="375" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="Egk-xn-kWZ"/>
+                                </constraints>
+                                <state key="normal" title="我的轨迹" image="pathIcon">
+                                    <color key="titleColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeP-E4-TXg" customClass="SideMenuButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="312" width="375" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="PkJ-9b-nYY"/>
+                                </constraints>
+                                <state key="normal" title="离线数据" image="offlineIcon">
+                                    <color key="titleColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnG-8b-9sM" customClass="SideMenuButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="377" width="375" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="iWK-5s-YjO"/>
+                                </constraints>
+                                <state key="normal" title="未上传数据" image="unupdatedIcon">
+                                    <color key="titleColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixo-uz-7yI" userLabel="divider">
+                                <rect key="frame" x="0.0" y="444" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="6AG-ww-q6k"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5B-Wi-cWj" customClass="SideMenuButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="455" width="375" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="8au-xL-boC"/>
+                                </constraints>
+                                <state key="normal" title="设置" image="settingIcon">
+                                    <color key="titleColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJO-rO-kiL" customClass="SideMenuButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="512" width="375" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="EDl-nw-GF8"/>
+                                </constraints>
+                                <state key="normal" title="安全警告" image="warningIcon">
+                                    <color key="titleColor" red="0.2274509804" green="0.2274509804" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ILg-tg-DOg" secondAttribute="trailing" constant="-16" id="0N4-nj-KRa"/>
+                            <constraint firstItem="ixo-uz-7yI" firstAttribute="width" secondItem="WnG-8b-9sM" secondAttribute="width" id="5XW-9L-nQh"/>
+                            <constraint firstItem="Eo7-SY-4v3" firstAttribute="leading" secondItem="ILg-tg-DOg" secondAttribute="leading" id="6Be-bR-4vm"/>
+                            <constraint firstItem="TeP-E4-TXg" firstAttribute="top" secondItem="ffU-NA-Iue" secondAttribute="bottom" constant="8" symbolic="YES" id="8b8-MA-uAw"/>
+                            <constraint firstItem="KJO-rO-kiL" firstAttribute="top" secondItem="O5B-Wi-cWj" secondAttribute="bottom" id="Duo-j8-3Gh"/>
+                            <constraint firstItem="WnG-8b-9sM" firstAttribute="top" secondItem="TeP-E4-TXg" secondAttribute="bottom" constant="8" symbolic="YES" id="EiR-h6-Ne6"/>
+                            <constraint firstItem="Eo7-SY-4v3" firstAttribute="width" secondItem="ILg-tg-DOg" secondAttribute="width" id="K1W-Fz-YIw"/>
+                            <constraint firstItem="Eo7-SY-4v3" firstAttribute="top" secondItem="ILg-tg-DOg" secondAttribute="bottom" constant="10" id="N10-BI-2Cd"/>
+                            <constraint firstItem="ffU-NA-Iue" firstAttribute="top" secondItem="Eo7-SY-4v3" secondAttribute="bottom" id="NlS-wL-Utt"/>
+                            <constraint firstItem="ffU-NA-Iue" firstAttribute="width" secondItem="Eo7-SY-4v3" secondAttribute="width" id="ONa-DQ-8do"/>
+                            <constraint firstItem="ffU-NA-Iue" firstAttribute="centerX" secondItem="Eo7-SY-4v3" secondAttribute="centerX" id="RVv-9v-Wcu"/>
+                            <constraint firstItem="KJO-rO-kiL" firstAttribute="centerX" secondItem="O5B-Wi-cWj" secondAttribute="centerX" id="VlO-BE-eKM"/>
+                            <constraint firstItem="TeP-E4-TXg" firstAttribute="centerX" secondItem="ffU-NA-Iue" secondAttribute="centerX" id="YaA-hN-3g7"/>
+                            <constraint firstItem="ILg-tg-DOg" firstAttribute="top" secondItem="Tld-hD-pMK" secondAttribute="bottom" constant="-20" id="bIQ-L6-Q7V"/>
+                            <constraint firstItem="TeP-E4-TXg" firstAttribute="width" secondItem="ffU-NA-Iue" secondAttribute="width" id="bUW-dI-7fe"/>
+                            <constraint firstItem="KJO-rO-kiL" firstAttribute="width" secondItem="O5B-Wi-cWj" secondAttribute="width" id="eCl-4d-yQZ"/>
+                            <constraint firstItem="WnG-8b-9sM" firstAttribute="centerX" secondItem="TeP-E4-TXg" secondAttribute="centerX" id="fxf-cd-P5X"/>
+                            <constraint firstItem="ixo-uz-7yI" firstAttribute="centerX" secondItem="WnG-8b-9sM" secondAttribute="centerX" id="gdi-7c-QBK"/>
+                            <constraint firstItem="ILg-tg-DOg" firstAttribute="leading" secondItem="ZAB-9A-4qN" secondAttribute="leadingMargin" constant="-16" id="iIi-X9-g0a"/>
+                            <constraint firstItem="O5B-Wi-cWj" firstAttribute="width" secondItem="WnG-8b-9sM" secondAttribute="width" id="mea-fs-Wma"/>
+                            <constraint firstItem="WnG-8b-9sM" firstAttribute="width" secondItem="TeP-E4-TXg" secondAttribute="width" id="t6M-my-gP0"/>
+                            <constraint firstItem="ixo-uz-7yI" firstAttribute="top" secondItem="WnG-8b-9sM" secondAttribute="bottom" constant="10" id="tNw-8Y-4jk"/>
+                            <constraint firstItem="O5B-Wi-cWj" firstAttribute="centerX" secondItem="WnG-8b-9sM" secondAttribute="centerX" id="uxb-Ol-Qkc"/>
+                            <constraint firstItem="O5B-Wi-cWj" firstAttribute="top" secondItem="ixo-uz-7yI" secondAttribute="bottom" constant="10" id="xp7-kT-xIE"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cGT-9k-Bdd"/>
                 </viewController>
@@ -235,7 +402,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LeftMenuNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="lyd-OR-DRs" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hx-L0-qzl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7hx-L0-qzl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -264,45 +431,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alO-KT-ugx" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="155" y="578" width="65" height="65"/>
+                                <rect key="frame" x="155" y="558" width="65" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="jQd-yl-jqn"/>
                                 </constraints>
                                 <state key="normal" image="closeMaterial"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="close" destination="IBH-Ns-fyD" eventType="touchUpInside" id="F1S-e7-HF3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFa-EN-gb7" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="80" y="455" width="65" height="65"/>
+                                <rect key="frame" x="80" y="435" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="RXx-BD-mSO"/>
                                     <constraint firstAttribute="width" constant="65" id="e8f-Te-24U"/>
                                 </constraints>
                                 <state key="normal" image="fiberManualRecordMaterial"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade scale(0.5)"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startRecordPath:" destination="IBH-Ns-fyD" eventType="touchUpInside" id="9t2-gC-en7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记录轨迹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wh3-9L-vDS">
-                                <rect key="frame" x="80" y="530" width="66" height="20"/>
+                                <rect key="frame" x="80" y="510" width="66" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade scale(0.5)"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7y-IM-tBd" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="230" y="455" width="65" height="65"/>
+                                <rect key="frame" x="230" y="435" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="DAi-LG-JRb"/>
                                     <constraint firstAttribute="width" constant="65" id="K7i-a4-esb"/>
                                 </constraints>
                                 <state key="normal" image="photoCameraMaterial"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="delay(0.2) fade scale(0.5)"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拍摄记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl1-XZ-Rer">
-                                <rect key="frame" x="227" y="530" width="70" height="21"/>
+                                <rect key="frame" x="227" y="510" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="delay(0.1) fade scale(0.5)"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -321,6 +503,10 @@
                             <constraint firstItem="Sl1-XZ-Rer" firstAttribute="top" secondItem="wh3-9L-vDS" secondAttribute="top" id="zeY-f8-9ea"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="cameraButton" destination="i7y-IM-tBd" id="iYf-Xk-uy5"/>
                         <outlet property="cameraLabel" destination="Sl1-XZ-Rer" id="gtS-fM-Toj"/>
@@ -352,8 +538,8 @@
                                     <constraint firstAttribute="width" constant="84" id="wDg-hM-C8Z"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-Z4-1Xd">
-                                <rect key="frame" x="163" y="156" width="49" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-Z4-1Xd">
+                                <rect key="frame" x="16" y="156" width="343" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -416,15 +602,28 @@
         <image name="checkmarkIcon" width="84" height="84"/>
         <image name="chevronLeftMaterial" width="18" height="28"/>
         <image name="closeMaterial" width="28" height="28"/>
+        <image name="defaultAvatar" width="40" height="40"/>
         <image name="fiberManualRecordMaterial" width="24" height="24"/>
-        <image name="iconLeft" width="20" height="16"/>
+        <image name="hotelMaterial" width="28" height="20"/>
         <image name="infoOutlineMaterial" width="16" height="16"/>
+        <image name="landscapeMaterial" width="30" height="17"/>
+        <image name="localCarWashMaterial" width="23" height="28"/>
+        <image name="locationIcon" width="12" height="16"/>
+        <image name="menu" width="20" height="16"/>
         <image name="myLocationMaterial" width="18" height="18"/>
+        <image name="offlineIcon" width="16" height="16"/>
+        <image name="pathIcon" width="18" height="10"/>
         <image name="pauseMaterial" width="23" height="26"/>
         <image name="photoCameraMaterial" width="31" height="28"/>
         <image name="pinDropMaterial" width="20" height="28"/>
         <image name="playArrowMaterial" width="29" height="28"/>
         <image name="rectangle5" width="22" height="22"/>
+        <image name="settingIcon" width="16" height="17"/>
         <image name="symbol" width="67" height="67"/>
+        <image name="unupdatedIcon" width="18" height="14"/>
+        <image name="warningIcon" width="18" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9CI-WH-dgI"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -14,7 +14,6 @@ import CoreLocation                    // 用APS，获取地理位置信息的�
 import ObjectMapper                    // 将 Object 转换成 JSON
 import ObjectMapper_Realm
 import SwiftLocation                   // 固定时间间隔记录用户位置
-import MaterialComponents.MaterialButtons
 
 // 记录轨迹的状态
 enum PresentWorkingMode : String {
@@ -23,16 +22,6 @@ enum PresentWorkingMode : String {
     case pauseRecord
     case continueRecord
     case stopRecord
-}
-
-public extension UITextView {
-    public func scrollBottom() {
-        guard self.text.characters.count > 0 else {
-            return
-        }
-        let stringLength:Int = self.text.characters.count
-        self.scrollRangeToVisible(NSMakeRange(stringLength-1, 0))
-    }
 }
 
 public extension CLLocation {
@@ -55,7 +44,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var pauseRecordButton: UIButton!      // 暂停记录轨迹按钮
     @IBOutlet weak var stopRecordButton: UIButton!       // 停止记录轨迹按钮
     @IBOutlet weak var continueRecordButton: UIButton!   // 继续记录轨迹按钮
-    @IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
+    //@IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
     
     @IBOutlet weak var textView: UITextView?
     @IBOutlet weak var textViewAll: UITextView?
@@ -83,6 +72,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         // 设置 Status Bar 为浅色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
+        // 设置 Hero 动画
+        //mainButton.heroID = "actionMenu"
         // 设置 delegate 对象
         mapView.delegate = self
 
@@ -102,16 +93,6 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         
         // 定义打印路径的点
         //allCoordinates = coordinates()
-    }
-    
-    private func log(_ value: String) {
-        self.textView!.insertText(value)
-        self.textView!.scrollBottom()
-    }
-    
-    private func logAll(_ value: String) {
-        self.textViewAll!.insertText(value)
-        self.textViewAll!.scrollBottom()
     }
     
     // 这个没用
@@ -176,14 +157,14 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         
         // 记录轨迹
         Location.onChangeTrackerSettings = { settings in
-            self.log(String(describing: settings))
+            print(String(describing: settings))
         }
         
         self.locationRequest = Location.getLocation(accuracy: .room, frequency: .continuous, timeout: 60*60*5, success: { (_, location) in
-            self.log(location.shortDesc)
+            print(location.shortDesc)
             
         }) { (request, last, error) in
-            self.log("Location monitoring failed due to an error \(error)")
+            print("Location monitoring failed due to an error \(error)")
             
             request.cancel() // stop continous location monitoring on error
         }
@@ -202,7 +183,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         var counts = 0
         
         Location.onReceiveNewLocation = { location in
-            self.logAll(location.shortDesc)
+            print(location.shortDesc)
             if counts < 2 {
                 counts += 1
             } else {

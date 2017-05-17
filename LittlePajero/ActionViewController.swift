@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialButtons
+import Hero
 
 class ActionViewController: UIViewController {
     
@@ -25,11 +25,6 @@ class ActionViewController: UIViewController {
         // 将背景设置为模糊
         setBackgroundBlur()
         
-        // 将这个页面上 3 个按钮的样式设置好
-        //setButtonToCircle(closeButton)
-        //setButtonToCircle(recordButton)
-        //setButtonToCircle(cameraButton)
-        
         // 设置按钮文字样式
         setLabelStyle()
         
@@ -42,13 +37,13 @@ class ActionViewController: UIViewController {
     
     // 关闭按钮 关闭页面
     @IBAction func close() {
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func startRecordPath(_ sender: UIButton) {
         //self.delegate?.sendMode(mode: "RecordPath")
         self.mainVC?.mode = .recording
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -66,14 +61,15 @@ class ActionViewController: UIViewController {
     
     // 设置背景为模糊
     func setBackgroundBlur() {
-        
         self.view.backgroundColor = UIColor.clear
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+        blurEffectView.alpha = 0.6
         self.view.insertSubview(blurEffectView, at: 0)
+        
+        blurEffectView.heroModifiers = [.fade]
     }
     
 

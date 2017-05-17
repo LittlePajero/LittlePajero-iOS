@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */; };
 		134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B2D311EC34BD50017F6EE /* TransitionManager.swift */; };
-		13577A881EC738BA00C5B16C /* RealmPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13577A871EC738BA00C5B16C /* RealmPoint.swift */; };
 		13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13577A8C1EC8344600C5B16C /* PinDropViewController.swift */; };
 		137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137094F21EBC5DED003C12F5 /* AppDelegate.swift */; };
 		137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137094F41EBC5DED003C12F5 /* MainViewController.swift */; };
@@ -17,20 +16,25 @@
 		137094FA1EBC5DED003C12F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137094F91EBC5DED003C12F5 /* Assets.xcassets */; };
 		137094FD1EBC5DED003C12F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137094FB1EBC5DED003C12F5 /* LaunchScreen.storyboard */; };
 		13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */; };
+		13C165491ECC5C4000F71224 /* RealmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165461ECC5C4000F71224 /* RealmLocation.swift */; };
+		13C1654A1ECC5C4000F71224 /* RealmPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165471ECC5C4000F71224 /* RealmPath.swift */; };
+		13C1654B1ECC5C4000F71224 /* RealmPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165481ECC5C4000F71224 /* RealmPoint.swift */; };
 		13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */; };
 		13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2131EC4B1020015CC72 /* ListTransform.swift */; };
-		13E64B3B1EC5A94500BEA67B /* RealmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E64B3A1EC5A94500BEA67B /* RealmLocation.swift */; };
-		13E64B3D1EC5A98400BEA67B /* RealmPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E64B3C1EC5A98400BEA67B /* RealmPath.swift */; };
 		1AB47492529F81A5B123A435 /* Pods_LittlePajero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */; };
 		CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */; };
 		CC3D4D101EC834A800CFBCD1 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */; };
 		CC3D4D121EC8BBA200CFBCD1 /* FloatingMiniButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D4D111EC8BBA200CFBCD1 /* FloatingMiniButton.swift */; };
+		CC5DD8831EC9B3360034DC61 /* SearchingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD8821EC9B3360034DC61 /* SearchingBar.swift */; };
+		CC5DD8851EC9BAF30034DC61 /* SearchingBarControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD8841EC9BAF30034DC61 /* SearchingBarControlButton.swift */; };
+		CC5DD8871EC9BC380034DC61 /* SearchingBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD8861EC9BC380034DC61 /* SearchingBarTextField.swift */; };
+		CC7446481ECC4A0700CA8C5A /* SearchingTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7446471ECC4A0700CA8C5A /* SearchingTextDelegate.swift */; };
+		CCADFF1D1ECB6C8D0049E163 /* SideMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCADFF1C1ECB6C8D0049E163 /* SideMenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		134B2D311EC34BD50017F6EE /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
-		13577A871EC738BA00C5B16C /* RealmPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPoint.swift; sourceTree = "<group>"; };
 		13577A8C1EC8344600C5B16C /* PinDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinDropViewController.swift; sourceTree = "<group>"; };
 		137094EF1EBC5DED003C12F5 /* LittlePajero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittlePajero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		137094F21EBC5DED003C12F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,15 +44,21 @@
 		137094FC1EBC5DED003C12F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		137094FE1EBC5DED003C12F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		13C165461ECC5C4000F71224 /* RealmLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmLocation.swift; sourceTree = "<group>"; };
+		13C165471ECC5C4000F71224 /* RealmPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPath.swift; sourceTree = "<group>"; };
+		13C165481ECC5C4000F71224 /* RealmPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPoint.swift; sourceTree = "<group>"; };
 		13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APScheduledLocationManager.swift; sourceTree = "<group>"; };
 		13E4E2131EC4B1020015CC72 /* ListTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTransform.swift; sourceTree = "<group>"; };
-		13E64B3A1EC5A94500BEA67B /* RealmLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmLocation.swift; sourceTree = "<group>"; };
-		13E64B3C1EC5A98400BEA67B /* RealmPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPath.swift; sourceTree = "<group>"; };
 		6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittlePajero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C394BD4B6D43EC5DE0393244 /* Pods-LittlePajero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePajero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittlePajero/Pods-LittlePajero.debug.xcconfig"; sourceTree = "<group>"; };
 		CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		CC3D4D111EC8BBA200CFBCD1 /* FloatingMiniButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingMiniButton.swift; sourceTree = "<group>"; };
+		CC5DD8821EC9B3360034DC61 /* SearchingBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingBar.swift; sourceTree = "<group>"; };
+		CC5DD8841EC9BAF30034DC61 /* SearchingBarControlButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingBarControlButton.swift; sourceTree = "<group>"; };
+		CC5DD8861EC9BC380034DC61 /* SearchingBarTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingBarTextField.swift; sourceTree = "<group>"; };
+		CC7446471ECC4A0700CA8C5A /* SearchingTextDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingTextDelegate.swift; sourceTree = "<group>"; };
+		CCADFF1C1ECB6C8D0049E163 /* SideMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuButton.swift; sourceTree = "<group>"; };
 		D8189ACBEC59476F485E9EF8 /* Pods-LittlePajero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePajero.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittlePajero/Pods-LittlePajero.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +95,7 @@
 		137094F11EBC5DED003C12F5 /* LittlePajero */ = {
 			isa = PBXGroup;
 			children = (
-				CC3D4D0C1EC5F81600CFBCD1 /* Styles */,
+				CC3D4D0C1EC5F81600CFBCD1 /* UI */,
 				13E64B3E1EC5A9B700BEA67B /* Lib */,
 				13E64B391EC5A92A00BEA67B /* Models */,
 				CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */,
@@ -113,9 +123,9 @@
 		13E64B391EC5A92A00BEA67B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				13E64B3A1EC5A94500BEA67B /* RealmLocation.swift */,
-				13E64B3C1EC5A98400BEA67B /* RealmPath.swift */,
-				13577A871EC738BA00C5B16C /* RealmPoint.swift */,
+				13C165461ECC5C4000F71224 /* RealmLocation.swift */,
+				13C165471ECC5C4000F71224 /* RealmPath.swift */,
+				13C165481ECC5C4000F71224 /* RealmPoint.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -147,13 +157,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CC3D4D0C1EC5F81600CFBCD1 /* Styles */ = {
+		CC3D4D0C1EC5F81600CFBCD1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CCADFF1B1ECB6C620049E163 /* SearchingBar */,
+				CCADFF1A1ECB6C570049E163 /* SideMenu */,
 				CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */,
 				CC3D4D111EC8BBA200CFBCD1 /* FloatingMiniButton.swift */,
 			);
-			name = Styles;
+			name = UI;
+			sourceTree = "<group>";
+		};
+		CCADFF1A1ECB6C570049E163 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CCADFF1C1ECB6C8D0049E163 /* SideMenuButton.swift */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
+		CCADFF1B1ECB6C620049E163 /* SearchingBar */ = {
+			isa = PBXGroup;
+			children = (
+				CC5DD8821EC9B3360034DC61 /* SearchingBar.swift */,
+				CC5DD8841EC9BAF30034DC61 /* SearchingBarControlButton.swift */,
+				CC5DD8861EC9BC380034DC61 /* SearchingBarTextField.swift */,
+				CC7446471ECC4A0700CA8C5A /* SearchingTextDelegate.swift */,
+			);
+			name = SearchingBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,19 +316,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5DD8851EC9BAF30034DC61 /* SearchingBarControlButton.swift in Sources */,
 				CC3D4D121EC8BBA200CFBCD1 /* FloatingMiniButton.swift in Sources */,
 				137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */,
 				CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */,
+				13C165491ECC5C4000F71224 /* RealmLocation.swift in Sources */,
 				134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */,
-				13E64B3B1EC5A94500BEA67B /* RealmLocation.swift in Sources */,
+				CC5DD8831EC9B3360034DC61 /* SearchingBar.swift in Sources */,
+				13C1654A1ECC5C4000F71224 /* RealmPath.swift in Sources */,
+				CC5DD8871EC9BC380034DC61 /* SearchingBarTextField.swift in Sources */,
 				13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */,
+				CC7446481ECC4A0700CA8C5A /* SearchingTextDelegate.swift in Sources */,
+				13C1654B1ECC5C4000F71224 /* RealmPoint.swift in Sources */,
+				CCADFF1D1ECB6C8D0049E163 /* SideMenuButton.swift in Sources */,
 				13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */,
 				13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */,
 				13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */,
 				CC3D4D101EC834A800CFBCD1 /* FloatingButton.swift in Sources */,
-				13577A881EC738BA00C5B16C /* RealmPoint.swift in Sources */,
 				134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */,
-				13E64B3D1EC5A98400BEA67B /* RealmPath.swift in Sources */,
 				137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +465,7 @@
 				INFOPLIST_FILE = LittlePajero/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivyxuan.LittlePajero;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cassiuschen.LittlePajero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -445,7 +481,7 @@
 				INFOPLIST_FILE = LittlePajero/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivyxuan.LittlePajero;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cassiuschen.LittlePajero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
