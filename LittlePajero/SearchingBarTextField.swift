@@ -29,7 +29,9 @@ class SearchingBarTextField: UITextField {
         clearButton.setImage(#imageLiteral(resourceName: "clear"), for: UIControlState.normal)
         clearButton.setImage(#imageLiteral(resourceName: "clear"), for: UIControlState.highlighted)
         
-        self.keyboardType = UIKeyboardType.webSearch
+        self.returnKeyType = UIReturnKeyType.search
+        
+        self.minimumFontSize = 12
     }
 
     

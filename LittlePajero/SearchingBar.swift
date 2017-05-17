@@ -9,6 +9,7 @@
 import UIKit
 
 class SearchingBar: UIView {
+    public var textFieldDelegate : SearchingTextDelegate? = nil
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.customStyle()
@@ -37,12 +38,12 @@ class SearchingBar: UIView {
     }
     
     func touchEventHandler(_ textField: SearchingBarTextField) {
-        print("Touch Happened")
+        textFieldDelegate?.searchingTextFieldActive()
     }
     
     private func listenTextFieldTouched() {
         let textField = self.viewWithTag(2) as! SearchingBarTextField
-        textField.addTarget(self, action: #selector(SearchingBar.touchEventHandler(_:)), for: UIControlEvents.touchDown)
+        textField.addTarget(self, action: #selector(SearchingBar.touchEventHandler(_:)), for: UIControlEvents.editingDidBegin)
     }
     
     override func layoutSubviews() {

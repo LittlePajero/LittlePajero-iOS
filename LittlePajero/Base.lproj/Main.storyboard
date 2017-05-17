@@ -140,7 +140,7 @@
                                     <constraint firstAttribute="trailing" secondItem="l9z-5Z-Z07" secondAttribute="trailing" constant="2" id="zRe-hM-A85"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eaO-NV-M1X">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="eaO-NV-M1X">
                                 <rect key="frame" x="16" y="102" width="343" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTh-w2-Ngx" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
@@ -150,25 +150,25 @@
                                             <constraint firstAttribute="width" constant="65" id="bw6-MF-fJO"/>
                                         </constraints>
                                         <state key="normal" title="玩乐" image="landscapeMaterial">
-                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8Z-xb-CCi" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                         <rect key="frame" x="92.5" y="0.0" width="65" height="65"/>
                                         <state key="normal" title="轨迹" image="pathIcon">
-                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAP-cr-hEC" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                         <rect key="frame" x="185.5" y="0.0" width="65" height="65"/>
                                         <state key="normal" title="宿营地" image="hotelMaterial">
-                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anH-KM-IKA" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                         <rect key="frame" x="278" y="0.0" width="65" height="65"/>
-                                        <state key="normal" title="汽车服务" image="localCarWashMaterial">
-                                            <color key="titleColor" red="0.27421081850000001" green="0.27421081850000001" blue="0.27421081850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="汽车" image="localCarWashMaterial">
+                                            <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
                                 </subviews>
@@ -222,6 +222,8 @@
                         <outlet property="pauseRecordButton" destination="PWy-rn-mmH" id="WMO-xu-ryr"/>
                         <outlet property="pinDropButton" destination="bsg-Zq-TIV" id="Ic0-CT-6Jc"/>
                         <outlet property="searchDisplayController" destination="oFT-tZ-1BS" id="CCS-yo-Lbp"/>
+                        <outlet property="searchSelections" destination="eaO-NV-M1X" id="H44-2V-nzp"/>
+                        <outlet property="searchingBarBarBar" destination="0cY-Oj-TJ5" id="vfw-i6-dmy"/>
                         <outlet property="stopRecordButton" destination="2c9-wG-5yF" id="MFu-Tp-rpI"/>
                         <outlet property="userLocationLabel" destination="R8e-bd-f9c" id="vn6-Gk-veF"/>
                         <segue destination="PDg-64-S7R" kind="presentation" identifier="mainToPinDrop" modalPresentationStyle="overFullScreen" id="ksP-7d-rwR"/>

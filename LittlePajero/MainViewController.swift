@@ -16,12 +16,13 @@ import ObjectMapper_Realm
 import SwiftLocation                   // 固定时间间隔记录用户位置
 
 // 记录轨迹的状态
-enum PresentWorkingMode : String {
+enum PresentWorkingMode {
     case idle
     case recording
     case pauseRecord
     case continueRecord
     case stopRecord
+    case searching(String)
 }
 
 public extension CLLocation {
@@ -44,10 +45,13 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var pauseRecordButton: UIButton!      // 暂停记录轨迹按钮
     @IBOutlet weak var stopRecordButton: UIButton!       // 停止记录轨迹按钮
     @IBOutlet weak var continueRecordButton: UIButton!   // 继续记录轨迹按钮
-    //@IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
     
+    @IBOutlet var searchingBarBarBar: SearchingBar!
+    @IBOutlet var searchSelections: UIStackView!
     @IBOutlet weak var textView: UITextView?
     @IBOutlet weak var textViewAll: UITextView?
+    var mask : UIVisualEffectView? = nil
+    
     
     private var currentRecordingPathId : Int? = nil
     
@@ -72,8 +76,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         // 设置 Status Bar 为浅色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
-        // 设置 Hero 动画
-        //mainButton.heroID = "actionMenu"
+        // 搜索框代理
+        searchingBarBarBar.textFieldDelegate = self
+        let textField = self.searchingBarBarBar.viewWithTag(2) as! SearchingBarTextField
+        textField.delegate = self
+
         // 设置 delegate 对象
         mapView.delegate = self
 
@@ -126,6 +133,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
             case .pauseRecord : self.pauseRecord()
             case .continueRecord : self.continueRecord()
             case .stopRecord : self.stopRecord()
+            default: break
             }
         }
         get {
@@ -354,3 +362,48 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     
 }
 
+extension MainViewController : SearchingTextDelegate {
+    public func setupMask() {
+        mask = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        mask!.frame = self.view.bounds
+        mask!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mask!.alpha = 0
+        mask!.isUserInteractionEnabled = true
+        self.view.insertSubview(mask!, at: 5)
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    func searchingTextFieldActive() {
+        self.searchSelections.alpha = 0
+        self.searchSelections.isHidden = false
+        self.setupMask()
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchSelections.alpha = 1
+            self.mask?.alpha = 1
+        })
+    }
+    
+    func exitEditMode(_ sender: Any?) {
+        UIApplication.shared.keyWindow?.endEditing(true)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchSelections.alpha = 0
+            self.mask?.alpha = 0
+        })
+        self.mask?.removeFromSuperview()
+        self.mask = nil
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("PurupuruPAPA~~~~~~")
+        textField.endEditing(true)
+        return textField.resignFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        exitEditMode(textField)
+    }
+    
+    
+}
