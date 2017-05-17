@@ -7,19 +7,25 @@
 //
 
 import UIKit
+import Mapbox
 
-class StopRecordViewController: UIViewController {
+class StopRecordViewController: UIViewController, MGLMapViewDelegate{
+    
+    @IBOutlet var mapView: MGLMapView!
     
     var mainVC : MainViewController?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 设置地图中心为用户坐标
+        mapView.userTrackingMode = .follow
+        
         // 将背景设置为模糊
         setBackgroundBlur()
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,5 +50,5 @@ class StopRecordViewController: UIViewController {
         blurEffectView.heroModifiers = [.fade]
     }
     
-
+    
 }

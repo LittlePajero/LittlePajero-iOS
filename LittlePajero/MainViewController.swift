@@ -72,7 +72,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         mapView.delegate = self
 
         // 设置地图中心为用户坐标
-         mapView.userTrackingMode = .follow
+        mapView.userTrackingMode = .follow
         // 设置：地图中心
         //mapView.setCenter(CLLocationCoordinate2D(latitude: 37.785834, longitude: -122.406417), zoomLevel: 13, animated: false)
 
