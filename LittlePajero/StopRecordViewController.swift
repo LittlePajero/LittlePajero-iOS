@@ -7,23 +7,20 @@
 //
 
 import UIKit
-import Mapbox
 
-class StopRecordViewController: UIViewController, MGLMapViewDelegate{
+class StopRecordViewController: UIViewController{
     
-    @IBOutlet var mapView: MGLMapView!
+    @IBOutlet weak var desLabel: UILabel!
     
     var mainVC : MainViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 设置地图中心为用户坐标
-        mapView.userTrackingMode = .follow
-        
         // 将背景设置为模糊
         setBackgroundBlur()
-        
+        desLabel.textColor = UIColor.lpWhite
+    
     }
     
     override func didReceiveMemoryWarning() {

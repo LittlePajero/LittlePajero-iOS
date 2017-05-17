@@ -10,16 +10,12 @@ import UIKit
 import SideMenu
 
 class MenuViewController: UIViewController {
-
     
-    /*
-    // MARK: - Navigation
+    var mainVC: MainViewController?
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func downloadStart(_ sender: SideMenuButton) {
+        mainVC?.mode = .downloading
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
+    
 }

@@ -15,13 +15,15 @@ import ObjectMapper                    // 将 Object 转换成 JSON
 import ObjectMapper_Realm
 import SwiftLocation                   // 固定时间间隔记录用户位置
 
-// 记录轨迹的状态
-enum PresentWorkingMode : String {
+// 状态
+enum PresentWorkingMode {
     case idle
     case recording
     case pauseRecord
     case continueRecord
     case stopRecord
+    case searching(String)
+    case downloading
 }
 
 public extension CLLocation {
@@ -44,14 +46,19 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var pauseRecordButton: UIButton!      // 暂停记录轨迹按钮
     @IBOutlet weak var stopRecordButton: UIButton!       // 停止记录轨迹按钮
     @IBOutlet weak var continueRecordButton: UIButton!   // 继续记录轨迹按钮
-    //@IBOutlet weak var sideMenuButton: UIButton!         // 侧边栏按钮
+    @IBOutlet var searchingBarBarBar: SearchingBar!
+    @IBOutlet var searchSelections: UIStackView!
+    @IBOutlet weak var downloadDone: OrangeButton!
 
+    var mask : UIVisualEffectView? = nil
+    
     private var currentRecordingPathId : Int? = nil
     
     var timer: Timer?
     var polylineSource: MGLShapeSource?
     var currentIndex = 1
-    var allCoordinates: [CLLocationCoordinate2D]!
+    var allCoordinates: [CLLocationCoordinate2D]!    // 这个没用了
+    var progressView: UIProgressView!                // 下载地图的进度条
     
     fileprivate let realm = try! Realm()
     
@@ -66,8 +73,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         // 设置 Status Bar 为浅色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
-        // 设置 Hero 动画
-        //mainButton.heroID = "actionMenu"
+        // 搜索框代理
+        searchingBarBarBar.textFieldDelegate = self
+        let textField = self.searchingBarBarBar.viewWithTag(2) as! SearchingBarTextField
+        textField.delegate = self
+
         // 设置 delegate 对象
         mapView.delegate = self
 
@@ -112,6 +122,12 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
             let stopRecordVC = segue.destination as? StopRecordViewController
             stopRecordVC?.mainVC = self
         }
+        
+        if segue.identifier == "mainToSideMenu" {
+            let navVC = segue.destination as! UINavigationController
+            let sideMenuVC = navVC.viewControllers.first as! MenuViewController
+            sideMenuVC.mainVC = self
+        }
     }
     
     // 判断当前模式，以更换界面
@@ -125,6 +141,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
             case .pauseRecord : self.pauseRecord()
             case .continueRecord : self.continueRecord()
             case .stopRecord : self.stopRecord()
+            case .downloading : self.downloadMap()
+            default: break
             }
         }
         get {
@@ -140,6 +158,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         stopRecordButton.isHidden     = true
         continueRecordButton.isHidden = true
         userLocationLabel.isHidden    = true
+        downloadDone.isHidden         = true
     }
     
     // 把 RequestPool 拎到外面，以便后面更改打点模式
@@ -301,8 +320,12 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     
     @IBAction func stopRecord(_ sender: UIButton) {
         self.mode = .stopRecord
-        
-        
+    }
+    
+    func downloadMap() {
+        // 改变样式
+        downloadDone.isHidden   = false
+        mainButton.isHidden     = true
     }
     
     // 打点并且跳到添加打点内容的页面
@@ -340,7 +363,6 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         return annotationImage
     }
 
-    
     // 侧边栏样式
     func setSideMenuStyle() {
         SideMenuManager.menuAnimationTransformScaleFactor = CGFloat(1)
@@ -363,3 +385,48 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     
 }
 
+extension MainViewController : SearchingTextDelegate {
+    public func setupMask() {
+        mask = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        mask!.frame = self.view.bounds
+        mask!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mask!.alpha = 0
+        mask!.isUserInteractionEnabled = true
+        self.view.insertSubview(mask!, at: 5)
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    func searchingTextFieldActive() {
+        self.searchSelections.alpha = 0
+        self.searchSelections.isHidden = false
+        self.setupMask()
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchSelections.alpha = 1
+            self.mask?.alpha = 1
+        })
+    }
+    
+    func exitEditMode(_ sender: Any?) {
+        UIApplication.shared.keyWindow?.endEditing(true)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchSelections.alpha = 0
+            self.mask?.alpha = 0
+        })
+        self.mask?.removeFromSuperview()
+        self.mask = nil
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("PurupuruPAPA~~~~~~")
+        textField.endEditing(true)
+        return textField.resignFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        exitEditMode(textField)
+    }
+    
+    
+}

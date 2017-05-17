@@ -62,6 +62,8 @@ class ActionViewController: UIViewController {
     // 设置背景为模糊
     func setBackgroundBlur() {
         self.view.backgroundColor = UIColor.clear
+        
+        //mainVC?.setupMask()
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
