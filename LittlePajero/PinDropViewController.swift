@@ -13,6 +13,8 @@ class PinDropViewController: UIViewController {
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var locationKindTextFeild: UITextField!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var cameraButtonLabel: UILabel!
     
     var location: String = ""
 
@@ -23,12 +25,14 @@ class PinDropViewController: UIViewController {
         setBackgroundBlur()
         
         locationLabel.textColor = UIColor.lpBackgroundWhite
+        locationLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         desLabel.textColor = UIColor.lpBackgroundWhite
-        
+        cameraButton.backgroundColor = UIColor.lpGrey
+        cameraButtonLabel.textColor = UIColor.lpMuteBlack
         // 从 MainViewController 传 location 到这个页面
         locationLabel.text = "\(location)"
         
-        locationKindTextFeild.placeHolderColor = UIColor.lpGrey
+        //locationKindTextFeild.placeHolderColor = UIColor.lpGrey
     }
 
     override func didReceiveMemoryWarning() {

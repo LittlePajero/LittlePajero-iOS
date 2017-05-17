@@ -19,7 +19,10 @@
 		13C165491ECC5C4000F71224 /* RealmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165461ECC5C4000F71224 /* RealmLocation.swift */; };
 		13C1654A1ECC5C4000F71224 /* RealmPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165471ECC5C4000F71224 /* RealmPath.swift */; };
 		13C1654B1ECC5C4000F71224 /* RealmPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165481ECC5C4000F71224 /* RealmPoint.swift */; };
-		13C1654D1ECC68E700F71224 /* StopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C1654C1ECC68E700F71224 /* StopViewController.swift */; };
+		13C1654D1ECC68E700F71224 /* StopRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C1654C1ECC68E700F71224 /* StopRecordViewController.swift */; };
+		13C1654F1ECC8E1A00F71224 /* OrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C1654E1ECC8E1A00F71224 /* OrangeButton.swift */; };
+		13C165511ECC96F900F71224 /* LightTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165501ECC96F900F71224 /* LightTextField.swift */; };
+		13C165531ECC9E8A00F71224 /* LightTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165521ECC9E8A00F71224 /* LightTextView.swift */; };
 		13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */; };
 		13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2131EC4B1020015CC72 /* ListTransform.swift */; };
 		1AB47492529F81A5B123A435 /* Pods_LittlePajero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */; };
@@ -48,7 +51,10 @@
 		13C165461ECC5C4000F71224 /* RealmLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmLocation.swift; sourceTree = "<group>"; };
 		13C165471ECC5C4000F71224 /* RealmPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPath.swift; sourceTree = "<group>"; };
 		13C165481ECC5C4000F71224 /* RealmPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPoint.swift; sourceTree = "<group>"; };
-		13C1654C1ECC68E700F71224 /* StopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopViewController.swift; sourceTree = "<group>"; };
+		13C1654C1ECC68E700F71224 /* StopRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopRecordViewController.swift; sourceTree = "<group>"; };
+		13C1654E1ECC8E1A00F71224 /* OrangeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
+		13C165501ECC96F900F71224 /* LightTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTextField.swift; sourceTree = "<group>"; };
+		13C165521ECC9E8A00F71224 /* LightTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTextView.swift; sourceTree = "<group>"; };
 		13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APScheduledLocationManager.swift; sourceTree = "<group>"; };
 		13E4E2131EC4B1020015CC72 /* ListTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTransform.swift; sourceTree = "<group>"; };
 		6258BCBBB6B489B56BA01790 /* Pods_LittlePajero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittlePajero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +106,6 @@
 				CC3D4D0C1EC5F81600CFBCD1 /* UI */,
 				13E64B3E1EC5A9B700BEA67B /* Lib */,
 				13E64B391EC5A92A00BEA67B /* Models */,
-				CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */,
 				13E64B381EC5A91400BEA67B /* Views */,
 				137094F21EBC5DED003C12F5 /* AppDelegate.swift */,
 				137094F61EBC5DED003C12F5 /* Main.storyboard */,
@@ -118,7 +123,7 @@
 				134B2D2D1EC1F57B0017F6EE /* ActionViewController.swift */,
 				137094F41EBC5DED003C12F5 /* MainViewController.swift */,
 				13577A8C1EC8344600C5B16C /* PinDropViewController.swift */,
-				13C1654C1ECC68E700F71224 /* StopViewController.swift */,
+				13C1654C1ECC68E700F71224 /* StopRecordViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -167,6 +172,10 @@
 				CCADFF1A1ECB6C570049E163 /* SideMenu */,
 				CC3D4D0F1EC834A800CFBCD1 /* FloatingButton.swift */,
 				CC3D4D111EC8BBA200CFBCD1 /* FloatingMiniButton.swift */,
+				13C1654E1ECC8E1A00F71224 /* OrangeButton.swift */,
+				CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */,
+				13C165501ECC96F900F71224 /* LightTextField.swift */,
+				13C165521ECC9E8A00F71224 /* LightTextView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -320,22 +329,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC5DD8851EC9BAF30034DC61 /* SearchingBarControlButton.swift in Sources */,
+				13C165531ECC9E8A00F71224 /* LightTextView.swift in Sources */,
 				CC3D4D121EC8BBA200CFBCD1 /* FloatingMiniButton.swift in Sources */,
 				137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */,
 				CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */,
 				13C165491ECC5C4000F71224 /* RealmLocation.swift in Sources */,
 				134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */,
 				CC5DD8831EC9B3360034DC61 /* SearchingBar.swift in Sources */,
+				13C1654F1ECC8E1A00F71224 /* OrangeButton.swift in Sources */,
 				13C1654A1ECC5C4000F71224 /* RealmPath.swift in Sources */,
 				CC5DD8871EC9BC380034DC61 /* SearchingBarTextField.swift in Sources */,
 				13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */,
 				CC7446481ECC4A0700CA8C5A /* SearchingTextDelegate.swift in Sources */,
+				13C165511ECC96F900F71224 /* LightTextField.swift in Sources */,
 				13C1654B1ECC5C4000F71224 /* RealmPoint.swift in Sources */,
 				CCADFF1D1ECB6C8D0049E163 /* SideMenuButton.swift in Sources */,
 				13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */,
 				13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */,
 				13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */,
-				13C1654D1ECC68E700F71224 /* StopViewController.swift in Sources */,
+				13C1654D1ECC68E700F71224 /* StopRecordViewController.swift in Sources */,
 				CC3D4D101EC834A800CFBCD1 /* FloatingButton.swift in Sources */,
 				134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */,
 				137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */,

@@ -8,18 +8,15 @@
 
 import UIKit
 
-class StopViewController: UIViewController {
+class StopRecordViewController: UIViewController {
     
-    @IBOutlet weak var desLabel: UILabel!
+    var mainVC : MainViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 将背景设置为模糊
         setBackgroundBlur()
-        
-        // 设置按钮文字样式
-        setLabelStyle()
 
     }
 
@@ -30,6 +27,7 @@ class StopViewController: UIViewController {
     
     // 点击按钮返回
     @IBAction func backToMainVC() {
+        self.mainVC?.mode = .idle
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -46,9 +44,5 @@ class StopViewController: UIViewController {
         blurEffectView.heroModifiers = [.fade]
     }
     
-    // 设置按钮文字样式
-    func setLabelStyle() {
-        desLabel.textColor = UIColor.white
-    }
 
 }

@@ -107,6 +107,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
             pinDropVC.location = (sender as? String)!
             print("Sender Value:\(pinDropVC.location)")
         }
+        
+        if segue.identifier == "mainToStopRecord" {
+            let stopRecordVC = segue.destination as? StopRecordViewController
+            stopRecordVC?.mainVC = self
+        }
     }
     
     // 判断当前模式，以更换界面
@@ -319,6 +324,20 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         let location = String(format: "%0.5f°, %0.5f°", userCurrentLocation.coordinate.latitude, userCurrentLocation.coordinate.longitude)
         performSegue(withIdentifier: "mainToPinDrop", sender: location)
         print("Location: \(location)")
+    }
+    
+    // 改变打点图片
+    func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
+        var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "pointOnPath")
+        if annotationImage == nil {
+            var image = UIImage(named: "pointOnPath")!
+            image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
+            image = image.resize(toHeight: 25)!
+            image = image.resize(toWidth: 25)!
+            annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "pointOnPath")
+        }
+        
+        return annotationImage
     }
 
     
