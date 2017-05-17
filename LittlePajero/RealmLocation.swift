@@ -13,8 +13,8 @@ import ObjectMapper_Realm
 
 class RealmLocation: Object, Mappable {
     dynamic var id: Int = 1
-    dynamic var latitude: Float = 0.00
-    dynamic var longitude: Float = 0.00
+    dynamic var latitude: Double = 0.00
+    dynamic var longitude: Double = 0.00
     
     let ownerPath = LinkingObjects(fromType: RealmPath.self, property: "locations")
     

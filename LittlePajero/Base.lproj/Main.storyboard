@@ -86,25 +86,6 @@
                                     <action selector="returnUserLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FQY-YO-nxv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S67-Qo-KHF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="199" y="578" width="65" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="MAf-CP-spW"/>
-                                    <constraint firstAttribute="height" constant="65" id="jcL-fh-for"/>
-                                </constraints>
-                                <state key="normal" image="playArrowMaterial"/>
-                                <connections>
-                                    <action selector="continueRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L6B-xu-Sfz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-wG-5yF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
-                                <rect key="frame" x="110" y="578" width="65" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="Crc-za-3Hf"/>
-                                    <constraint firstAttribute="height" constant="65" id="Fqq-Lm-6PL"/>
-                                </constraints>
-                                <state key="normal" image="rectangle5"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-Zq-TIV" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="110" y="578" width="65" height="65"/>
                                 <constraints>
@@ -125,6 +106,28 @@
                                 <state key="normal" image="pauseMaterial"/>
                                 <connections>
                                     <action selector="pauseRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PQE-P8-htX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S67-Qo-KHF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="199" y="578" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="MAf-CP-spW"/>
+                                    <constraint firstAttribute="height" constant="65" id="jcL-fh-for"/>
+                                </constraints>
+                                <state key="normal" image="playArrowMaterial"/>
+                                <connections>
+                                    <action selector="continueRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FXB-37-3m6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c9-wG-5yF" customClass="FloatingButton" customModule="LittlePajero" customModuleProvider="target">
+                                <rect key="frame" x="110" y="578" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="Crc-za-3Hf"/>
+                                    <constraint firstAttribute="height" constant="65" id="Fqq-Lm-6PL"/>
+                                </constraints>
+                                <state key="normal" image="rectangle5"/>
+                                <connections>
+                                    <action selector="stopRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aBM-ud-iTi"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gbw-hI-yGI">

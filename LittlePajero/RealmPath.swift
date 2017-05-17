@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import ObjectMapper
 import ObjectMapper_Realm
+import Mapbox
 
 class RealmPath: Object, Mappable {
     dynamic var id: Int = 1
@@ -35,11 +36,11 @@ class RealmPath: Object, Mappable {
         return (realm.objects(RealmPath.self).max(ofProperty: "id") as Int? ?? 0) + 1
     }
     
-    func transformToJSON() -> [(Float, Float)] {
-        var data : [(Float, Float)] = []
+    func coordinates() -> [CLLocationCoordinate2D] {
+        var data : [(Double, Double)] = []
         for location in self.locations {
-            data.append((location.latitude, location.longitude))
+            data.append((location.longitude, location.latitude))
         }
-        return data
+        return data.map({CLLocationCoordinate2D(latitude: $0.1, longitude: $0.0)})
     }
 }
