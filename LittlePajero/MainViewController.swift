@@ -346,8 +346,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         currentPoint.longitude = Float(point.coordinate.longitude)
         currentPoint.id = RealmPoint.incrementID()
         
+        let currentPath = self.realm.object(ofType: RealmPath.self, forPrimaryKey: self.currentRecordingPathId)
+        
         try! realm.write {
             realm.add(currentPoint)
+            currentPath?.points.append(currentPoint)
         }
         
         // 传递 location 值，给PinDropViewController

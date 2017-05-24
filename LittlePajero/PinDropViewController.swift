@@ -8,13 +8,14 @@
 
 import UIKit
 
-class PinDropViewController: UIViewController {
+class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var locationKindTextFeild: UITextField!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var cameraButtonLabel: UILabel!
+    @IBOutlet weak var commentTextView: UITextView!
     
     var location: String = ""
 
@@ -29,10 +30,19 @@ class PinDropViewController: UIViewController {
         desLabel.textColor = UIColor.lpBackgroundWhite
         cameraButton.backgroundColor = UIColor.lpGrey
         cameraButtonLabel.textColor = UIColor.lpMuteBlack
+        locationKindTextFeild.textColor = UIColor.lpWhite
+        commentTextView.textColor = UIColor.lpWhite
+        
+        // 设置默认 TextView 里面的 placeholder
+        commentTextView.text = "备注"
+        commentTextView.textColor = UIColor.lpGrey
+        
         // 从 MainViewController 传 location 到这个页面
         locationLabel.text = "\(location)"
         
         //locationKindTextFeild.placeHolderColor = UIColor.lpGrey
+        
+        self.locationKindTextFeild.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +64,27 @@ class PinDropViewController: UIViewController {
     
     @IBAction func close() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // 按回车之后收起键盘
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    // 用户开始输入之后，去掉框框里的内容
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lpGrey {
+            textView.text = nil
+            textView.textColor = UIColor.lpWhite
+        }
+    }
+    
+    // 用户要是删掉了内容的话，把 placeholder 内容放回来
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "备注"
+        }
     }
 }
 

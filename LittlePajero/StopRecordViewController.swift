@@ -39,13 +39,6 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         
         // 地图中心先设置成用户 —— 之后要自定义中心
         mapView.userTrackingMode = .follow
-        
-        print(currentPathId)
-        //let currentPath = realm.objects(RealmPath.self).filter("id = \(currentPathId)")
-        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
-        print(currentPath)
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,7 +65,9 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     // UITableViewDelegate 和 UITableViewDataSource delegate 的方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("numberOfRowInSection")
-        return 5
+        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
+        let points = currentPath?.points
+        return points!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

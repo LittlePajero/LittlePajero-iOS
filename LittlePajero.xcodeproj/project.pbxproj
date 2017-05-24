@@ -21,7 +21,6 @@
 		13C1654B1ECC5C4000F71224 /* RealmPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165481ECC5C4000F71224 /* RealmPoint.swift */; };
 		13C1654F1ECC8E1A00F71224 /* OrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C1654E1ECC8E1A00F71224 /* OrangeButton.swift */; };
 		13C165511ECC96F900F71224 /* LightTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165501ECC96F900F71224 /* LightTextField.swift */; };
-		13C165531ECC9E8A00F71224 /* LightTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165521ECC9E8A00F71224 /* LightTextView.swift */; };
 		13C165551ECCC07C00F71224 /* StopRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165541ECCC07C00F71224 /* StopRecordViewController.swift */; };
 		13C2675C1ED555D6008379F8 /* PointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C2675B1ED555D6008379F8 /* PointTableViewCell.swift */; };
 		13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */; };
@@ -54,7 +53,6 @@
 		13C165481ECC5C4000F71224 /* RealmPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPoint.swift; sourceTree = "<group>"; };
 		13C1654E1ECC8E1A00F71224 /* OrangeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
 		13C165501ECC96F900F71224 /* LightTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTextField.swift; sourceTree = "<group>"; };
-		13C165521ECC9E8A00F71224 /* LightTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTextView.swift; sourceTree = "<group>"; };
 		13C165541ECCC07C00F71224 /* StopRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopRecordViewController.swift; sourceTree = "<group>"; };
 		13C2675B1ED555D6008379F8 /* PointTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTableViewCell.swift; sourceTree = "<group>"; };
 		13E4E2111EC482A00015CC72 /* APScheduledLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APScheduledLocationManager.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				13C1654E1ECC8E1A00F71224 /* OrangeButton.swift */,
 				CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */,
 				13C165501ECC96F900F71224 /* LightTextField.swift */,
-				13C165521ECC9E8A00F71224 /* LightTextView.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -332,7 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC5DD8851EC9BAF30034DC61 /* SearchingBarControlButton.swift in Sources */,
-				13C165531ECC9E8A00F71224 /* LightTextView.swift in Sources */,
 				CC3D4D121EC8BBA200CFBCD1 /* FloatingMiniButton.swift in Sources */,
 				137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */,
 				CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */,

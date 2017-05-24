@@ -577,13 +577,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLT-lg-As0">
-                                                    <rect key="frame" x="296" y="28" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="clearMaterialCopy"/>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2v-e9-BWm">
-                                                    <rect key="frame" x="337" y="28" width="20" height="20"/>
+                                                    <rect key="frame" x="307" y="26" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="modeEditMaterialCopy"/>
                                                 </button>
@@ -594,6 +589,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLT-lg-As0">
+                                                    <rect key="frame" x="335" y="26" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="clearMaterialCopy"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -757,6 +757,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="S60-Mx-dgt" id="bkf-L3-k73"/>
                         <outlet property="cameraButtonLabel" destination="KOE-c4-VUg" id="Q41-K8-HCx"/>
+                        <outlet property="commentTextView" destination="Otm-H7-iE2" id="d7d-u1-aPG"/>
                         <outlet property="desLabel" destination="k9D-Wd-uc9" id="aDU-26-r6d"/>
                         <outlet property="locationKindTextFeild" destination="9ON-PS-U2c" id="IsD-m9-sja"/>
                         <outlet property="locationLabel" destination="ReH-Z4-1Xd" id="5pW-fP-EZ0"/>
