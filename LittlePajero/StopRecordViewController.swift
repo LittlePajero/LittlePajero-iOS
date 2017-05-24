@@ -7,20 +7,45 @@
 //
 
 import UIKit
+import Mapbox
+import RealmSwift
 
-class StopRecordViewController: UIViewController{
-    
-    @IBOutlet weak var desLabel: UILabel!
+class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var mainVC : MainViewController?
+    var currentPathId: Int = 0
     
+    @IBOutlet var mapView: MGLMapView!
+    @IBOutlet weak var pointsTableView: UITableView!
+    
+    fileprivate let realm = try! Realm()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 将背景设置为模糊
-        setBackgroundBlur()
-        desLabel.textColor = UIColor.lpWhite
-    
+        // 设置 navigationBar 上的按钮
+        let backButton = UIBarButtonItem(image: UIImage(named: "arrowBackMaterial"), style: .plain, target: self, action: #selector(StopRecordViewController.backToMainVC))
+        let moreButton = UIBarButtonItem(image: UIImage(named: "moreVertMaterial"), style: .plain, target: self, action: #selector(StopRecordViewController.clickMoreButton))
+        let shareButton = UIBarButtonItem(image: UIImage(named: "shareMaterial"), style: .plain, target: self, action: #selector(StopRecordViewController.clickShareButton))
+        // 将按钮添加到 navigationBar 上
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.setLeftBarButton(backButton, animated: true)
+        navigationItem.setRightBarButtonItems([moreButton, shareButton], animated: true)
+        
+        // mapView 的代理是自己
+        mapView.delegate = self
+        pointsTableView.delegate = self
+        pointsTableView.dataSource = self
+        
+        // 地图中心先设置成用户 —— 之后要自定义中心
+        mapView.userTrackingMode = .follow
+        
+        print(currentPathId)
+        //let currentPath = realm.objects(RealmPath.self).filter("id = \(currentPathId)")
+        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
+        print(currentPath)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,23 +54,33 @@ class StopRecordViewController: UIViewController{
     }
     
     // 点击按钮返回
-    @IBAction func backToMainVC() {
+    func backToMainVC() {
         self.mainVC?.mode = .idle
         self.dismiss(animated: true, completion: nil)
     }
     
-    // 设置背景为模糊
-    func setBackgroundBlur() {
-        self.view.backgroundColor = UIColor.clear
-        let blurEffect = UIBlurEffect(style: .dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.alpha = 1
-        self.view.insertSubview(blurEffectView, at: 0)
+    func clickMoreButton() {
         
-        blurEffectView.heroModifiers = [.fade]
+    }
+    
+    func clickShareButton() {
+        
     }
     
     
+
+    // UITableViewDelegate 和 UITableViewDataSource delegate 的方法
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("numberOfRowInSection")
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pointTableViewCell", for: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

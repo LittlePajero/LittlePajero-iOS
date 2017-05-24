@@ -56,7 +56,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     
     var timer: Timer?
     var polylineSource: MGLShapeSource?
-    var currentIndex = 1
+    // var currentIndex = 1
     var allCoordinates: [CLLocationCoordinate2D]!    // 这个没用了
     var progressView: UIProgressView!                // 下载地图的进度条
     
@@ -119,8 +119,11 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         }
         
         if segue.identifier == "mainToStopRecord" {
-            let stopRecordVC = segue.destination as? StopRecordViewController
-            stopRecordVC?.mainVC = self
+            let navVC = segue.destination as! UINavigationController
+            let stopRecordVC = navVC.viewControllers.first as! StopRecordViewController
+            stopRecordVC.mainVC = self
+            stopRecordVC.currentPathId = (sender as? Int)!
+            print("Sender Value:\(stopRecordVC.currentPathId)")
         }
         
         if segue.identifier == "mainToSideMenu" {
@@ -320,6 +323,9 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     
     @IBAction func stopRecord(_ sender: UIButton) {
         self.mode = .stopRecord
+        
+        // 传递 currentRecordingpath 到 StopRecordViewController
+        performSegue(withIdentifier: "mainToStopRecord", sender: self.currentRecordingPathId)
     }
     
     func downloadMap() {
@@ -344,6 +350,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
             realm.add(currentPoint)
         }
         
+        // 传递 location 值，给PinDropViewController
         let location = String(format: "%0.5f°, %0.5f°", userCurrentLocation.coordinate.latitude, userCurrentLocation.coordinate.longitude)
         performSegue(withIdentifier: "mainToPinDrop", sender: location)
         print("Location: \(location)")
