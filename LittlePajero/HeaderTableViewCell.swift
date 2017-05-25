@@ -1,27 +1,22 @@
 //
-//  PointTableViewCell.swift
+//  HeaderTableViewCell.swift
 //  LittlePajero
 //
-//  Created by ivyxuan on 2017/5/24.
+//  Created by ivyxuan on 2017/5/25.
 //  Copyright © 2017年 ivyxuan. All rights reserved.
 //
 
 import UIKit
 
-class PointTableViewCell: UITableViewCell {
-
-    // Mark: Properties
-    @IBOutlet weak var pointName: UILabel!
-    @IBOutlet weak var pointLocation: UILabel!
-    @IBOutlet weak var photoImageView: UIImageView!
+class HeaderTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        // 样式
-        pointName.textColor = UIColor.lpBlack
-        pointLocation.textColor = UIColor.lpGrey
         self.backgroundColor = UIColor.lpBackgroundWhite
     }
 

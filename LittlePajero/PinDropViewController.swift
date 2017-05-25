@@ -42,7 +42,8 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         
         //locationKindTextFeild.placeHolderColor = UIColor.lpGrey
         
-        self.locationKindTextFeild.delegate = self
+        locationKindTextFeild.delegate = self
+        commentTextView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,6 +71,14 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     // 用户开始输入之后，去掉框框里的内容

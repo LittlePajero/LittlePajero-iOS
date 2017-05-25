@@ -61,13 +61,33 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     }
     
     
-
     // UITableViewDelegate 和 UITableViewDataSource delegate 的方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("numberOfRowInSection")
         let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
         let points = currentPath?.points
         return points!.count
+    }
+    
+    
+    // 添加 Header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderTableViewCell
+        return headerCell
+    }
+    
+    // 添加 Header 高度（不能删，没有他显示不出来，我也不知道为什么）
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 192.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerCell = tableView.dequeueReusableCell(withIdentifier: "footerCell") as! FooterTableViewCell
+        return footerCell
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

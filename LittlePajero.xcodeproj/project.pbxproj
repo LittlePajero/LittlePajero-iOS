@@ -15,6 +15,10 @@
 		137094F81EBC5DED003C12F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137094F61EBC5DED003C12F5 /* Main.storyboard */; };
 		137094FA1EBC5DED003C12F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137094F91EBC5DED003C12F5 /* Assets.xcassets */; };
 		137094FD1EBC5DED003C12F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137094FB1EBC5DED003C12F5 /* LaunchScreen.storyboard */; };
+		139671541ED6ECAA003EAE99 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139671531ED6ECAA003EAE99 /* HeaderTableViewCell.swift */; };
+		139671561ED6F876003EAE99 /* FooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139671551ED6F876003EAE99 /* FooterTableViewCell.swift */; };
+		1396715A1ED70D88003EAE99 /* SaveOrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139671591ED70D88003EAE99 /* SaveOrangeButton.swift */; };
+		1396715C1ED711F5003EAE99 /* RatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396715B1ED711F5003EAE99 /* RatingButton.swift */; };
 		13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */; };
 		13C165491ECC5C4000F71224 /* RealmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165461ECC5C4000F71224 /* RealmLocation.swift */; };
 		13C1654A1ECC5C4000F71224 /* RealmPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C165471ECC5C4000F71224 /* RealmPath.swift */; };
@@ -47,6 +51,10 @@
 		137094F91EBC5DED003C12F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		137094FC1EBC5DED003C12F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		137094FE1EBC5DED003C12F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		139671531ED6ECAA003EAE99 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		139671551ED6F876003EAE99 /* FooterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterTableViewCell.swift; sourceTree = "<group>"; };
+		139671591ED70D88003EAE99 /* SaveOrangeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveOrangeButton.swift; sourceTree = "<group>"; };
+		1396715B1ED711F5003EAE99 /* RatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingButton.swift; sourceTree = "<group>"; };
 		13BDFC821EC0A14C00230EF5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		13C165461ECC5C4000F71224 /* RealmLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmLocation.swift; sourceTree = "<group>"; };
 		13C165471ECC5C4000F71224 /* RealmPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPath.swift; sourceTree = "<group>"; };
@@ -125,6 +133,8 @@
 				137094F41EBC5DED003C12F5 /* MainViewController.swift */,
 				13577A8C1EC8344600C5B16C /* PinDropViewController.swift */,
 				13C2675B1ED555D6008379F8 /* PointTableViewCell.swift */,
+				139671531ED6ECAA003EAE99 /* HeaderTableViewCell.swift */,
+				139671551ED6F876003EAE99 /* FooterTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -176,6 +186,8 @@
 				13C1654E1ECC8E1A00F71224 /* OrangeButton.swift */,
 				CC3D4D0D1EC5F82700CFBCD1 /* Colors.swift */,
 				13C165501ECC96F900F71224 /* LightTextField.swift */,
+				139671591ED70D88003EAE99 /* SaveOrangeButton.swift */,
+				1396715B1ED711F5003EAE99 /* RatingButton.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -332,6 +344,7 @@
 				CC3D4D121EC8BBA200CFBCD1 /* FloatingMiniButton.swift in Sources */,
 				137094F51EBC5DED003C12F5 /* MainViewController.swift in Sources */,
 				CC3D4D0E1EC5F82700CFBCD1 /* Colors.swift in Sources */,
+				1396715C1ED711F5003EAE99 /* RatingButton.swift in Sources */,
 				13C165491ECC5C4000F71224 /* RealmLocation.swift in Sources */,
 				134B2D321EC34BD50017F6EE /* TransitionManager.swift in Sources */,
 				CC5DD8831EC9B3360034DC61 /* SearchingBar.swift in Sources */,
@@ -340,14 +353,17 @@
 				CC5DD8871EC9BC380034DC61 /* SearchingBarTextField.swift in Sources */,
 				13E4E2121EC482A00015CC72 /* APScheduledLocationManager.swift in Sources */,
 				CC7446481ECC4A0700CA8C5A /* SearchingTextDelegate.swift in Sources */,
+				139671561ED6F876003EAE99 /* FooterTableViewCell.swift in Sources */,
 				13C165511ECC96F900F71224 /* LightTextField.swift in Sources */,
 				13C1654B1ECC5C4000F71224 /* RealmPoint.swift in Sources */,
 				CCADFF1D1ECB6C8D0049E163 /* SideMenuButton.swift in Sources */,
 				13C2675C1ED555D6008379F8 /* PointTableViewCell.swift in Sources */,
+				139671541ED6ECAA003EAE99 /* HeaderTableViewCell.swift in Sources */,
 				13577A8D1EC8344600C5B16C /* PinDropViewController.swift in Sources */,
 				13E4E2141EC4B1020015CC72 /* ListTransform.swift in Sources */,
 				13BDFC831EC0A14C00230EF5 /* MenuViewController.swift in Sources */,
 				CC3D4D101EC834A800CFBCD1 /* FloatingButton.swift in Sources */,
+				1396715A1ED70D88003EAE99 /* SaveOrangeButton.swift in Sources */,
 				134B2D2E1EC1F57B0017F6EE /* ActionViewController.swift in Sources */,
 				13C165551ECCC07C00F71224 /* StopRecordViewController.swift in Sources */,
 				137094F31EBC5DED003C12F5 /* AppDelegate.swift in Sources */,
