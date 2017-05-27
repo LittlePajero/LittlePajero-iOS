@@ -9,8 +9,6 @@ target 'LittlePajero' do
   pod 'Mapbox-iOS-SDK', '~> 3.5'
   pod 'SideMenu'
   pod 'RealmSwift'
-  pod 'ObjectMapper', '~> 2.2'
-  pod "ObjectMapper+Realm"
   pod 'SwiftLocation'
   pod 'Material'
   pod 'Hero'

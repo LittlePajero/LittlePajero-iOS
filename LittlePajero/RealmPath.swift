@@ -8,11 +8,9 @@
 
 import Foundation
 import RealmSwift
-import ObjectMapper
-import ObjectMapper_Realm
 import Mapbox
 
-class RealmPath: Object, Mappable {
+class RealmPath: Object {
     dynamic var id: Int = 1
     var locations = List<RealmLocation>()
     var points = List<RealmPoint>()
@@ -20,16 +18,7 @@ class RealmPath: Object, Mappable {
     override static func primaryKey() -> String? {
         return "id"
     }
-    
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        id           <- map["id"]
-        locations    <- (map["locations"], ListTransform<RealmLocation>())
-    }
-    
+
     //Incrementa ID
     class func incrementID() -> Int {
         let realm = try! Realm()

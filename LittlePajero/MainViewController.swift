@@ -114,8 +114,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         
         if segue.identifier == "mainToPinDrop" {
             let pinDropVC = segue.destination as! PinDropViewController
-            pinDropVC.location = (sender as? String)!
-            print("Sender Value:\(pinDropVC.location)")
+            pinDropVC.location = (sender as? MGLUserLocation)!
         }
         
         if segue.identifier == "mainToStopRecord" {
@@ -337,6 +336,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
     // 打点并且跳到添加打点内容的页面
     @IBAction func pinDrop(_ sender: UIButton) {
         let userCurrentLocation = mapView.userLocation!
+        print("userCurrentLocation 的值是\(userCurrentLocation)")
         let point = MGLPointAnnotation()
         point.coordinate = CLLocationCoordinate2D(latitude: userCurrentLocation.coordinate.latitude, longitude: userCurrentLocation.coordinate.longitude)
         mapView.addAnnotation(point)
@@ -353,10 +353,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
             currentPath?.points.append(currentPoint)
         }
         
-        // 传递 location 值，给PinDropViewController
-        let location = userCurrentLocation
-        performSegue(withIdentifier: "mainToPinDrop", sender: location)
-        print("Location: \(location)")
+        // 传递 userCurrentLocation 值，给PinDropViewController
+        performSegue(withIdentifier: "mainToPinDrop", sender: userCurrentLocation)
     }
     
     // 改变打点图片

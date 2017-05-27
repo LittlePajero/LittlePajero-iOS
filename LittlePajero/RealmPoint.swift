@@ -8,13 +8,13 @@
 
 import Foundation
 import RealmSwift
-import ObjectMapper
-import ObjectMapper_Realm
 
 class RealmPoint: Object {
     dynamic var id: Int = 1
     dynamic var latitude: Float = 0.0
     dynamic var longitude: Float = 0.0
+    dynamic var kind: String = ""
+    dynamic var commnet: String = ""
     
     let owners = LinkingObjects(fromType: RealmPath.self, property: "points")
     

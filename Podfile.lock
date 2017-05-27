@@ -4,10 +4,6 @@ PODS:
   - Material (2.6.3):
     - Material/Core (= 2.6.3)
   - Material/Core (2.6.3)
-  - ObjectMapper (2.2.6)
-  - ObjectMapper+Realm (0.3):
-    - ObjectMapper
-    - RealmSwift
   - Realm (2.7.0):
     - Realm/Headers (= 2.7.0)
   - Realm/Headers (2.7.0)
@@ -20,8 +16,6 @@ DEPENDENCIES:
   - Hero
   - Mapbox-iOS-SDK (~> 3.5)
   - Material
-  - ObjectMapper (~> 2.2)
-  - ObjectMapper+Realm
   - RealmSwift
   - SideMenu
   - SwiftLocation
@@ -30,13 +24,11 @@ SPEC CHECKSUMS:
   Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   Mapbox-iOS-SDK: 81197829dcf4c4ed9a593b7a95462881b5f1309a
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
-  ObjectMapper: '042708195cc46c20871cbcbec0453826398273fd'
-  ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
   Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
   RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
   SwiftLocation: 1fe2e15a5812e961496e82eeaca71d03e829e47a
 
-PODFILE CHECKSUM: cfcb93377c94098fd10abb4c8bf4f31c22b28986
+PODFILE CHECKSUM: 2ae9fa560e074ff7ae69bd73f7aa3c710787954a
 
 COCOAPODS: 1.2.0

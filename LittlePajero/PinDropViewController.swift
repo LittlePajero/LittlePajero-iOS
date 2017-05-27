@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import CoreLocation
+import Mapbox
 
 class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -20,7 +21,7 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var locationKindPickerView: UIPickerView! = UIPickerView()
     
-    var location: CLLocationCoordinate2D!
+    var location: MGLUserLocation!
     let locationKind = ["行程起点", "下道点", "转折点", "露营点", "上道点", "行程终点", "其他"]
 
     override func viewDidLoad() {
@@ -42,7 +43,7 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         commentTextView.textColor = UIColor.lpGrey
         
         // 从 MainViewController 传 location 到这个页面
-        locationLabel.text = String(format: "%0.5f°, %0.5f°", location.latitude, location.longitude)
+        locationLabel.text = String(format: "%0.5f°, %0.5f°", (location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
         
         //locationKindTextFeild.placeHolderColor = UIColor.lpGrey
         
@@ -97,6 +98,19 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     // 保存内容
     @IBAction func save() {
         let realm = try! Realm()
+        // 获得 用户坐标
+        let point = RealmPoint()
+        point.latitude = Float(location.coordinate.latitude)
+        point.longitude = Float(location.coordinate.longitude)
+        // 获得坐标 ID
+        point.id = RealmPoint.incrementID()
+        // 获得 坐标类型
+        // 获得 备注
+        // 获得当前 path
+    
+        try! realm.write {
+            
+        }
         
     }
     
