@@ -8,10 +8,8 @@
 
 import Foundation
 import RealmSwift
-import ObjectMapper
-import ObjectMapper_Realm
 
-class RealmLocation: Object, Mappable {
+class RealmLocation: Object {
     dynamic var id: Int = 1
     dynamic var latitude: Double = 0.00
     dynamic var longitude: Double = 0.00
@@ -20,15 +18,6 @@ class RealmLocation: Object, Mappable {
     
     override static func primaryKey() -> String? {
         return "id"
-    }
-    
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        latitude     <- map["latitude"]
-        longitude    <- map["longitude"]
     }
     
     //Incrementa ID

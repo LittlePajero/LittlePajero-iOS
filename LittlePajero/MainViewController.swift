@@ -11,8 +11,6 @@ import Mapbox                          // 引入超级好用的地图
 import SideMenu
 import RealmSwift
 import CoreLocation                    // 用APS，获取地理位置信息的库（自带）
-import ObjectMapper                    // 将 Object 转换成 JSON
-import ObjectMapper_Realm
 import SwiftLocation                   // 固定时间间隔记录用户位置
 
 // 状态
@@ -115,6 +113,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         if segue.identifier == "mainToPinDrop" {
             let pinDropVC = segue.destination as! PinDropViewController
             pinDropVC.location = (sender as? MGLUserLocation)!
+            let navVC = segue.destination as! UINavigationController
+            let
         }
         
         if segue.identifier == "mainToStopRecord" {

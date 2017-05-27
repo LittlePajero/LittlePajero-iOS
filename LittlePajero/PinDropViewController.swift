@@ -45,8 +45,7 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         // 从 MainViewController 传 location 到这个页面
         locationLabel.text = String(format: "%0.5f°, %0.5f°", (location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
         
-        //locationKindTextFeild.placeHolderColor = UIColor.lpGrey
-        
+        // Delegate 都放在了这里
         locationKindTextFeild.delegate = self
         commentTextView.delegate = self
         locationKindPickerView.delegate = self
@@ -54,15 +53,15 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         
         // 将 UITextField 原先的键盘换成 UIPickerView
         locationKindTextFeild.inputView = locationKindPickerView
-        // 不能把 locationKindPickerView 添加进 Subview
+        
+        // 不能把 locationKindPickerView 添加进 Subview , 否则会报错
         self.locationKindPickerView.removeFromSuperview()
         
         // 设置 UItextField 预设内容
         // locationKindTextFeild.text = locationKind[0]
         
-        // 增加触控事件
+        // 增加触控事件(点击空白处收起 PickerView)
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(PinDropViewController.hidePickerView(tapG:)))
-        
         tap.cancelsTouchesInView = false
         
         // 在最底层的 View 上加上点击事件
@@ -98,15 +97,26 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     // 保存内容
     @IBAction func save() {
         let realm = try! Realm()
-        // 获得 用户坐标
         let point = RealmPoint()
+        // 获得 用户坐标
         point.latitude = Float(location.coordinate.latitude)
         point.longitude = Float(location.coordinate.longitude)
         // 获得坐标 ID
         point.id = RealmPoint.incrementID()
         // 获得 坐标类型
+        if locationLabel.text != "" {
+            point.kind = locationLabel.text!
+        } else {
+            point.kind = "快快添加上坐标类型吧～"
+        }
         // 获得 备注
+        if commentTextView.text != "备注" {
+            point.comment = commentTextView.text!
+        } else {
+            point.comment = "快快添加上坐标备注吧～"
+        }
         // 获得当前 path
+        
     
         try! realm.write {
             

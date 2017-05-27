@@ -14,7 +14,7 @@ class RealmPoint: Object {
     dynamic var latitude: Float = 0.0
     dynamic var longitude: Float = 0.0
     dynamic var kind: String = ""
-    dynamic var commnet: String = ""
+    dynamic var comment: String = ""
     
     let owners = LinkingObjects(fromType: RealmPath.self, property: "points")
     
