@@ -112,9 +112,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         
         if segue.identifier == "mainToPinDrop" {
             let pinDropVC = segue.destination as! PinDropViewController
-            pinDropVC.location = (sender as? MGLUserLocation)!
-            let navVC = segue.destination as! UINavigationController
-            let
+            pinDropVC.location = mapView.userLocation
+            pinDropVC.pathId = currentRecordingPathId!
         }
         
         if segue.identifier == "mainToStopRecord" {
@@ -341,20 +340,8 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         point.coordinate = CLLocationCoordinate2D(latitude: userCurrentLocation.coordinate.latitude, longitude: userCurrentLocation.coordinate.longitude)
         mapView.addAnnotation(point)
         
-        let currentPoint = RealmPoint()
-        currentPoint.latitude = Float(point.coordinate.latitude)
-        currentPoint.longitude = Float(point.coordinate.longitude)
-        currentPoint.id = RealmPoint.incrementID()
-        
-        let currentPath = self.realm.object(ofType: RealmPath.self, forPrimaryKey: self.currentRecordingPathId)
-        
-        try! realm.write {
-            realm.add(currentPoint)
-            currentPath?.points.append(currentPoint)
-        }
-        
         // 传递 userCurrentLocation 值，给PinDropViewController
-        performSegue(withIdentifier: "mainToPinDrop", sender: userCurrentLocation)
+        performSegue(withIdentifier: "mainToPinDrop", sender: self)
     }
     
     // 改变打点图片

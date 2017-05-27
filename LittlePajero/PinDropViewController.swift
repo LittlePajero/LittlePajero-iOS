@@ -22,6 +22,7 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     @IBOutlet weak var locationKindPickerView: UIPickerView! = UIPickerView()
     
     var location: MGLUserLocation!
+    var pathId: Int = 0
     let locationKind = ["行程起点", "下道点", "转折点", "露营点", "上道点", "行程终点", "其他"]
 
     override func viewDidLoad() {
@@ -66,6 +67,8 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         
         // 在最底层的 View 上加上点击事件
         self.view.addGestureRecognizer(tap)
+        
+        print("pathId 是：\(pathId)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,13 +100,14 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     // 保存内容
     @IBAction func save() {
         let realm = try! Realm()
+        // 设置 Point
         let point = RealmPoint()
-        // 获得 用户坐标
+            // 获得 用户坐标
         point.latitude = Float(location.coordinate.latitude)
         point.longitude = Float(location.coordinate.longitude)
-        // 获得坐标 ID
+            // 获得坐标 ID
         point.id = RealmPoint.incrementID()
-        // 获得 坐标类型
+            // 获得 坐标类型
         if locationLabel.text != "" {
             point.kind = locationLabel.text!
         } else {
@@ -116,12 +120,13 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             point.comment = "快快添加上坐标备注吧～"
         }
         // 获得当前 path
-        
-    
+        let path = realm.object(ofType: RealmPath.self, forPrimaryKey: self.pathId)
+        // 都获得之后就可以保存了！
         try! realm.write {
-            
+            realm.add(point)
+            path?.points.append(point)
         }
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     // 按回车之后收起键盘
