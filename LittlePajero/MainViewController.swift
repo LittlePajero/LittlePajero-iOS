@@ -354,7 +354,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         }
         
         // 传递 location 值，给PinDropViewController
-        let location = String(format: "%0.5f°, %0.5f°", userCurrentLocation.coordinate.latitude, userCurrentLocation.coordinate.longitude)
+        let location = userCurrentLocation
         performSegue(withIdentifier: "mainToPinDrop", sender: location)
         print("Location: \(location)")
     }

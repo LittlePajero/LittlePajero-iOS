@@ -10,13 +10,16 @@ import UIKit
 import Mapbox
 import RealmSwift
 
-class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     var mainVC : MainViewController?
     var currentPathId: Int = 0
+    // 定义屏幕高度 —— 方便滚动
+    let screenHeight = UIScreen.main.bounds.height
     
     @IBOutlet var mapView: MGLMapView!
     @IBOutlet weak var pointsTableView: UITableView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate let realm = try! Realm()
 
@@ -36,6 +39,7 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         mapView.delegate = self
         pointsTableView.delegate = self
         pointsTableView.dataSource = self
+        scrollView.delegate = self
         
         // 地图中心先设置成用户 —— 之后要自定义中心
         mapView.userTrackingMode = .follow
@@ -60,16 +64,6 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         
     }
     
-    
-    // UITableViewDelegate 和 UITableViewDataSource delegate 的方法
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowInSection")
-        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
-        let points = currentPath?.points
-        return points!.count
-    }
-    
-    
     // 添加 Header
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderTableViewCell
@@ -81,13 +75,23 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         return 100.0
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 192.0
-    }
-    
+    // 添加 Footer
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerCell = tableView.dequeueReusableCell(withIdentifier: "footerCell") as! FooterTableViewCell
         return footerCell
+    }
+    
+    // 添加 Footer 高度
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 192.0
+    }
+
+    //----- UITableViewDelegate 和 UITableViewDataSource delegate 的方法 --------
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("numberOfRowInSection")
+        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
+        let points = currentPath?.points
+        return points!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,5 +101,25 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    // ---------------------------------------------------------------------------
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        
+        if scrollView == self.scrollView {
+            if yOffset >= scrollView.contentSize.height - screenHeight {
+                scrollView.isScrollEnabled = false
+                pointsTableView.isScrollEnabled = true
+            }
+            
+            if scrollView == self.pointsTableView {
+                if yOffset <= 0 {
+                    self.scrollView.isScrollEnabled = true
+                    self.pointsTableView.isScrollEnabled = false
+                }
+            }
+        }
     }
 }

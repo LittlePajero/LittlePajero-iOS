@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
+import CoreLocation
 
-class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -16,12 +18,14 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var cameraButtonLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var locationKindPickerView: UIPickerView! = UIPickerView()
     
-    var location: String = ""
+    var location: CLLocationCoordinate2D!
+    let locationKind = ["行程起点", "下道点", "转折点", "露营点", "上道点", "行程终点", "其他"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // 将背景设置为模糊
         setBackgroundBlur()
         
@@ -38,17 +42,40 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         commentTextView.textColor = UIColor.lpGrey
         
         // 从 MainViewController 传 location 到这个页面
-        locationLabel.text = "\(location)"
+        locationLabel.text = String(format: "%0.5f°, %0.5f°", location.latitude, location.longitude)
         
         //locationKindTextFeild.placeHolderColor = UIColor.lpGrey
         
         locationKindTextFeild.delegate = self
         commentTextView.delegate = self
+        locationKindPickerView.delegate = self
+        locationKindPickerView.dataSource = self
+        
+        // 将 UITextField 原先的键盘换成 UIPickerView
+        locationKindTextFeild.inputView = locationKindPickerView
+        // 不能把 locationKindPickerView 添加进 Subview
+        self.locationKindPickerView.removeFromSuperview()
+        
+        // 设置 UItextField 预设内容
+        // locationKindTextFeild.text = locationKind[0]
+        
+        // 增加触控事件
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(PinDropViewController.hidePickerView(tapG:)))
+        
+        tap.cancelsTouchesInView = false
+        
+        // 在最底层的 View 上加上点击事件
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // 点击空白处收起 PickerView
+    func hidePickerView(tapG: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     // 设置背景为模糊
@@ -65,6 +92,12 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     
     @IBAction func close() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // 保存内容
+    @IBAction func save() {
+        let realm = try! Realm()
+        
     }
     
     // 按回车之后收起键盘
@@ -95,6 +128,29 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             textView.text = "备注"
         }
     }
+    
+    // ------------ UIPickerView Delegate 方法 ----------------------------
+    // UIPickerView 有几列可以选择
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // UIPickerView 各列有多少行资料
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return locationKind.count
+    }
+    
+    // UIPickerView 每个选项提示的资料
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return locationKind[row]
+    }
+    
+    // UIPickerView 改变选项后执行的操作
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let textField = self.view?.viewWithTag(100) as? UITextField
+        textField?.text = " " + locationKind[row]
+    }
+    
 }
 
 extension UITextField{
