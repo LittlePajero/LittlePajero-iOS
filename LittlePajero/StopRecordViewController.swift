@@ -48,9 +48,9 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         // 地图中心先设置成用户 —— 之后要自定义中心
         mapView.userTrackingMode = .follow
         
-        scrollView.contentSize = CGSize(width: scrollViewContentWidth, height: scrollViewContentHeight)
-        scrollView.bounces = false
-        pointsTableView.bounces = false
+        //scrollView.contentSize = CGSize(width: scrollViewContentWidth, height: scrollViewContentHeight)
+        //scrollView.bounces = false
+        //pointsTableView.bounces = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,9 +72,24 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         
     }
     
+    @IBAction func clickSaveButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // 添加 Header
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderTableViewCell
+        // 记录时间
+        let date = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minute = calendar.component(.minute, from: date)
+        //时间给标题
+        headerCell.nameLabel.text = "\(year)年\(month)月\(day)日 \(hour):\(minute)的穿越"
+        headerCell.timeLabel.text = "\(year)年\(month)月\(day)日"
         return headerCell
     }
     
@@ -103,7 +118,12 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "pointTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pointTableViewCell") as! PointTableViewCell
+        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
+        let pointList = (currentPath?.points[indexPath.row])!
+        cell.pointName.text = pointList.kind
+        cell.pointLocation.text = "\(String(describing: pointList.latitude)), \(String(describing: pointList.longitude))"
+        cell.commentLabel.text = pointList.comment
         return cell
     }
     
@@ -112,7 +132,7 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     }
     
     // ---------------------------------------------------------------------------
-    
+    /*
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
         
@@ -130,4 +150,5 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
             }
         }
     }
+ */
 }

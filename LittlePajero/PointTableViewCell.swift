@@ -14,6 +14,7 @@ class PointTableViewCell: UITableViewCell {
     @IBOutlet weak var pointName: UILabel!
     @IBOutlet weak var pointLocation: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var commentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

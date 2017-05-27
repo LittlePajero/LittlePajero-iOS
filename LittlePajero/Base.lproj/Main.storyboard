@@ -568,7 +568,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="95" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="A8L-lN-nOM">
-                                        <rect key="frame" x="0.0" y="256" width="375" height="740"/>
+                                        <rect key="frame" x="0.0" y="256" width="375" height="411"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
@@ -654,9 +654,9 @@
                                                             <state key="normal" image="modeEditMaterialCopy"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行程起点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QV-84-9bF">
-                                                            <rect key="frame" x="82" y="14" width="70" height="21"/>
+                                                            <rect key="frame" x="82" y="14" width="160" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="70" id="Q0I-lK-XfA"/>
+                                                                <constraint firstAttribute="width" constant="160" id="Q0I-lK-XfA"/>
                                                                 <constraint firstAttribute="height" constant="21" id="fuV-BJ-cUv"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -670,6 +670,13 @@
                                                             </constraints>
                                                             <state key="normal" image="clearMaterialCopy"/>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="备注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uim-nG-ABP">
+                                                            <rect key="frame" x="82" y="60" width="204" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="bottomMargin" secondItem="u2v-e9-BWm" secondAttribute="bottom" constant="40.5" id="1KK-ux-n1s"/>
@@ -690,7 +697,9 @@
                                                         <constraint firstItem="2p7-Gz-9sT" firstAttribute="top" secondItem="7QV-84-9bF" secondAttribute="bottom" id="zNI-cL-ICl"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <accessibility key="accessibilityConfiguration" identifier="pointTableViewCell"/>
                                                 <connections>
+                                                    <outlet property="commentLabel" destination="Uim-nG-ABP" id="V5f-jS-AP9"/>
                                                     <outlet property="photoImageView" destination="nug-Hb-L5m" id="kOg-cl-t2A"/>
                                                     <outlet property="pointLocation" destination="2p7-Gz-9sT" id="phm-S4-FUN"/>
                                                     <outlet property="pointName" destination="7QV-84-9bF" id="BBd-RN-BDr"/>
@@ -709,6 +718,9 @@
                                                                 <constraint firstAttribute="height" constant="48" id="DpO-ga-TpL"/>
                                                             </constraints>
                                                             <state key="normal" title="保存"/>
+                                                            <connections>
+                                                                <action selector="clickSaveButton" destination="Yw1-5M-3Ja" eventType="touchUpInside" id="Wfz-7t-wia"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VLp-tw-yZL">
                                                             <rect key="frame" x="8" y="50.5" width="359" height="54"/>
