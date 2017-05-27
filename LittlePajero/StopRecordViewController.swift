@@ -14,8 +14,12 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     
     var mainVC : MainViewController?
     var currentPathId: Int = 0
-    // 定义屏幕高度 —— 方便滚动
+    
+    // 定义屏幕高度 —— 滚动需要
     let screenHeight = UIScreen.main.bounds.height
+    // 定义滚动内容物高度 —— 滚动需要
+    let scrollViewContentHeight = 740 as CGFloat
+    let scrollViewContentWidth = 375 as CGFloat
     
     @IBOutlet var mapView: MGLMapView!
     @IBOutlet weak var pointsTableView: UITableView!
@@ -43,6 +47,10 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         
         // 地图中心先设置成用户 —— 之后要自定义中心
         mapView.userTrackingMode = .follow
+        
+        scrollView.contentSize = CGSize(width: scrollViewContentWidth, height: scrollViewContentHeight)
+        scrollView.bounces = false
+        pointsTableView.bounces = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,16 +117,16 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         let yOffset = scrollView.contentOffset.y
         
         if scrollView == self.scrollView {
-            if yOffset >= scrollView.contentSize.height - screenHeight {
+            if yOffset >= scrollViewContentHeight - screenHeight {
                 scrollView.isScrollEnabled = false
                 pointsTableView.isScrollEnabled = true
             }
-            
-            if scrollView == self.pointsTableView {
-                if yOffset <= 0 {
-                    self.scrollView.isScrollEnabled = true
-                    self.pointsTableView.isScrollEnabled = false
-                }
+        }
+        
+        if scrollView == self.pointsTableView {
+            if yOffset <= 0 {
+                self.scrollView.isScrollEnabled = true
+                self.pointsTableView.isScrollEnabled = false
             }
         }
     }

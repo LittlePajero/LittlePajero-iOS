@@ -108,7 +108,7 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             // 获得坐标 ID
         point.id = RealmPoint.incrementID()
             // 获得 坐标类型
-        if locationLabel.text != "" {
+        if locationKindTextFeild.text != "" {
             point.kind = locationKindTextFeild.text!
         } else {
             point.kind = "快快添加上坐标类型吧～"

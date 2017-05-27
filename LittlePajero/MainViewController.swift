@@ -11,7 +11,6 @@ import Mapbox                          // 引入超级好用的地图
 import SideMenu
 import RealmSwift
 import CoreLocation                    // 用APS，获取地理位置信息的库（自带）
-import SwiftLocation                   // 固定时间间隔记录用户位置
 
 // 状态
 enum PresentWorkingMode {
@@ -162,9 +161,6 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         downloadDone.isHidden         = true
     }
     
-    // 把 RequestPool 拎到外面，以便后面更改打点模式
-    var locationRequest: LocationRequest? = nil
-    
     // 开始记录路径的模式
     func recordingStart() {
         print("----- Start Recording")
@@ -174,65 +170,42 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         userLocationLabel.isHidden    = false
         mainButton.isHidden           = true
         
-        // 记录轨迹
-        Location.onChangeTrackerSettings = { settings in
-            print(String(describing: settings))
-        }
-        
-        // 持续打点
-        self.locationRequest = Location.getLocation(accuracy: .room, frequency: .continuous, timeout: 60*60*5, success: { (_, location) in
-            print(location.shortDesc)
-            
-        }) { (request, last, error) in
-            print("Location monitoring failed due to an error \(error)")
-            
-            request.cancel() // stop continous location monitoring on error
-        }
-        
-        self.locationRequest?.register(observer: LocObserver.onAuthDidChange(.main, { (request, oldAuth, newAuth) in
-            print("Authorization moved from '\(oldAuth)' to '\(newAuth)'")
-        }))
-        
+        // 先产生一条新的 path
         let path = RealmPath()
         path.id = RealmPath.incrementID()
         try! self.realm.write {
             self.realm.add(path, update: false)
         }
-        self.currentRecordingPathId = path.id       // 这里改的 path 的 id !!!!!!!!!!!!!!!!!!
-        print("create new path")
-        var counts = 0
         
-        Location.onReceiveNewLocation = { location in
-            print(location.shortDesc)
-            if counts < 2 {
-                counts += 1
-            } else {
-                let userCurrentLocation = RealmLocation()
-                userCurrentLocation.latitude = location.coordinate.latitude
-                userCurrentLocation.longitude = location.coordinate.longitude
-                userCurrentLocation.id = RealmLocation.incrementID()
-                let currentPath = self.realm.object(ofType: RealmPath.self, forPrimaryKey: self.currentRecordingPathId)
-                try! self.realm.write {
-                    self.realm.add(userCurrentLocation, update: false)
-                    // self.realm.add(path, update: true)
-                    currentPath?.locations.append(userCurrentLocation)
-                }
-                counts = 0
-                print("succeed")
-                //self.pathLocations = currentPath!.coordinates()
-                let pathCoordinates = currentPath?.coordinates()
-                print(pathCoordinates!)
-                self.updatePolylineWithCoordinates(coordinates: pathCoordinates!)
-            }
+        // 这里改的 path 的 id !!!!!!!!!!!!!!!!!!
+        self.currentRecordingPathId = path.id
+        
+        // 固定时间执行 tickPoint 方法
+        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(tickPoint), userInfo: nil, repeats: true)
+    }
+    
+    // 打点的方法
+    func tickPoint() {
+        // 记录用户当前坐标
+        let userCurrentLocation = RealmLocation()
+        userCurrentLocation.latitude = (mapView.userLocation?.coordinate.latitude)!
+        userCurrentLocation.longitude = (mapView.userLocation?.coordinate.longitude)!
+        userCurrentLocation.id = RealmLocation.incrementID()
+        let currentPath = self.realm.object(ofType: RealmPath.self, forPrimaryKey: self.currentRecordingPathId)
+        // 存进 realm 中
+        try! realm.write {
+            realm.add(userCurrentLocation)
+            currentPath?.locations.append(userCurrentLocation)
         }
+        // 每次更新的时候还要画线
+        let pathCoordinates = currentPath?.coordinates()
+        print(pathCoordinates!)
+        self.updatePolylineWithCoordinates(coordinates: pathCoordinates!)
     }
     
     // 页面加载出来之后执行的方法们
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
         addLayer(to: style)
-        // updatePolylineWithCoordinates(coordinates: allCoordinates!)
-        // print(allCoordinates)
-        print("应该是打印出来了")
     }
     
     // 这里写了画线的样式
@@ -253,14 +226,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
                                            options: [.defaultValue : MGLConstantStyleValue<NSNumber>(rawValue: 1.5)])
         style.addLayer(layer)
     }
-    /*
-    func coordinates() -> [CLLocationCoordinate2D] {
-        let choosePath = self.realm.objects(RealmPath.self).filter("id == 1").first
-        let text = choosePath!.coordinates()
-        return text
-    }
-    */
-    
+
     // 更新路线
     func updatePolylineWithCoordinates(coordinates: [CLLocationCoordinate2D]) {
         var mutableCoordinates = coordinates
@@ -283,8 +249,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         continueRecordButton.isHidden = false
         
         // 暂停记录轨迹
-        self.locationRequest?.cancel()
-        // print(self.locationRequest?.state)
+        timer?.invalidate()
     }
     
     // 继续记录轨迹
@@ -297,8 +262,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         
         // 继续记录轨迹
         debugPrint("----- Continue clicked")
-        self.locationRequest?.resume()
-        //print(self.locationRequest?.state)
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(tickPoint), userInfo: nil, repeats: true)
     }
     
     func stopRecord() {
@@ -308,7 +272,7 @@ class MainViewController: UIViewController, MGLMapViewDelegate {
         mainButton.isHidden           = false
         
         // 停止记录轨迹
-        self.locationRequest?.cancel()
+        timer?.invalidate()
     }
     
     @IBAction func pauseRecord(_ sender: UIButton) {
