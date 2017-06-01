@@ -24,7 +24,8 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     var location: MGLUserLocation!
     var pathId: Int = 0
     let locationKind = ["行程起点", "下道点", "转折点", "露营点", "上道点", "行程终点", "其他"]
-
+    var photoData: NSData?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -122,8 +123,7 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         // 获得当前 path
         let path = realm.object(ofType: RealmPath.self, forPrimaryKey: self.pathId)
         // 获得照片
-        point.photo = NSData(data: UIImageJPEGRepresentation(cameraButton.image(for: .normal)!, 0.9)!)
-        
+        point.photo = photoData
         // 都获得之后就可以保存了！
         try! realm.write {
             realm.add(point)
@@ -211,16 +211,17 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var chosenImage = UIImage()
         chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        // 截取照片一部分显示出来
         cameraButton.imageView?.contentMode = .scaleAspectFill
         cameraButton.setImage(chosenImage, for: .normal)
-        //cameraButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 128, 275)
-        //cameraButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
-        //cameraButton.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
         
         // 把照片保存在用户的相机里
         let imageData = UIImageJPEGRepresentation(chosenImage, 1.0)
         let compressedJPGImage = UIImage.init(data: imageData!)
         UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
+        
+        // 将图片转换为 NSData，之后存储到 Realm
+        photoData = NSData(data: UIImageJPEGRepresentation(chosenImage, 1.0)!)
         
         self.dismiss(animated: true, completion: nil)
     }
