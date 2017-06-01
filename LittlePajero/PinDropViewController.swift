@@ -211,11 +211,11 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var chosenImage = UIImage()
         chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        cameraButton.imageView?.contentMode = .scaleAspectFill
         cameraButton.setImage(chosenImage, for: .normal)
         //cameraButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 128, 275)
         //cameraButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
         //cameraButton.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
-        cameraButton.contentMode = .scaleAspectFill
         
         // 把照片保存在用户的相机里
         let imageData = UIImageJPEGRepresentation(chosenImage, 1.0)
