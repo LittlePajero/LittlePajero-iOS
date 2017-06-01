@@ -573,10 +573,10 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="100" id="vEb-x0-RbD" customClass="HeaderTableViewCell" customModule="LittlePajero" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55.5" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="55" width="375" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vEb-x0-RbD" id="yIh-Py-aka">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQT-ap-O5C">
@@ -628,10 +628,10 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pointTableViewCell" rowHeight="95" id="S5t-GY-WAm" customClass="PointTableViewCell" customModule="LittlePajero" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="155.5" width="375" height="95"/>
+                                                <rect key="frame" x="0.0" y="155" width="375" height="95"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S5t-GY-WAm" id="fvp-rQ-2qR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoMaterial" translatesAutoresizingMaskIntoConstraints="NO" id="nug-Hb-L5m">
@@ -706,10 +706,10 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="192" id="lJ0-st-vLV" customClass="FooterTableViewCell" customModule="LittlePajero" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="250.5" width="375" height="192"/>
+                                                <rect key="frame" x="0.0" y="250" width="375" height="192"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lJ0-st-vLV" id="6ie-1K-aad">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="191.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f52-Z4-tMz" customClass="SaveOrangeButton" customModule="LittlePajero" customModuleProvider="target">
@@ -929,6 +929,9 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="openCameraButton" destination="PDg-64-S7R" eventType="touchUpInside" id="LX0-IP-h2O"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59A-z7-Lul" customClass="OrangeButton" customModule="LittlePajero" customModuleProvider="target">
                                 <rect key="frame" x="202" y="579" width="65" height="65"/>

@@ -11,7 +11,7 @@ import RealmSwift
 import CoreLocation
 import Mapbox
 
-class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var desLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -121,6 +121,9 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         }
         // 获得当前 path
         let path = realm.object(ofType: RealmPath.self, forPrimaryKey: self.pathId)
+        // 获得照片
+        point.photo = NSData(data: UIImageJPEGRepresentation(cameraButton.image(for: .normal)!, 0.9)!)
+        
         // 都获得之后就可以保存了！
         try! realm.write {
             realm.add(point)
@@ -178,6 +181,48 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let textField = self.view?.viewWithTag(100) as? UITextField
         textField?.text = " " + locationKind[row]
+    }
+    
+    // 点击拍照按钮访问相机
+    @IBAction func openCameraButton() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            alertNoCamera()
+        }
+    }
+    
+    // 如果设备没有相机就提示用户
+    func alertNoCamera() {
+        let alertVC = UIAlertController(
+            title: "No Camera",
+            message: "对不起啦，这个设备没有照相机耶",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertVC.addAction(okAction)
+        present(alertVC, animated: true, completion: nil)
+    }
+    
+    // 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var chosenImage = UIImage()
+        chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        cameraButton.setImage(chosenImage, for: .normal)
+        //cameraButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 128, 275)
+        //cameraButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
+        //cameraButton.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        cameraButton.contentMode = .scaleAspectFill
+        
+        // 把照片保存在用户的相机里
+        let imageData = UIImageJPEGRepresentation(chosenImage, 1.0)
+        let compressedJPGImage = UIImage.init(data: imageData!)
+        UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>小野猫需要使用您的相机，这样才可以拍照打点哦～喵～</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>小野猫需要使用您的图库，这样才可以上传照片哦～喵～</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
