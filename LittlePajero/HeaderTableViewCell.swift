@@ -18,6 +18,9 @@ class HeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.lpBackgroundWhite
+        nameLabel.textColor = UIColor.lpBlack
+        timeLabel.textColor = UIColor.lpGrey
+        distanceLabel.textColor = UIColor.lpGrey
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

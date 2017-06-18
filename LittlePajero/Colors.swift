@@ -44,4 +44,8 @@ extension UIColor {
     class var lpBlueLine: UIColor {
         return UIColor(red: 0.0 / 255.0, green: 204.0 / 255.0, blue: 255 / 255.0, alpha: 1.0)
     }
+    
+    class var lptransparent: UIColor {
+        return UIColor(white: 255.0 / 255.0, alpha: 0)
+    }
 }

@@ -556,7 +556,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4s-YL-2pS" customClass="MGLMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="1" width="375" height="797"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -567,8 +567,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="95" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="A8L-lN-nOM">
-                                        <rect key="frame" x="0.0" y="307" width="375" height="493"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="95" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="A8L-lN-nOM">
+                                        <rect key="frame" x="0.0" y="366" width="375" height="451"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
@@ -580,7 +580,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQT-ap-O5C">
-                                                            <rect key="frame" x="275" y="20" width="15" height="22"/>
+                                                            <rect key="frame" x="279" y="20" width="15" height="22"/>
                                                             <state key="normal" image="modeEditMaterialCopy"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年5月17日   8:43 - 19:21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axk-98-AUr">
@@ -607,7 +607,7 @@
                                                         <constraint firstItem="WsB-Im-xjF" firstAttribute="leading" secondItem="yIh-Py-aka" secondAttribute="leadingMargin" id="LAl-nY-ikn"/>
                                                         <constraint firstItem="WsB-Im-xjF" firstAttribute="top" secondItem="yIh-Py-aka" secondAttribute="topMargin" constant="12" id="Udp-8k-zCZ"/>
                                                         <constraint firstItem="axk-98-AUr" firstAttribute="leading" secondItem="yIh-Py-aka" secondAttribute="leadingMargin" id="YcK-x8-bOf"/>
-                                                        <constraint firstItem="kQT-ap-O5C" firstAttribute="leading" secondItem="WsB-Im-xjF" secondAttribute="trailing" constant="4" id="fGj-Km-Ll5"/>
+                                                        <constraint firstItem="kQT-ap-O5C" firstAttribute="leading" secondItem="WsB-Im-xjF" secondAttribute="trailing" constant="8" id="fGj-Km-Ll5"/>
                                                         <constraint firstItem="kQT-ap-O5C" firstAttribute="top" secondItem="WsB-Im-xjF" secondAttribute="top" id="phN-jM-2Fw"/>
                                                         <constraint firstItem="tB6-ty-XZa" firstAttribute="leading" secondItem="yIh-Py-aka" secondAttribute="leadingMargin" id="q4a-SS-Xv0"/>
                                                         <constraint firstItem="tB6-ty-XZa" firstAttribute="top" secondItem="axk-98-AUr" secondAttribute="bottom" constant="4" id="wbK-hc-Ptm"/>
@@ -705,11 +705,11 @@
                                                     <outlet property="pointName" destination="7QV-84-9bF" id="BBd-RN-BDr"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="192" id="lJ0-st-vLV" customClass="FooterTableViewCell" customModule="LittlePajero" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="250.5" width="375" height="192"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="200" id="lJ0-st-vLV" customClass="FooterTableViewCell" customModule="LittlePajero" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="250.5" width="375" height="200"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lJ0-st-vLV" id="6ie-1K-aad">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="191.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f52-Z4-tMz" customClass="SaveOrangeButton" customModule="LittlePajero" customModuleProvider="target">
@@ -798,6 +798,11 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isDividerHidden" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <outlet property="AButton" destination="guz-yO-jlr" id="Yw4-Yn-8sj"/>
+                                                    <outlet property="BButton" destination="Mzf-5j-2ZB" id="gXh-Cx-gHk"/>
+                                                    <outlet property="CButton" destination="2jA-Z3-Ugi" id="6F6-gh-BVJ"/>
+                                                    <outlet property="EButton" destination="Lzs-LG-PBT" id="Koo-yh-kRB"/>
+                                                    <outlet property="SButton" destination="ZIX-bz-MRO" id="n52-KV-Ecr"/>
                                                     <outlet property="saveButton" destination="f52-Z4-tMz" id="qjd-1e-h5u"/>
                                                     <outlet property="titleLabel" destination="MRc-qR-RJU" id="iBK-td-yWc"/>
                                                 </connections>

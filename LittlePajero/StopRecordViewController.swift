@@ -18,7 +18,7 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     // 定义屏幕高度 —— 滚动需要
     let screenHeight = UIScreen.main.bounds.height
     // 定义滚动内容物高度 —— 滚动需要
-    let scrollViewContentHeight = 740 as CGFloat
+    let scrollViewContentHeight = 1000 as CGFloat
     let scrollViewContentWidth = 375 as CGFloat
     
     @IBOutlet var mapView: MGLMapView!
@@ -48,9 +48,20 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         // 地图中心先设置成用户 —— 之后要自定义中心
         mapView.userTrackingMode = .follow
         
-        //scrollView.contentSize = CGSize(width: scrollViewContentWidth, height: scrollViewContentHeight)
-        //scrollView.bounces = false
-        //pointsTableView.bounces = false
+        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
+        let points = currentPath?.points
+        
+        // scrollViewContentSize = tableViewTables + screenHeight + 一个不知道是什么的值
+        let scrollViewContentHeight = 132 + CGFloat((points?.count)! * 95) + screenHeight
+
+        scrollView.contentSize = CGSize(width: scrollViewContentWidth, height: scrollViewContentHeight)
+        scrollView.bounces = false
+        pointsTableView.bounces = true
+        
+        // TableView 的高度根据内容变化
+        pointsTableView.sizeToFit()
+        pointsTableView.frame = CGRect(x: pointsTableView.frame.origin.x, y: pointsTableView.frame.origin.y, width: pointsTableView.frame.size.width, height: (CGFloat(300 + (points?.count)! * 95)))
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,7 +84,8 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     }
     
     @IBAction func clickSaveButton() {
-        self.dismiss(animated: true, completion: nil)
+        
+       // self.dismiss(animated: true, completion: nil)
     }
     
     // 添加 Header
@@ -101,12 +113,17 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     // 添加 Footer
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerCell = tableView.dequeueReusableCell(withIdentifier: "footerCell") as! FooterTableViewCell
+        footerCell.CButton?.alternateButtons = [footerCell.BButton!, footerCell.AButton!, footerCell.SButton!, footerCell.EButton!]
+        footerCell.BButton?.alternateButtons = [footerCell.CButton!, footerCell.AButton!, footerCell.SButton!, footerCell.EButton!]
+        footerCell.AButton?.alternateButtons = [footerCell.CButton!, footerCell.BButton!, footerCell.SButton!, footerCell.EButton!]
+        footerCell.SButton?.alternateButtons = [footerCell.CButton!, footerCell.BButton!, footerCell.AButton!, footerCell.EButton!]
+        footerCell.EButton?.alternateButtons = [footerCell.CButton!, footerCell.BButton!, footerCell.AButton!, footerCell.SButton!]
         return footerCell
     }
     
     // 添加 Footer 高度
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 192.0
+        return 200.0
     }
 
     //----- UITableViewDelegate 和 UITableViewDataSource delegate 的方法 --------
@@ -124,24 +141,26 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         cell.pointName.text = pointList.kind
         cell.pointLocation.text = "\(String(describing: pointList.latitude)), \(String(describing: pointList.longitude))"
         cell.commentLabel.text = pointList.comment
+        if pointList.photo == nil {
+            cell.photoImageView.image = UIImage(named: "photoMaterial")
+        } else {
+            cell.photoImageView.image = UIImage(data: pointList.photo! as Data, scale: 1.0)
+        }
+        // 取消 cell 选中
+        cell.selectionStyle = .none
         return cell
     }
-    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    */
     
     // ---------------------------------------------------------------------------
-    /*
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
         
-        if scrollView == self.scrollView {
-            if yOffset >= scrollViewContentHeight - screenHeight {
-                scrollView.isScrollEnabled = false
-                pointsTableView.isScrollEnabled = true
-            }
-        }
+        
         
         if scrollView == self.pointsTableView {
             if yOffset <= 0 {
@@ -150,5 +169,10 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
             }
         }
     }
- */
+    
+    func scrollViewHeight() -> CGFloat {
+        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
+        let points = currentPath?.points
+        return screenHeight + CGFloat((points?.count)! * 95)
+    }
 }

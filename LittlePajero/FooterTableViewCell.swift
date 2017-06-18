@@ -12,6 +12,11 @@ class FooterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var CButton: RatingButton!
+    @IBOutlet weak var BButton: RatingButton!
+    @IBOutlet weak var AButton: RatingButton!
+    @IBOutlet weak var SButton: RatingButton!
+    @IBOutlet weak var EButton: RatingButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +25,11 @@ class FooterTableViewCell: UITableViewCell {
         titleLabel.textColor = UIColor.lpBlack
         self.backgroundColor = UIColor.lpBackgroundWhite
         
+        CButton.isSelected = false
+        BButton.isSelected = false
+        AButton.isSelected = false
+        SButton.isSelected = false
+        EButton.isSelected = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,5 +37,4 @@ class FooterTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

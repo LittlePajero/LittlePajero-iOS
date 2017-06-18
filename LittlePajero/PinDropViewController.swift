@@ -122,7 +122,7 @@ class PinDropViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         }
         // 获得当前 path
         let path = realm.object(ofType: RealmPath.self, forPrimaryKey: self.pathId)
-        // 获得照片
+        // 获得 照片
         point.photo = photoData
         // 都获得之后就可以保存了！
         try! realm.write {

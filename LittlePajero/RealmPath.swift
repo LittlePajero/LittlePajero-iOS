@@ -14,6 +14,7 @@ class RealmPath: Object {
     dynamic var id: Int = 1
     var locations = List<RealmLocation>()
     var points = List<RealmPoint>()
+    dynamic var rank: String = ""
     
     override static func primaryKey() -> String? {
         return "id"
