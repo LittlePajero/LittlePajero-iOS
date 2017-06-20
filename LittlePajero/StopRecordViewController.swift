@@ -15,11 +15,13 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     var mainVC : MainViewController?
     var currentPathId: Int = 0
     
-    // 定义屏幕高度 —— 滚动需要
+    // 定义屏幕高度和宽度 —— 滚动需要
     let screenHeight = UIScreen.main.bounds.height
-    // 定义滚动内容物高度 —— 滚动需要
-    let scrollViewContentHeight = 1000 as CGFloat
-    let scrollViewContentWidth = 375 as CGFloat
+    let screenWidth = UIScreen.main.bounds.width
+    // 导航栏高度 64
+    let navigationHeight: CGFloat = 64.0
+    let headerHeight: CGFloat = 100.0
+    let footerHeight: CGFloat = 200.0
     
     @IBOutlet var mapView: MGLMapView!
     @IBOutlet weak var pointsTableView: UITableView!
@@ -34,10 +36,14 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         let backButton = UIBarButtonItem(image: UIImage(named: "arrowBackMaterial"), style: .plain, target: self, action: #selector(StopRecordViewController.backToMainVC))
         let moreButton = UIBarButtonItem(image: UIImage(named: "moreVertMaterial"), style: .plain, target: self, action: #selector(StopRecordViewController.clickMoreButton))
         let shareButton = UIBarButtonItem(image: UIImage(named: "shareMaterial"), style: .plain, target: self, action: #selector(StopRecordViewController.clickShareButton))
+        
         // 将按钮添加到 navigationBar 上
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.setLeftBarButton(backButton, animated: true)
         navigationItem.setRightBarButtonItems([moreButton, shareButton], animated: true)
+        
+        // 设置 navigationBar 上的图标颜色是白色
+        self.navigationController?.navigationBar.tintColor = UIColor.lpWhite
         
         // mapView 的代理是自己
         mapView.delegate = self
@@ -51,16 +57,31 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
         let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
         let points = currentPath?.points
         
-        // scrollViewContentSize = tableViewTables + screenHeight + 一个不知道是什么的值
+        // 计算 scrollViewContentSize = tableViewTables + screenHeight + 一个不知道是什么的值
         let scrollViewContentHeight = 132 + CGFloat((points?.count)! * 95) + screenHeight
-
-        scrollView.contentSize = CGSize(width: scrollViewContentWidth, height: scrollViewContentHeight)
-        scrollView.bounces = false
-        pointsTableView.bounces = true
+        // 确定 scrollView 的宽度和高度
+        scrollView.contentSize = CGSize(width: screenWidth, height: scrollViewContentHeight)
+        // scrollView 弹性
+        scrollView.bounces = true
+        // 隐藏滚动条
+        scrollView.showsVerticalScrollIndicator = false
         
         // TableView 的高度根据内容变化
         pointsTableView.sizeToFit()
-        pointsTableView.frame = CGRect(x: pointsTableView.frame.origin.x, y: pointsTableView.frame.origin.y, width: pointsTableView.frame.size.width, height: (CGFloat(300 + (points?.count)! * 95)))
+        // 固定 TableView 的位置
+        pointsTableView.frame = CGRect(x: 0, y: screenHeight - 300, width: screenWidth, height: (CGFloat(300 + (points?.count)! * 95)))
+        
+        // 隐藏 navigationBar，颜色设置为白色
+        let transparentBackground = UIImage.imageWithColor(tintColor: UIColor.lptransparent)
+        self.navigationController?.navigationBar.setBackgroundImage(transparentBackground, for: .default)
+        //self.navigationController?.navigationBar.setBackgroundImage(whiteBackground, for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.alpha = 1
+        //self.navigationController?.navigationBar.isTranslucent = true
+        
+        //self.navigationController?.navigationBar.barTintColor = UIColor.lpBackgroundWhite.withAlphaComponent(1)
+        
+        print("ScreenHeihgt: \(screenHeight)")
 
     }
     
@@ -158,21 +179,64 @@ class StopRecordViewController: UIViewController, MGLMapViewDelegate, UITableVie
     
     // ---------------------------------------------------------------------------
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let yOffset = scrollView.contentOffset.y
-        
-        
-        
-        if scrollView == self.pointsTableView {
-            if yOffset <= 0 {
-                self.scrollView.isScrollEnabled = true
-                self.pointsTableView.isScrollEnabled = false
-            }
+        let scrollViewPosition = screenHeight - (headerHeight + footerHeight) - scrollView.contentOffset.y
+        print("navigationBarAlpha: \(self.navigationController?.navigationBar.alpha)")
+        if (scrollViewPosition <= navigationHeight && scrollViewPosition > 32) {
+            let navigationAlpha = (navigationHeight - scrollViewPosition) / 32
+            let whiteBackground = UIImage.imageWithColor(tintColor: UIColor.lpBackgroundWhite.withAlphaComponent(navigationAlpha))
+            self.navigationController?.navigationBar.setBackgroundImage(whiteBackground, for: .default)
+            self.navigationController?.navigationBar.tintColor = UIColor.lpBlack
+            // 设置 Status Bar 为深色
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+            print("alpha: \(navigationAlpha)")
+        } else if (scrollViewPosition <= 32) {
+            self.navigationController?.navigationBar.barTintColor = UIColor.lpBackgroundWhite.withAlphaComponent(1)
+            self.navigationController?.navigationBar.alpha = 1
+            self.navigationController?.navigationBar.tintColor = UIColor.lpBlack
+        } else if (scrollViewPosition > navigationHeight) {
+            let transparentBackground = UIImage.imageWithColor(tintColor: UIColor.lptransparent)
+            self.navigationController?.navigationBar.setBackgroundImage(transparentBackground, for: .default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            self.navigationController?.navigationBar.tintColor = UIColor.lpWhite
+            UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         }
     }
     
-    func scrollViewHeight() -> CGFloat {
-        let currentPath = realm.object(ofType: RealmPath.self, forPrimaryKey: currentPathId)
-        let points = currentPath?.points
-        return screenHeight + CGFloat((points?.count)! * 95)
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // print("滑动方向：\(velocity.y)")
+        //if (velocity.y > 0) {
+        //    self.navigationController?.setNavigationBarHidden(true, animated: true)
+        //} else {
+        //    self.navigationController?.setNavigationBarHidden(false, animated: false)
+        //}
+        let scrollViewPosition = screenHeight - (headerHeight + footerHeight) - scrollView.contentOffset.y
+        if (scrollViewPosition <= navigationHeight && scrollViewPosition > 32) {
+            let navigationAlpha = (navigationHeight - scrollViewPosition) / 32
+            let whiteBackground = UIImage.imageWithColor(tintColor: UIColor.lpBackgroundWhite.withAlphaComponent(navigationAlpha))
+            self.navigationController?.navigationBar.setBackgroundImage(whiteBackground, for: .default)
+            self.navigationController?.navigationBar.tintColor = UIColor.lpBlack
+        } else if (scrollViewPosition <= 32) {
+            self.navigationController?.navigationBar.barTintColor = UIColor.lpBackgroundWhite
+            self.navigationController?.navigationBar.alpha = 1
+            self.navigationController?.navigationBar.tintColor = UIColor.lpBlack
+        } else if (scrollViewPosition > navigationHeight) {
+            let transparentBackground = UIImage.imageWithColor(tintColor: UIColor.lptransparent)
+            self.navigationController?.navigationBar.setBackgroundImage(transparentBackground, for: .default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            self.navigationController?.navigationBar.tintColor = UIColor.lpWhite
+            
+        }
+    }
+}
+
+extension UIImage {
+    static func imageWithColor(tintColor: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        tintColor.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
     }
 }
